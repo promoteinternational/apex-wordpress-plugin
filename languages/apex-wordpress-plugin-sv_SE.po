@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-28 14:30+0200\n"
+"PO-Revision-Date: 2019-06-28 14:35+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: sv_SE\n"
+
+#: templates/courses.php:74
+msgid "Prices and upcoming dates:"
+msgstr "Kommande kurstillfällen:"
+
+#: templates/courses.php:142
+msgid "Available seats:"
+msgstr "Tillgängliga platser:"
+
+#: templates/courses.php:153
+msgid "Apply Now"
+msgstr "Boka"
+
+#: templates/courses.php:156
+msgid "This event is fully booked"
+msgstr "Detta kurstillfälle är fullt"
+
+#: templates/courses.php:174 templates/courses.php:175
+msgid "You successfully applied on this event!"
+msgstr "Du är nu anmäld på kurstillfället!"
+
+#: templates/courses.php:207 templates/courses.php:220
+msgid "No upcoming events"
+msgstr "Inga kommande kurstillfällen"
+
+#: templates/modal.php:6
+msgid "Registration on Event"
+msgstr "Registrera dig"
+
+#: templates/modal.php:19
+msgid "Given Name *"
+msgstr "Förnamn *"
+
+#: templates/modal.php:25
+msgid "Surname *"
+msgstr "Efternamn *"
+
+#: templates/modal.php:31
+msgid "Email *"
+msgstr "E-post *"
+
+#: templates/modal.php:37
+msgid "Phone *"
+msgstr "Telefonnummer *"
+
+#: templates/modal.php:48
+msgid "Title"
+msgstr "Titel"
+
+#: templates/modal.php:63
+msgid "Company *"
+msgstr "Företag *"
+
+#: templates/modal.php:75
+msgid "Sector"
+msgstr "Bransch"
+
+#: templates/modal.php:90
+msgid "Address row 1 *"
+msgstr "Addressrad 1 *"
+
+#: templates/modal.php:94
+msgid "Address row 2"
+msgstr "Addressrad 2"
+
+#: templates/modal.php:100
+msgid "Zip Code *"
+msgstr "Postnummer *"
+
+#: templates/modal.php:105
+msgid "City *"
+msgstr "Postort *"
+
+#: templates/modal.php:111
+msgid "Country *"
+msgstr "Land *"
+
+#: templates/modal.php:123
+msgid "Apply"
+msgstr "Boka"

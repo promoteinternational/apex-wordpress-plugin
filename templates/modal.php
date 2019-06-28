@@ -14,27 +14,24 @@
 
                 <form action="<?= get_site_url(); ?>/<?= $apex_slug ?>/<?= $post->post_name ?>"
                       method="post">
-                    <div class="row">
-                        <div class="col-6">
+                    <div class="form-row">
+                        <div class="form-group col-6">
                             <label for="first_name"><?php _e('Given Name *', 'apex-wordpress-plugin') ?></label>
-                            <input type="text" name="first_name" id="first_name" class=""
+                            <input type="text" name="first_name" id="first_name" class="form-control"
                                    required><br>
                         </div>
-
-                        <div class="col-6">
+                        <div class="form-group col-6">
                             <label for="last_name"><?php _e('Surname *', 'apex-wordpress-plugin') ?></label>
-                            <input type="text" name="last_name" id="last_name" required><br>
+                            <input type="text" name="last_name" id="last_name" class="form-control" required><br>
                         </div>
-
-                        <div class="col-6">
-
+                        <div class="form-group col-6">
                             <label for="email"><?php _e('Email *', 'apex-wordpress-plugin') ?></label>
-                            <input type="email" name="email" id="email" required><br>
+                            <input type="email" name="email" id="email" class="form-control" required><br>
                         </div>
 
-                        <div class="col-6">
+                        <div class="form-group col-6">
                             <label for="phone"><?php _e('Phone *', 'apex-wordpress-plugin') ?></label>
-                            <input type="text" name="phone" id="phone" required><br>
+                            <input type="text" name="phone" id="phone" class="form-control" required><br>
                         </div>
 
                         <?php
@@ -42,25 +39,25 @@
                         if ($showTitle === 'yes'):
                             $titles = get_option('apex_plugin_titles', array());
                             if ($titles && is_array($titles)):
-                            ?>
-                            <div class="apex-col-12">
-                                <label for="title"><?php _e('Title', 'apex-wordpress-plugin') ?></label>
-                                <select name="title" id="title">
-                                    <?php
-                                    foreach($titles as $key => $title) {
-                                        echo "<option value='{$key}'>{$title}</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        <?php
+                                ?>
+                                <div class="apex-col-12">
+                                    <label for="title"><?php _e('Title', 'apex-wordpress-plugin') ?></label>
+                                    <select name="title" id="title" class="form-control">
+                                        <?php
+                                        foreach($titles as $key => $title) {
+                                            echo "<option value='{$key}'>{$title}</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            <?php
                             endif;
                         endif;
                         ?>
 
-                        <div class="col-12">
+                        <div class="form-group col-12">
                             <label for="company"><?php _e('Company *', 'apex-wordpress-plugin') ?></label>
-                            <input type="text" name="company" id="company" required><br>
+                            <input type="text" name="company" id="company" class="form-control" required><br>
                         </div>
 
                         <?php
@@ -68,47 +65,47 @@
                         if ($showSector === 'yes'):
                             $sectors = get_option('apex_plugin_sectors', array());
                             if ($sectors && is_array($sectors)):
-                            ?>
-                            <div class="col-12">
+                                ?>
+                                <div class="form-group col-12">
 
-                                <label for="sector"><?php _e('Sector', 'apex-wordpress-plugin') ?></label>
-                                <select name="sector" id="sector">
-                                    <?php
-                                    foreach($sectors as $key => $sector) {
-                                        echo "<option value='{$key}'>{$sector}</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        <?php
+                                    <label for="sector"><?php _e('Sector', 'apex-wordpress-plugin') ?></label>
+                                    <select name="sector" id="sector" class="form-control">
+                                        <?php
+                                        foreach($sectors as $key => $sector) {
+                                            echo "<option value='{$key}'>{$sector}</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            <?php
                             endif;
                         endif;
                         ?>
 
-                        <div class="col-12">
+                        <div class="form-group col-12">
                             <label for="address_1"><?php _e('Address row 1 *', 'apex-wordpress-plugin') ?></label>
-                            <input type="text" name="address_1" id="address_1" required><br>
+                            <input type="text" name="address_1" id="address_1" class="form-control" required><br>
                         </div>
-                        <div class="col-12">
+                        <div class="form-group col-12">
                             <label for="address_2"><?php _e('Address row 2', 'apex-wordpress-plugin') ?></label>
-                            <input type="text" name="address_2" id="address_2"><br>
+                            <input type="text" name="address_2" id="address_2" class="form-control"><br>
                         </div>
 
-                        <div class="col-12">
+                        <div class="form-group col-12">
 
                             <label for="zip_code"><?php _e('Zip Code *', 'apex-wordpress-plugin') ?></label>
-                            <input type="number" name="zip_code" id="zip_code" required><br>
+                            <input type="number" name="zip_code" id="zip_code" class="form-control" required><br>
                         </div>
 
-                        <div class="col-12">
+                        <div class="form-group col-12">
                             <label for="city"><?php _e('City *', 'apex-wordpress-plugin') ?></label>
-                            <input type="text" name="city" id="city" required><br>
+                            <input type="text" name="city" id="city" class="form-control" required><br>
                         </div>
 
-                        <div class="col-12">
+                        <div class="form-group col-12">
 
                             <label for="country"><?php _e('Country *', 'apex-wordpress-plugin') ?></label>
-                            <select name="country" id="country">
+                            <select name="country" class="form-control" id="country">
                                 <option value="SE" selected>Sverige</option>
                                 <option value="DK">Danmark</option>
                                 <option value="FI">Finland</option>
@@ -116,7 +113,7 @@
                             </select>
                         </div>
 
-                        <div class="col-12">
+                        <div class="form-group col-12">
                             <input type="hidden" name='event_id' value="<?= $event->id ?>">
                             <input type="submit" id="formSubmit" class="btn btn-primary"
                                    value="<?php _e('Apply', 'apex-wordpress-plugin') ?>" style="<?= $modalButtonStyles ?>">

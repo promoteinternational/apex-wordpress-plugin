@@ -123,8 +123,8 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
                                 <div class="col-12 col-lg-6">
                                     <?php if (!empty($event->start_date)): ?>
                                         <div class="apex-courses__event-date" style="<?= $eventDateStyles ?>">
-                                            <?= date('d M', strtotime($event->start_date)) ?>
-                                            - <?= date('d M', strtotime($event->end_date)) ?>
+                                            <?= date_i18n('d M', strtotime($event->start_date)) ?>
+                                            - <?= date_i18n('d M', strtotime($event->end_date)) ?>
                                         </div>
                                     <?php endif; ?>
                                     <?php if (!empty($event->venue_city)): ?>

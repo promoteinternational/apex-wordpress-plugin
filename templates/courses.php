@@ -16,6 +16,9 @@ $events = unserialize($postMeta['apex_course_template_events'][0]);
 //Unserialize prices data
 $prices = unserialize($postMeta['apex_course_prices'][0]);
 
+// Get the number of days
+$days = $postMeta['apex_course_number_of_days'][0];
+
 //Get Display Seats Option
 $displaySeats = get_option('apex_display_seats');
 
@@ -97,6 +100,9 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
                         <?php
                     }
                     ?>
+                    <div class="apex-courses__price-days" style="<?= $daysStyles ?>">
+                        <?php echo _e('Number of days:', 'apex-wordpress-plugin') . ' ' . $days ?>
+                    </div>
                 </div>
                 <?php
                 if (!empty($events)) {
@@ -106,20 +112,12 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
                     //Looping through each event and display event data
                     $i = 0;
                     foreach ($events as $event) {
-                        //Determining the number of available seats
+                        //Determining the number of available seats - TODO: Rewrite to use portal participant count.
                         $availableSeats = $event->max_participants - $event->booked_participant_count;
                         $eventDate = strtotime($event->start_date);
                         if (!empty($event->id) && $currentDate <= $eventDate  ) {
                             ?>
                             <div class="apex-courses__event" style="<?= $eventStyles ?>">
-                                <?php if (!empty($event->name)): ?>
-                                    <div class="col-12">
-                                        <div class="apex-courses__event-title" style="<?= $eventTitleStyles ?>">
-                                            <h5><?= $event->name ?></h5>
-                                        </div>
-                                    </div>
-                                <?php endif; ?>
-
                                 <div class="col-12 col-lg-6">
                                     <?php if (!empty($event->start_date)): ?>
                                         <div class="apex-courses__event-date" style="<?= $eventDateStyles ?>">
@@ -166,12 +164,12 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
                                         <?php
                                         $api->addParticipant($_POST['first_name'], $_POST['last_name'], $_POST['company'], $_POST['email'], $_POST['phone'], $_POST['country'], $_POST['city'], $_POST['address_1'], $_POST['address_2'], $_POST['zip_code'], isset($_POST['sector']) ? $_POST['sector'] : null, isset($_POST['title']) ? $_POST['title'] : null, $_POST['event_id']);
 
-                                        //Decreasing value of the participant places in wp Database
+                                        // Update booked participant count in wp database.
                                         $success = $api->getSuccess();
                                         $trSuccess = _('You successfully applied on this event!');
-                                        $trError = _('You successfully applied on this event!');
+                                        $trError = _('Something went wrong with your application');
                                         if ($success) {
-                                            $event->max_participants = $event->max_participants - 1;
+                                            $event->booked_participant_count = $event->booked_participant_count + 1;
                                             echo '<div class="alert alert-success">'.$trSuccess.'</div>';
                                         } else {
                                             echo '<div class="alert alert-danger">'.$trError.'</div>';

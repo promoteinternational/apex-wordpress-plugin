@@ -106,10 +106,10 @@
 
                             <label for="country"><?php _e('Country *', 'apex-wordpress-plugin') ?></label>
                             <select name="country" class="form-control" id="country">
-                                <option value="SE" selected>Sverige</option>
-                                <option value="DK">Danmark</option>
-                                <option value="FI">Finland</option>
-                                <option value="NO">Norge</option>
+                                <option value="SE" selected><?php _e('Sweden', 'apex-wordpress-plugin') ?></option>
+                                <option value="DK"><?php _e('Denmark', 'apex-wordpress-plugin') ?></option>
+                                <option value="FI"><?php _e('Finland', 'apex-wordpress-plugin') ?></option>
+                                <option value="NO"><?php _e('Norway', 'apex-wordpress-plugin') ?></option>
                             </select>
                         </div>
 

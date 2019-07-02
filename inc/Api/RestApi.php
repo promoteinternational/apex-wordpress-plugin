@@ -138,6 +138,7 @@ class RestApi
     //Create curl request function
     public function makeCurlRequest()
     {
+        $areas_taxonomy = 'apex-areas';
         $portalID = $this->getPortalId();
         $serverName = $this->getServerName();
         $service_url = $serverName . '/websites/' . $portalID . '/areas/';
@@ -149,63 +150,60 @@ class RestApi
         if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
             die('error occurred: ' . $decoded->response->errormessage);
         }
-        $posts = $decoded->results;
+        $areas = $decoded->results;
         echo 'response ok!';
 
         $allCourses = get_posts(array('post_type' => [$this->slug],'post_status' => ['publish','trash'], 'numberposts' => -1));
         $currentCourses = [];
-        foreach ($allCourses as $eachTemplate) {
+        foreach ($allCourses as $existingTemplate) {
             $course = new \stdClass();
 
-            $course->id = $eachTemplate->ID;
-            $course->name = $eachTemplate->post_name;
+            $course->id = $existingTemplate->ID;
+            $course->name = $existingTemplate->post_name;
             $course->status = 0; // 0 - present, not updated course (default); 1 - present, updated course; 2 - new course
 
-            $currentCourses[$eachTemplate->post_name] = $course;
+            $currentCourses[$existingTemplate->post_name] = $course;
         }
 
-        foreach ($posts as $newPost) {
+        foreach ($areas as $area) {
             // Create or modify taxonomies
-            $course_term = $newPost->slug;
-            $course_taxonomy = 'apex-areas';
+            $area_term = $area->slug;
             $course_id = 0;
-            if (!term_exists($course_term, $course_taxonomy)) {
-                wp_insert_term($newPost->name, $course_taxonomy, [
-                   'slug' =>  $course_term,
+            if (!term_exists($area_term, $areas_taxonomy)) {
+                wp_insert_term($area->name, $areas_taxonomy, [
+                   'slug' =>  $area_term,
                 ]);
             }
 
-            foreach ($newPost->area_templates as $template) {
-
+            foreach ($area->area_templates as $template) {
                 if (key_exists($template->slug, $currentCourses)) { // if course already present
-
-                    // check for duplicates, if already updated - skip it
-                    if ($currentCourses[$template->slug]->status !== 0) continue;
-
                     $course_id = $currentCourses[$template->slug]->id;
 
-                    wp_update_post(array(
-                            'ID'            => $course_id,
-                            'post_title'    => $template->name,
-                            'post_name'     => $template->slug,
-                            'post_type'     => $this->slug,
-                            'post_content'  => $template->description,
-                            'post_status'   => 'publish',
-                            'meta_input'    => [
-                                'apex_course_id'                => $template->id,
-                                'apex_course_identifier'        => $template->identifier,
-                                'apex_course_event_id'          => $template->event_id,
-                                'apex_course_venue'             => $template->venue,
-                                'apex_course_timezone'          => $template->timezone,
-                                'apex_course_is_active'         => $template->is_active,
-                                'apex_course_is_template'       => $template->is_template,
-                                'apex_course_prices'            => $template->prices,
-                                'apex_course_template_events'   => $template->template_events
-                            ])
-                    );
+                    // check for duplicates, if already updated - do not update
+                    if ($currentCourses[$template->slug]->status === 0) {
+                        wp_update_post(array(
+                                'ID' => $course_id,
+                                'post_title' => $template->name,
+                                'post_name' => $template->slug,
+                                'post_type' => $this->slug,
+                                'post_content' => $template->description,
+                                'post_status' => 'publish',
+                                'meta_input' => [
+                                    'apex_course_id' => $template->id,
+                                    'apex_course_identifier' => $template->identifier,
+                                    'apex_course_event_id' => $template->event_id,
+                                    'apex_course_venue' => $template->venue,
+                                    'apex_course_timezone' => $template->timezone,
+                                    'apex_course_number_of_days' => $template->number_of_days,
+                                    'apex_course_is_active' => $template->is_active,
+                                    'apex_course_is_template' => $template->is_template,
+                                    'apex_course_prices' => $template->prices,
+                                    'apex_course_template_events' => $template->template_events // TODO: Load from events on template
+                                ])
+                        );
 
-                    $currentCourses[$template->slug]->status = 1;
-
+                        $currentCourses[$template->slug]->status = 1;
+                    }
                 } else { // new course
                     $course_id = wp_insert_post(array(
                         'post_title'    => $template->name,
@@ -219,6 +217,7 @@ class RestApi
                             'apex_course_event_id'          => $template->event_id,
                             'apex_course_venue'             => $template->venue,
                             'apex_course_timezone'          => $template->timezone,
+                            'apex_course_number_of_days'    => $template->number_of_days,
                             'apex_course_is_active'         => $template->is_active,
                             'apex_course_is_template'       => $template->is_template,
                             'apex_course_prices'            => $template->prices,
@@ -227,14 +226,14 @@ class RestApi
                     );
 
                     $currentCourses[$template->slug] = new \stdClass();
-                    $currentCourses[$template->slug]->id        = $course_id;
+                    $currentCourses[$template->slug]->id        = $template->id;
                     $currentCourses[$template->slug]->name      = $template->slug;
                     $currentCourses[$template->slug]->status    = 2;
                 }
 
                 // Set term
-                if (!has_term($course_term, $course_taxonomy, $course_id)) {
-                    wp_set_post_terms($course_id, $course_term, $course_taxonomy, true);
+                if (!has_term($area_term, $areas_taxonomy, $course_id)) {
+                    wp_set_post_terms($course_id, $area_term, $areas_taxonomy, true);
                 }
             }
         }

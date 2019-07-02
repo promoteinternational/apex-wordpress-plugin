@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-28 15:15+0200\n"
+"POT-Creation-Date: 2019-07-03 00:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,82 +17,106 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/courses.php:71
+#: templates/courses.php:74
 msgid "Prices and upcoming dates:"
 msgstr ""
 
-#: templates/courses.php:139
+#: templates/courses.php:104
+msgid "Number of days:"
+msgstr ""
+
+#: templates/courses.php:137
 msgid "Available seats:"
 msgstr ""
 
-#: templates/courses.php:150
+#: templates/courses.php:148
 msgid "Apply Now"
 msgstr ""
 
-#: templates/courses.php:153
+#: templates/courses.php:151
 msgid "This event is fully booked"
 msgstr ""
 
-#: templates/courses.php:171 templates/courses.php:172
+#: templates/courses.php:169
 msgid "You successfully applied on this event!"
 msgstr ""
 
-#: templates/courses.php:204 templates/courses.php:217
+#: templates/courses.php:170
+msgid "Something went wrong with your application"
+msgstr ""
+
+#: templates/courses.php:202 templates/courses.php:215
 msgid "No upcoming events"
 msgstr ""
 
 #: templates/modal.php:6
-msgid "Register on Event"
+msgid "Registration on Event"
 msgstr ""
 
 #: templates/modal.php:19
 msgid "Given Name *"
 msgstr ""
 
-#: templates/modal.php:25
+#: templates/modal.php:24
 msgid "Surname *"
 msgstr ""
 
-#: templates/modal.php:31
+#: templates/modal.php:28
 msgid "Email *"
 msgstr ""
 
-#: templates/modal.php:36
+#: templates/modal.php:33
 msgid "Phone *"
 msgstr ""
 
-#: templates/modal.php:47
+#: templates/modal.php:44
 msgid "Title"
 msgstr ""
 
-#: templates/modal.php:62
+#: templates/modal.php:59
 msgid "Company *"
 msgstr ""
 
-#: templates/modal.php:74
+#: templates/modal.php:71
 msgid "Sector"
 msgstr ""
 
-#: templates/modal.php:89
+#: templates/modal.php:86
 msgid "Address row 1 *"
 msgstr ""
 
-#: templates/modal.php:93
+#: templates/modal.php:90
 msgid "Address row 2"
 msgstr ""
 
-#: templates/modal.php:99
+#: templates/modal.php:96
 msgid "Zip Code *"
 msgstr ""
 
-#: templates/modal.php:104
+#: templates/modal.php:101
 msgid "City *"
 msgstr ""
 
-#: templates/modal.php:110
+#: templates/modal.php:107
 msgid "Country *"
 msgstr ""
 
-#: templates/modal.php:122
+#: templates/modal.php:109
+msgid "Sweden"
+msgstr ""
+
+#: templates/modal.php:110
+msgid "Denmark"
+msgstr ""
+
+#: templates/modal.php:111
+msgid "Finland"
+msgstr ""
+
+#: templates/modal.php:112
+msgid "Norway"
+msgstr ""
+
+#: templates/modal.php:119
 msgid "Apply"
 msgstr ""

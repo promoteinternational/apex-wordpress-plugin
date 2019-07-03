@@ -101,9 +101,17 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
                     }
                     ?>
                     <div class="apex-courses__price-days" style="<?= $daysStyles ?>">
-                        <?php echo _e('Number of days:', 'apex-wordpress-plugin') . ' ' . $days ?>
+                        <?php if ($days > 1) {
+                            echo $days . ' ';
+                            _e('days', 'apex-wordpress-plugin');
+                        } else {
+                            echo $days . ' ';
+                            _e('day', 'apex-wordpress-plugin');
+                        }
+                        ?>
                     </div>
                 </div>
+                <div vlass="apex-courses__events-title"><?php _e("Dates", 'apex-wordpress-plugin') ?></div>
                 <?php
                 if (!empty($events)) {
                     //Creating new empty array for events, needed for decreasing available seats after successful registration

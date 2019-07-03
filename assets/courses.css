@@ -8196,6 +8196,18 @@ a > .apex-bootstrap code {
   text-align: center;
 }
 
+.apex-bootstrap .apex-courses__price-days {
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.apex-bootstrap .apex-courses__events-title {
+  font-size: 35px;
+  font-weight: 400;
+  text-align: left;
+}
+
 .apex-bootstrap .apex-courses__event {
   background: #FFFCF7;
   padding: 20px;

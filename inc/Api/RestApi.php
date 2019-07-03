@@ -111,6 +111,7 @@ class RestApi
      * Perform a Curl request with provided headers and url
      * @param $headers
      * @param $service_url
+     * @param $post_data
      * @return array|mixed|object
      */
     private function performCurlRequest($headers, $service_url, $post_data = []) {
@@ -135,8 +136,32 @@ class RestApi
         return json_decode($curl_response);
     }
 
-    //Create curl request function
-    public function makeCurlRequest()
+    /**
+     * Load the events for a specific template. Query apex once more to only get upcoming events.
+     *
+     * @param $areaSlug - the slug of the current area.
+     * @param $templateSlug - the slug of the template that should be used.
+     *
+     * @return array
+     */
+    public function loadEvents($areaSlug, $templateSlug) {
+        $portalID = $this->getPortalId();
+        $serverName = $this->getServerName();
+        $service_url = $serverName . '/websites/' .  $portalID . '/areas/' . $areaSlug . '/templates/' . $templateSlug . '/events/';
+        $headers = $this->create_request_headers($this->getPublicKey(), $this->getPrivateKey());
+
+        $decoded = $this->performCurlRequest($headers, $service_url, ['start_date' => date('Y-m-d')]);
+
+        if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
+            error_log('error occurred: ' . $decoded->response->errormessage);
+            return [];
+        }
+
+        return $decoded->results;
+    }
+
+    //Load all templates
+    public function loadTemplates()
     {
         $areas_taxonomy = 'apex-areas';
         $portalID = $this->getPortalId();
@@ -148,6 +173,7 @@ class RestApi
         $decoded = $this->performCurlRequest($headers, $service_url, ['limit' => 'null']);
 
         if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
+            error_log('error occurred: ' . $decoded->response->errormessage);
             die('error occurred: ' . $decoded->response->errormessage);
         }
         $areas = $decoded->results;
@@ -176,6 +202,8 @@ class RestApi
             }
 
             foreach ($area->area_templates as $template) {
+                $events = $this->loadEvents($area_term, $template->slug);
+
                 if (key_exists($template->slug, $currentCourses)) { // if course already present
                     $course_id = $currentCourses[$template->slug]->id;
 
@@ -198,7 +226,7 @@ class RestApi
                                     'apex_course_is_active' => $template->is_active,
                                     'apex_course_is_template' => $template->is_template,
                                     'apex_course_prices' => $template->prices,
-                                    'apex_course_template_events' => $template->template_events // TODO: Load from events on template
+                                    'apex_course_template_events' => $events
                                 ])
                         );
 
@@ -221,7 +249,7 @@ class RestApi
                             'apex_course_is_active'         => $template->is_active,
                             'apex_course_is_template'       => $template->is_template,
                             'apex_course_prices'            => $template->prices,
-                            'apex_course_template_events'   => $template->template_events
+                            'apex_course_template_events'   => $events
                         ])
                     );
 

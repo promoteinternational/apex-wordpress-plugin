@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-03 00:03+0200\n"
-"PO-Revision-Date: 2019-07-03 00:08+0200\n"
+"POT-Creation-Date: 2019-07-03 11:32+0200\n"
+"PO-Revision-Date: 2019-07-03 11:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -20,33 +20,43 @@ msgstr ""
 
 #: templates/courses.php:74
 msgid "Prices and upcoming dates:"
-msgstr "Kommande kurstillfällen:"
+msgstr ""
+"Pris och kommande datum\n"
+":"
 
-#: templates/courses.php:104
-msgid "Number of days:"
-msgstr "Antal dagar:"
+#: templates/courses.php:105
+msgid "days"
+msgstr "dagar"
 
-#: templates/courses.php:137
+#: templates/courses.php:107
+msgid "day"
+msgstr "dag"
+
+#: templates/courses.php:112
+msgid "Dates"
+msgstr "Datum"
+
+#: templates/courses.php:143
 msgid "Available seats:"
 msgstr "Tillgängliga platser:"
 
-#: templates/courses.php:148
+#: templates/courses.php:154
 msgid "Apply Now"
-msgstr "Boka"
+msgstr "Anmäl dig"
 
-#: templates/courses.php:151
+#: templates/courses.php:157
 msgid "This event is fully booked"
 msgstr "Detta kurstillfälle är fullt"
 
-#: templates/courses.php:169
+#: templates/courses.php:175
 msgid "You successfully applied on this event!"
 msgstr "Du är nu anmäld på kurstillfället!"
 
-#: templates/courses.php:170
+#: templates/courses.php:176
 msgid "Something went wrong with your application"
 msgstr "Det blev ett fel när anmälan skulle göras"
 
-#: templates/courses.php:202 templates/courses.php:215
+#: templates/courses.php:208 templates/courses.php:221
 msgid "No upcoming events"
 msgstr "Inga kommande kurstillfällen"
 
@@ -121,3 +131,6 @@ msgstr "Norge"
 #: templates/modal.php:119
 msgid "Apply"
 msgstr "Boka"
+
+#~ msgid "Number of days:"
+#~ msgstr "Antal dagar:"

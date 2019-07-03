@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-03 00:03+0200\n"
+"POT-Creation-Date: 2019-07-03 11:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,31 +21,39 @@ msgstr ""
 msgid "Prices and upcoming dates:"
 msgstr ""
 
-#: templates/courses.php:104
-msgid "Number of days:"
+#: templates/courses.php:105
+msgid "days"
 msgstr ""
 
-#: templates/courses.php:137
+#: templates/courses.php:107
+msgid "day"
+msgstr ""
+
+#: templates/courses.php:112
+msgid "Dates"
+msgstr ""
+
+#: templates/courses.php:143
 msgid "Available seats:"
 msgstr ""
 
-#: templates/courses.php:148
+#: templates/courses.php:154
 msgid "Apply Now"
 msgstr ""
 
-#: templates/courses.php:151
+#: templates/courses.php:157
 msgid "This event is fully booked"
 msgstr ""
 
-#: templates/courses.php:169
+#: templates/courses.php:175
 msgid "You successfully applied on this event!"
 msgstr ""
 
-#: templates/courses.php:170
+#: templates/courses.php:176
 msgid "Something went wrong with your application"
 msgstr ""
 
-#: templates/courses.php:202 templates/courses.php:215
+#: templates/courses.php:208 templates/courses.php:221
 msgid "No upcoming events"
 msgstr ""
 

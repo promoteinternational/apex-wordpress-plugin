@@ -3,9 +3,6 @@
 
 namespace Inc\Api;
 
-use Inc\Api\RestApi;
-
-
 class CronRequest
 {
     private $api;
@@ -41,8 +38,7 @@ class CronRequest
 
     public function apex_cron_function()
     {
-        $this->api->makeCurlRequest();
-//        $this->api->makeCurlTest();
+        $this->api->loadTemplates();
 
     }
 

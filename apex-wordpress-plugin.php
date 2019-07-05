@@ -49,3 +49,27 @@ function apex_wordpress_plugin_load_text_domain() {
 }
 
 add_action('plugins_loaded', 'apex_wordpress_plugin_load_text_domain');
+
+function format_currency($currency_name, $value) {
+    switch($currency_name) {
+        case 'SEK':
+            if (get_bloginfo("language") === 'sv-SE') {
+                return number_format_i18n($value, 0) . ' kr';
+            } else {
+                return number_format_i18n($value, 0) . ' SEK';
+            }
+            break;
+        case 'EUR':
+            return '€' . number_format_i18n($value, 0);
+            break;
+        case 'GBP':
+            return '£' . number_format_i18n($value, 0);
+            break;
+        case 'USD':
+            return '$' . number_format_i18n($value, 0);
+            break;
+        default:
+            return number_format_i18n($value, 0) . ' ' . $currency_name;
+            break;
+    }
+}

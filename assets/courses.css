@@ -8210,7 +8210,7 @@ a > .apex-bootstrap code {
 
 .apex-bootstrap .apex-courses__event {
   background: #FFFCF7;
-  padding: 20px;
+  padding: 20px;background: #FFFCF7;
   border-radius: 5px;
   margin: 2px 0;
   border: 1px solid #F2EFE9;
@@ -8219,16 +8219,17 @@ a > .apex-bootstrap code {
   flex-wrap: wrap;
 }
 
-.apex-bootstrap .apex-courses__event-title {
-  color: #18A2CC;
-  padding-bottom: 5px;
-  padding-top: 5px;
-}
-
 .apex-bootstrap .apex-courses__event-place,
 .apex-bootstrap .apex-courses__event-available {
   font-size: 14px;
   color: #666;
+}
+
+.apex-bootstrap .apex-courses__events-dates {
+  color: #333;
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 20px;
 }
 
 .apex-bootstrap .apex-courses__event-date {
@@ -8251,6 +8252,14 @@ a > .apex-bootstrap code {
 
 .apex-bootstrap .apex-courses__event-few-places {
   color: red;
+}
+
+.apex-bootstrap .apex-courses__extra-info {
+  margin-top: 30px;
+  padding: 20px 35px;
+  border: 1px solid #F2EFE9;
+  background: #FFFCF7;
+  border-radius: 5px;
 }
 
 .apex-bootstrap .modal-dialog {

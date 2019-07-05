@@ -203,6 +203,17 @@ class RestApi
 
             foreach ($area->area_templates as $template) {
                 $events = $this->loadEvents($area_term, $template->slug);
+                $places_events = [];
+
+                foreach ($events as $event) {
+                    if (!key_exists($event->venue_city, $places_events)) {
+                        $places_events[$event->venue_city] = [];
+                    }
+
+                    array_push($places_events[$event->venue_city], $event);
+                }
+
+                ksort($places_events);
 
                 if (key_exists($template->slug, $currentCourses)) { // if course already present
                     $course_id = $currentCourses[$template->slug]->id;
@@ -217,16 +228,17 @@ class RestApi
                                 'post_content' => $template->description,
                                 'post_status' => 'publish',
                                 'meta_input' => [
-                                    'apex_course_id' => $template->id,
-                                    'apex_course_identifier' => $template->identifier,
-                                    'apex_course_event_id' => $template->event_id,
-                                    'apex_course_venue' => $template->venue,
-                                    'apex_course_timezone' => $template->timezone,
-                                    'apex_course_number_of_days' => $template->number_of_days,
-                                    'apex_course_is_active' => $template->is_active,
-                                    'apex_course_is_template' => $template->is_template,
-                                    'apex_course_prices' => $template->prices,
-                                    'apex_course_template_events' => $events
+                                    'apex_course_id'              => $template->id,
+                                    'apex_course_identifier'      => $template->identifier,
+                                    'apex_course_event_id'        => $template->event_id,
+                                    'apex_course_venue'           => $template->venue,
+                                    'apex_course_timezone'        => $template->timezone,
+                                    'apex_course_number_of_days'  => $template->number_of_days,
+                                    'apex_course_is_active'       => $template->is_active,
+                                    'apex_course_is_template'     => $template->is_template,
+                                    'apex_course_prices'          => $template->prices,
+                                    'apex_course_template_events' => $events,
+                                    'apex_course_template_places' => $places_events
                                 ])
                         );
 
@@ -249,7 +261,8 @@ class RestApi
                             'apex_course_is_active'         => $template->is_active,
                             'apex_course_is_template'       => $template->is_template,
                             'apex_course_prices'            => $template->prices,
-                            'apex_course_template_events'   => $events
+                            'apex_course_template_events'   => $events,
+                            'apex_course_template_places'   => $places_events
                         ])
                     );
 

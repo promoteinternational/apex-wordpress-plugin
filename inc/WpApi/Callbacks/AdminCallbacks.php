@@ -89,6 +89,28 @@ class AdminCallbacks extends BaseController
         echo '<input type="text" class="regular-text" name="apex_plugin_slug" value="' . $value . '" placeholder="' . $translation . '">';
     }
 
+    public function apexPluginDisplayVenue()
+    {
+        $value = esc_attr(get_option('apex_plugin_display_venue'));
+        ?>
+        <select name="apex_plugin_display_venue" class="apex_plugin_display_venue">
+            <option value="dates" <?= ($value == "dates") ? 'selected="selected"' : '' ?> > <?php _e('Show dates') ?></option>
+            <option value="venues" <?= ($value == "venues") ? 'selected="selected"' : '' ?>> <?php _e('Group by venue') ?></option>
+        </select>
+        <?php
+    }
+
+    public function apexPluginAddHeaders()
+    {
+        $value = esc_attr(get_option('apex_plugin_add_headers'));
+        ?>
+        <select name="apex_plugin_add_headers" class="apex_plugin_add_headers">
+            <option value="no" <?= ($value == "no") ? 'selected="selected"' : '' ?> > <?php _e('No') ?></option>
+            <option value="yes" <?= ($value == "yes") ? 'selected="selected"' : '' ?>> <?php _e('Yes') ?></option>
+        </select>
+        <?php
+    }
+
     public function apexPluginServerName()
     {
         $value = esc_attr(get_option('apex_server_name'));

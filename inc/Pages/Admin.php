@@ -64,6 +64,14 @@ class Admin extends BaseController
             ],
             [
                 'option_group' => 'apex_plugin_group',
+                'option_name' => 'apex_plugin_display_venue',
+            ],
+            [
+                'option_group' => 'apex_plugin_group',
+                'option_name' => 'apex_plugin_add_headers',
+            ],
+            [
+                'option_group' => 'apex_plugin_group',
                 'option_name' => 'apex_server_name',
 
             ],
@@ -218,6 +226,8 @@ class Admin extends BaseController
         $trUpdate = __('Amount of minutes before each update', 'apex-wordpress-plugin');
         $trCurrency = __('Currency (Please verify, that selected currency exist in API)', 'apex-wordpress-plugin');
         $trSlug = __('Slug for courses', 'apex-wordpress-plugin');
+        $trDisplayVenues = __('Display events', 'apex-wordpress-plugin');
+        $trAddHeaders = __('Add header and footer to course page', 'apex-wordpress-plugin');
         $trServerName = __('Server Name', 'apex-wordpress-plugin');
         $trPublicKey = __('Public API Key', 'apex-wordpress-plugin');
         $trPrivateKey = __('Private API Key', 'apex-wordpress-plugin');
@@ -275,6 +285,28 @@ class Admin extends BaseController
                 'args' => [
                     'label_for' => 'apex_plugin_slug',
                     'class' => 'apex_plugin_slug'
+                ]
+            ],
+            [
+                'id' => 'apex_plugin_display_venue',
+                'title' => $trDisplayVenues,
+                'callback' => [$this->callbacks, 'apexPluginDisplayVenue'],
+                'page' => 'apex_wordpress_plugin',
+                'section' => 'apex_plugin_general_settings',
+                'args' => [
+                    'label_for' => 'apex_plugin_display_venue',
+                    'class' => 'apex_plugin_display_venue'
+                ]
+            ],
+            [
+                'id' => 'apex_plugin_add_headers',
+                'title' => $trAddHeaders,
+                'callback' => [$this->callbacks, 'apexPluginAddHeaders'],
+                'page' => 'apex_wordpress_plugin',
+                'section' => 'apex_plugin_general_settings',
+                'args' => [
+                    'label_for' => 'apex_plugin_add_headers',
+                    'class' => 'apex_plugin_add_headers'
                 ]
             ],
             [

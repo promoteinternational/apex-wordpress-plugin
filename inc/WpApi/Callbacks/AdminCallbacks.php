@@ -94,8 +94,8 @@ class AdminCallbacks extends BaseController
         $value = esc_attr(get_option('apex_plugin_display_venue'));
         ?>
         <select name="apex_plugin_display_venue" class="apex_plugin_display_venue">
-            <option value="dates" <?= ($value == "dates") ? 'selected="selected"' : '' ?> > <?php _e('Show dates') ?></option>
-            <option value="venues" <?= ($value == "venues") ? 'selected="selected"' : '' ?>> <?php _e('Group by venue') ?></option>
+            <option value="dates" <?= ($value == "dates") ? 'selected="selected"' : '' ?> > <?php _e('Show dates', 'apex-wordpress-plugin') ?></option>
+            <option value="venues" <?= ($value == "venues") ? 'selected="selected"' : '' ?>> <?php _e('Group by venue', 'apex-wordpress-plugin') ?></option>
         </select>
         <?php
     }

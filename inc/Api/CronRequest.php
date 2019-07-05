@@ -30,7 +30,7 @@ class CronRequest
         $updateTimeSecond = 60 * ($this->api->getUpdateFrequency());
         $schedules['custom'] = array(
             'interval' => $updateTimeSecond,
-            'display' => __('Custom Settings')
+            'display' => __('Custom Settings', 'apex-wordpress-plugin')
         );
         return $schedules;
     }

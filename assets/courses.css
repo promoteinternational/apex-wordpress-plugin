@@ -8249,6 +8249,10 @@ a > .apex-bootstrap code {
   opacity: .8;
 }
 
+.apex-bootstrap .apex-courses__event-few-places {
+  color: red;
+}
+
 .apex-bootstrap .modal-dialog {
   top: 50%;
   transform: translate(0, -50%) !important;

@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="<?= $modalContentStyles ?>">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel"><?php _e('Registration on Event', 'apex-wordpress-plugin') ?></h5>
+                <h5 class="modal-title" id="modalLabel"><?php _e('Register on Event', 'apex-wordpress-plugin') ?></h5>
                 <button type="button" class="close" data-dismiss="modal"
                         aria-label="Close">
                     <span aria-hidden="true">&times;</span>

@@ -19,11 +19,14 @@ $prices = unserialize($postMeta['apex_course_prices'][0]);
 // Get the number of days
 $days = $postMeta['apex_course_number_of_days'][0];
 
-//Get Display Seats Option
+// Get Display Seats Option
 $displaySeats = get_option('apex_display_seats');
 
-//Create empty array for verifing prices data in API
+// Create empty array for verifing prices data in API
 $onlyCurrencyName = [];
+
+// Get extra course information
+$extraCourseInfo = (!empty(get_option('apex_courses_extra_info')) ? get_option('apex_courses_extra_info') : '');
 
 // Post slug
 $apex_slug = get_option('apex_plugin_slug', 'courses');
@@ -42,11 +45,14 @@ $sectionStyles = (!empty(get_option('apex_courses_section_styles')) ? get_option
 $contentStyles = (!empty(get_option('apex_courses_content_styles')) ? get_option('apex_courses_content_styles') : '');
 $priceTitleStyles = (!empty(get_option('apex_courses_price_title_styles')) ? get_option('apex_courses_price_title_styles') : '');
 $priceStyles = (!empty(get_option('apex_courses_price_styles')) ? get_option('apex_courses_price_styles') : '');
+$daysStyles = (!empty(get_option('apex_courses_day_styles')) ? get_option('apex_courses_day_styles') : '');
 $eventStyles = (!empty(get_option('apex_courses_event_styles')) ? get_option('apex_courses_event_styles') : '');
 $eventTitleStyles = (!empty(get_option('apex_courses_event_title_styles')) ? get_option('apex_courses_event_title_styles') : '');
 $eventDateStyles = (!empty(get_option('apex_courses_event_date_styles')) ? get_option('apex_courses_event_date_styles') : '');
 $eventTextStyles = (!empty(get_option('apex_courses_event_text_styles')) ? get_option('apex_courses_event_text_styles') : '');
 $eventButtonStyles = (!empty(get_option('apex_courses_event_button_styles')) ? get_option('apex_courses_event_button_styles') : '');
+$eventFewPlaces = (!empty(get_option('apex_courses_event_few_places_styles')) ? get_option('apex_courses_event_few_places_styles') : '');
+$extraCourseInfoStyles = (!empty(get_option('apex_courses_extra_info_styles')) ? get_option('apex_courses_extra_info_styles') : '');
 $modalContentStyles = (!empty(get_option('apex_courses_modal_content')) ? get_option('apex_courses_modal_content') : '');
 $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_option('apex_courses_modal_button') : '');
 
@@ -84,7 +90,7 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
 
                                 ?>
                                 <div class="apex-courses__price-price" style="<?= $priceStyles ?>">
-                                    <?php echo round($price->price, 0) . ' ' . $price->currency_name; ?>
+                                    <?php echo format_currency($price->currency_name, $price->price); ?>
                                 </div>
                                 <?php
                             }
@@ -94,7 +100,7 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
                         ?>
 
                         <div class="apex-courses__price-price" style="<?= $priceStyles ?>">
-                            <?php echo round($prices[0]->price, 0) . ' ' . $prices[0]->currency_name; ?>
+                            <?php echo format_currency($prices[0]->currency_name, $prices[0]->price); ?>
                         </div>
 
                         <?php
@@ -127,12 +133,9 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
                             ?>
                             <div class="apex-courses__event" style="<?= $eventStyles ?>">
                                 <div class="col-12 col-lg-6">
-                                    <?php if (!empty($event->start_date)): ?>
-                                        <div class="apex-courses__event-date" style="<?= $eventDateStyles ?>">
-                                            <?= date_i18n('d M', strtotime($event->start_date)) ?>
-                                            - <?= date_i18n('d M', strtotime($event->end_date)) ?>
-                                        </div>
-                                    <?php endif; ?>
+                                    <div class="apex-courses__event-date" style="<?= $eventDateStyles ?>">
+                                        <?= date_i18n('d M', strtotime($event->start_date)) ?><?php if ($days > 1): ?> - <?= date_i18n('d M', strtotime($event->end_date)) ?><?php endif; ?>
+                                    </div>
                                     <?php if (!empty($event->venue_city)): ?>
                                         <div class="apex-courses__event-place" style="<?= $eventTextStyles ?>">
                                             <?= $event->venue_city ?>
@@ -155,6 +158,11 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
                                                 data-target="#modal_<?= $event->id ?>">
                                            <?php _e('Apply Now', 'apex-wordpress-plugin') ?>
                                         </button>
+                                        <?php if ($availableSeats < $event->max_participants / 2): ?>
+                                            <div class="apex-courses__event-few-places" style="<?= $eventFewPlaces ?>">
+                                                <?php _e('Few seats remaining', 'apex-wordpress-plugin') ?>
+                                            </div>
+                                        <?php endif; ?>
                                     <?php else: ?>
                                         <div class="alert alert-warning"> <?php _e('This event is fully booked', 'apex-wordpress-plugin') ?> </div>
                                     <?php endif;
@@ -174,8 +182,8 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
 
                                         // Update booked participant count in wp database.
                                         $success = $api->getSuccess();
-                                        $trSuccess = _('You successfully applied on this event!');
-                                        $trError = _('Something went wrong with your application');
+                                        $trSuccess = __('Your application was successfully submitted!', 'apex-wordpress-plugin');
+                                        $trError = __('Something went wrong with your application', 'apex-wordpress-plugin');
                                         if ($success) {
                                             $event->booked_participant_count = $event->booked_participant_count + 1;
                                             echo '<div class="alert alert-success">'.$trSuccess.'</div>';
@@ -226,7 +234,17 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
                     <!-- /.apex-courses__events -->
                     <?php
                 }
+
+                if (!empty($extraCourseInfo)) {
+                    ?>
+                    <div class="apex-courses__extra-info" style="<?= $extraCourseInfoStyles ?>">
+                        <?= $extraCourseInfo ?>
+                    </div>
+                    <?php
+                }
                 ?>
+                <div class="apex-courses__price-days" style="<?= $daysStyles ?>">
+                </div>
             </div>
             <!-- /.col-4 -->
         </div>

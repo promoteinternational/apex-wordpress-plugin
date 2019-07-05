@@ -12,6 +12,7 @@ $post = get_post($postID);
 
 //Unserialize events data
 $events = unserialize($postMeta['apex_course_template_events'][0]);
+$venues = unserialize($postMeta['apex_course_template_places'][0]);
 
 //Unserialize prices data
 $prices = unserialize($postMeta['apex_course_prices'][0]);
@@ -27,6 +28,12 @@ $onlyCurrencyName = [];
 
 // Get extra course information
 $extraCourseInfo = (!empty(get_option('apex_courses_extra_info')) ? get_option('apex_courses_extra_info') : '');
+
+// Get display type
+$eventDisplayType = get_option('apex_plugin_display_venue', 'dates');
+
+// Get header and footers setting
+$eventAddHeaders = get_option('apex_plugin_add_headers', 'no');
 
 // Post slug
 $apex_slug = get_option('apex_plugin_slug', 'courses');
@@ -56,8 +63,10 @@ $extraCourseInfoStyles = (!empty(get_option('apex_courses_extra_info_styles')) ?
 $modalContentStyles = (!empty(get_option('apex_courses_modal_content')) ? get_option('apex_courses_modal_content') : '');
 $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_option('apex_courses_modal_button') : '');
 
+if ($eventAddHeaders == 'yes') {
+    get_header();
+}
 ?>
-
 
 <section class="apex-courses apex-bootstrap" style="<?= $sectionStyles ?>">
     <div class="container">
@@ -108,29 +117,25 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
                     ?>
                     <div class="apex-courses__price-days" style="<?= $daysStyles ?>">
                         <?php if ($days > 1) {
-                            echo $days . ' ';
-                            _e('days', 'apex-wordpress-plugin');
+                            printf(__('%s days', 'apex-wordpress-plugin'), $days);
                         } else {
-                            echo $days . ' ';
-                            _e('day', 'apex-wordpress-plugin');
+                            printf(__('%s day', 'apex-wordpress-plugin'), $days);
                         }
                         ?>
                     </div>
                 </div>
-                <div vlass="apex-courses__events-title"><?php _e("Dates", 'apex-wordpress-plugin') ?></div>
                 <?php
-                if (!empty($events)) {
-                    //Creating new empty array for events, needed for decreasing available seats after successful registration
-                    $newEvents = [];
+                if ($eventDisplayType === 'dates') {
+                    if (!empty($events)) {
+                        //Creating new empty array for events, needed for decreasing available seats after successful registration
+                        $newEvents = [];
 
-                    //Looping through each event and display event data
-                    $i = 0;
-                    foreach ($events as $event) {
-                        //Determining the number of available seats - TODO: Rewrite to use portal participant count.
-                        $availableSeats = $event->max_participants - $event->booked_participant_count;
-                        $eventDate = strtotime($event->start_date);
-                        if (!empty($event->id) && $currentDate <= $eventDate  ) {
+                        //Looping through each event and display event data
+                        foreach ($events as $event) {
+                            //Determining the number of available seats - TODO: Rewrite to use portal participant count.
+                            $availableSeats = $event->max_participants - $event->booked_participant_count;
                             ?>
+                            <div class="apex-courses__events-dates"><?php _e("Dates", 'apex-wordpress-plugin') ?></div>
                             <div class="apex-courses__event" style="<?= $eventStyles ?>">
                                 <div class="col-12 col-lg-6">
                                     <div class="apex-courses__event-date" style="<?= $eventDateStyles ?>">
@@ -154,9 +159,10 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
                                 <div class="col-12 col-lg-6">
 
                                     <?php if (!empty($availableSeats) && $availableSeats >= 1): ?>
-                                        <button type="button" class="btn apex-courses__event-button" style="<?= $eventButtonStyles ?>" data-toggle="modal"
+                                        <button type="button" class="btn apex-courses__event-button"
+                                                style="<?= $eventButtonStyles ?>" data-toggle="modal"
                                                 data-target="#modal_<?= $event->id ?>">
-                                           <?php _e('Apply Now', 'apex-wordpress-plugin') ?>
+                                            <?php _e('Apply Now', 'apex-wordpress-plugin') ?>
                                         </button>
                                         <?php if ($availableSeats < $event->max_participants / 2): ?>
                                             <div class="apex-courses__event-few-places" style="<?= $eventFewPlaces ?>">
@@ -186,13 +192,13 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
                                         $trError = __('Something went wrong with your application', 'apex-wordpress-plugin');
                                         if ($success) {
                                             $event->booked_participant_count = $event->booked_participant_count + 1;
-                                            echo '<div class="alert alert-success">'.$trSuccess.'</div>';
+                                            echo '<div class="alert alert-success">' . $trSuccess . '</div>';
                                         } else {
-                                            echo '<div class="alert alert-danger">'.$trError.'</div>';
+                                            echo '<div class="alert alert-danger">' . $trError . '</div>';
                                         }
                                         ?>
                                     </div>
-                                    <?php
+                                <?php
                                 endif;
 
                                 //Updating events data in DB
@@ -205,46 +211,119 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
                             </div>
                             <!-- /.apex-courses__events -->
                             <?php
-                            $i++;
                         }
-
-                    }
-                    //Display message if all events has wrong date
-                    if($i === 0){
-                    ?>
+                    } else {
+                        ?>
                         <div class="apex-courses__event" style="<?= $eventStyles ?>">
 
                             <div class="alert alert-info" style="margin: 0 auto">
                                 <?php _e('No upcoming events', 'apex-wordpress-plugin') ?>
-
                             </div>
                         </div>
                         <!-- /.apex-courses__events -->
-                    <?php
+                        <?php
+                    }
+                } else {
+                    if (!empty($venues)) {
+                        //Creating new empty array for events, needed for decreasing available seats after successful registration
+                        $newEvents = [];
+
+                        //Looping through each event and display event data
+                        foreach ($venues as $key => $event_array) {
+                            ?>
+                            <div class="apex-courses__events-dates"><?php printf(__("Dates for %s", 'apex-wordpress-plugin'), $key) ?></div><?php
+                            foreach ($event_array as $event) {
+                                $availableSeats = $event->max_participants - $event->booked_participant_count; ?>
+                                <div class="apex-courses__event" style="<?= $eventStyles ?>">
+                                    <div class="col-12 col-lg-6">
+                                        <div class="apex-courses__event-date" style="<?= $eventDateStyles ?>">
+                                            <?= date_i18n('d M', strtotime($event->start_date)) ?><?php if ($days > 1): ?> - <?= date_i18n('d M', strtotime($event->end_date)) ?><?php endif; ?>
+                                        </div>
+                                        <?php if (!empty($availableSeats) && $availableSeats >= 1 && $displaySeats === 'yes'): ?>
+                                            <div class="apex-courses__event-available" style="<?= $eventTextStyles ?>">
+                                                <?php _e('Available seats:', 'apex-wordpress-plugin') ?>
+                                                <?= $availableSeats ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+
+                                        <?php if (!empty($availableSeats) && $availableSeats >= 1): ?>
+                                            <button type="button" class="btn apex-courses__event-button"
+                                                    style="<?= $eventButtonStyles ?>" data-toggle="modal"
+                                                    data-target="#modal_<?= $event->id ?>">
+                                                <?php _e('Apply Now', 'apex-wordpress-plugin') ?>
+                                            </button>
+                                            <?php if ($availableSeats < $event->max_participants / 2): ?>
+                                                <div class="apex-courses__event-few-places"
+                                                     style="<?= $eventFewPlaces ?>">
+                                                    <?php _e('Few seats remaining', 'apex-wordpress-plugin') ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                            <div class="alert alert-warning"> <?php _e('This event is fully booked', 'apex-wordpress-plugin') ?> </div>
+                                        <?php endif;
+
+                                        //Connect Modal template
+                                        require 'modal.php'
+                                        ?>
+                                    </div>
+
+                                    <?php
+
+                                    //If not empty form data, display message
+                                    if (!empty($_POST['event_id']) && $_POST['event_id'] == $event->id):?>
+                                        <div class="apex-courses__confirmation">
+                                            <?php
+                                            $api->addParticipant($_POST['first_name'], $_POST['last_name'], $_POST['company'], $_POST['email'], $_POST['phone'], $_POST['country'], $_POST['city'], $_POST['address_1'], $_POST['address_2'], $_POST['zip_code'], isset($_POST['sector']) ? $_POST['sector'] : null, isset($_POST['title']) ? $_POST['title'] : null, $_POST['event_id']);
+
+                                            // Update booked participant count in wp database.
+                                            $success = $api->getSuccess();
+                                            $trSuccess = __('Your application was successfully submitted!', 'apex-wordpress-plugin');
+                                            $trError = __('Something went wrong with your application', 'apex-wordpress-plugin');
+                                            if ($success) {
+                                                $event->booked_participant_count = $event->booked_participant_count + 1;
+                                                echo '<div class="alert alert-success">' . $trSuccess . '</div>';
+                                            } else {
+                                                echo '<div class="alert alert-danger">' . $trError . '</div>';
+                                            }
+                                            ?>
+                                        </div>
+                                    <?php
+                                    endif;
+
+                                    //Updating events data in DB
+                                    array_push($newEvents, $event);
+                                    $newEventsSerialize = serialize($newEvents);
+                                    global $wpdb;
+                                    $postId = get_the_ID();
+                                    $wpdb->query("UPDATE `wp_postmeta` meta1 SET meta1.meta_value = '$newEventsSerialize' WHERE `post_id` =  $postId  AND meta1.meta_key = 'apex_course_template_events'");
+                                    ?>
+                                </div>
+                                <!-- /.apex-courses__events -->
+                                <?php
+                            }
+                        }
+                    } else {
+                        ?>
+                        <div class="apex-courses__event" style="<?= $eventStyles ?>">
+                            <div class="alert alert-info" style="margin: 0 auto">
+                                <?php _e('No upcoming events', 'apex-wordpress-plugin') ?>
+                            </div>
+                        </div>
+                        <!-- /.apex-courses__events -->
+                        <?php
                     }
 
-                } else {
-                    ?>
-                    <div class="apex-courses__event" style="<?= $eventStyles ?>">
-
-                        <div class="alert alert-info" style="margin: 0 auto">
-                            <?php _e('No upcoming events', 'apex-wordpress-plugin') ?>
+                    if (!empty($extraCourseInfo)) {
+                        ?>
+                        <div class="apex-courses__extra-info" style="<?= $extraCourseInfoStyles ?>">
+                            <?= $extraCourseInfo ?>
                         </div>
-                    </div>
-                    <!-- /.apex-courses__events -->
-                    <?php
-                }
-
-                if (!empty($extraCourseInfo)) {
-                    ?>
-                    <div class="apex-courses__extra-info" style="<?= $extraCourseInfoStyles ?>">
-                        <?= $extraCourseInfo ?>
-                    </div>
-                    <?php
+                        <?php
+                    }
                 }
                 ?>
-                <div class="apex-courses__price-days" style="<?= $daysStyles ?>">
-                </div>
             </div>
             <!-- /.col-4 -->
         </div>
@@ -253,3 +332,9 @@ $modalButtonStyles = (!empty(get_option('apex_courses_modal_button')) ? get_opti
     <!-- /.apex-course__container -->
 </section>
 <!-- /.apex-courses -->
+
+<?php
+if ($eventAddHeaders == 'yes') {
+    get_footer();
+}
+?>

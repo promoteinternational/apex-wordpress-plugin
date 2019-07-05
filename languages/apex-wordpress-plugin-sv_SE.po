@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-03 11:32+0200\n"
-"PO-Revision-Date: 2019-07-03 11:50+0200\n"
+"POT-Creation-Date: 2019-07-05 18:20+0200\n"
+"PO-Revision-Date: 2019-07-05 18:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -18,50 +18,52 @@ msgstr ""
 "X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/courses.php:74
+#: templates/courses.php:80
 msgid "Prices and upcoming dates:"
-msgstr ""
-"Pris och kommande datum\n"
-":"
+msgstr "Pris och kommande datum:"
 
-#: templates/courses.php:105
+#: templates/courses.php:112
 msgid "days"
 msgstr "dagar"
 
-#: templates/courses.php:107
+#: templates/courses.php:115
 msgid "day"
 msgstr "dag"
 
-#: templates/courses.php:112
+#: templates/courses.php:120
 msgid "Dates"
 msgstr "Datum"
 
-#: templates/courses.php:143
+#: templates/courses.php:148
 msgid "Available seats:"
 msgstr "Tillgängliga platser:"
 
-#: templates/courses.php:154
+#: templates/courses.php:159
 msgid "Apply Now"
 msgstr "Anmäl dig"
 
-#: templates/courses.php:157
+#: templates/courses.php:163
+msgid "Few seats remaining"
+msgstr "Få platser kvar"
+
+#: templates/courses.php:167
 msgid "This event is fully booked"
 msgstr "Detta kurstillfälle är fullt"
 
-#: templates/courses.php:175
-msgid "You successfully applied on this event!"
+#: templates/courses.php:185
+msgid "Your application was successfully submitted!"
 msgstr "Du är nu anmäld på kurstillfället!"
 
-#: templates/courses.php:176
+#: templates/courses.php:186
 msgid "Something went wrong with your application"
 msgstr "Det blev ett fel när anmälan skulle göras"
 
-#: templates/courses.php:208 templates/courses.php:221
+#: templates/courses.php:218 templates/courses.php:231
 msgid "No upcoming events"
 msgstr "Inga kommande kurstillfällen"
 
 #: templates/modal.php:6
-msgid "Registration on Event"
+msgid "Register on Event"
 msgstr "Registrera dig"
 
 #: templates/modal.php:19
@@ -131,6 +133,257 @@ msgstr "Norge"
 #: templates/modal.php:119
 msgid "Apply"
 msgstr "Boka"
+
+#: inc/Pages/Admin.php:34
+msgid "Apex Wordpress Plugin Settings"
+msgstr "Apex Wordpress Inställningar"
+
+#: inc/Pages/Admin.php:175
+msgid "General Settings"
+msgstr "Allmänna inställningar"
+
+#: inc/Pages/Admin.php:176
+msgid "API Settings"
+msgstr "API Inställningar"
+
+#: inc/Pages/Admin.php:177
+msgid "Additional CSS"
+msgstr "Extra CSS"
+
+#: inc/Pages/Admin.php:178
+msgid "Course extra information"
+msgstr "Extra kursinforation"
+
+#: inc/Pages/Admin.php:179
+msgid "Courses page"
+msgstr "Kurslistningssida"
+
+#: inc/Pages/Admin.php:218
+msgid "Amount of minutes before each update"
+msgstr "Antal minuter mellan uppdateringar"
+
+#: inc/Pages/Admin.php:219
+msgid "Currency (Please verify, that selected currency exist in API)"
+msgstr "Valuta (se till att valutan existerar i API:et)"
+
+#: inc/Pages/Admin.php:220
+msgid "Slug for courses"
+msgstr "Slug för kurser"
+
+#: inc/Pages/Admin.php:221
+msgid "Server Name"
+msgstr "Servernamn"
+
+#: inc/Pages/Admin.php:222
+msgid "Public API Key"
+msgstr "Publik API nyckel"
+
+#: inc/Pages/Admin.php:223
+msgid "Private API Key"
+msgstr "Privat API nyckel"
+
+#: inc/Pages/Admin.php:224
+msgid "Portal ID"
+msgstr "Portal ID"
+
+#: inc/Pages/Admin.php:225
+msgid "Display Available Seats"
+msgstr "Visa tillgängliga platser"
+
+#: inc/Pages/Admin.php:226
+msgid "Display Title"
+msgstr "Visa titel"
+
+#: inc/Pages/Admin.php:227
+msgid "Display Sector"
+msgstr "Visa bransch"
+
+#: inc/Pages/Admin.php:228
+msgid "Courses Title"
+msgstr "Kurstitel"
+
+#: inc/Pages/Admin.php:229
+msgid "Courses Section"
+msgstr "Kursinformation"
+
+#: inc/Pages/Admin.php:230
+msgid "Courses Content"
+msgstr "Kursinnehåll"
+
+#: inc/Pages/Admin.php:231
+msgid "Courses Price Title"
+msgstr "Kurspristitel"
+
+#: inc/Pages/Admin.php:232
+msgid "Courses Price"
+msgstr "Kurspris"
+
+#: inc/Pages/Admin.php:233
+msgid "Courses Days"
+msgstr "Kursdagar"
+
+#: inc/Pages/Admin.php:234
+msgid "Courses Event"
+msgstr "Kurstillfälle"
+
+#: inc/Pages/Admin.php:235
+msgid "Courses Event Date"
+msgstr "Kurstillfälledatum"
+
+#: inc/Pages/Admin.php:236
+msgid "Courses Event Text"
+msgstr "Kurstillfälle text"
+
+#: inc/Pages/Admin.php:237
+msgid "Courses Event Button"
+msgstr "Kurstillfälle knapp"
+
+#: inc/Pages/Admin.php:238
+msgid "Few seats left text"
+msgstr "Få platser kvar text"
+
+#: inc/Pages/Admin.php:239
+msgid "Courses Modal Content"
+msgstr "Anmälanpopup innehåll"
+
+#: inc/Pages/Admin.php:240
+msgid "Courses Modal Button"
+msgstr "Anmälanpopup knapp"
+
+#: inc/Pages/Admin.php:241
+msgid "Course extra info"
+msgstr "Extra kursinformation"
+
+#: inc/Pages/Admin.php:242
+msgid "Course extra info styles"
+msgstr "Extra kursinformation CSS"
+
+#: inc/Pages/Admin.php:243
+msgid "Page title"
+msgstr "Sidtitel"
+
+#: inc/Pages/Admin.php:244
+msgid "Content before courses list"
+msgstr "Innehåll före kurslistningen"
+
+#: inc/Pages/Admin.php:245
+msgid "Content after courses list"
+msgstr "Innehåll efter kurslistningen"
+
+#: inc/Api/CronRequest.php:33
+msgid "Custom Settings"
+msgstr "Anpassade inställningar"
+
+#: inc/Base/SettingsLinks.php:19
+msgid "Settings"
+msgstr "Inställningar"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:39
+msgid "Provide the general plugin settings"
+msgstr "Ange allmänna inställningar"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:45
+msgid "Provide the API settings:"
+msgstr "Ange API inställningar:"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:50
+msgid "Provide additional CSS (optional):"
+msgstr "Ange extra CSS (valfritt):"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:55
+msgid "Provide extra information for the course information page:"
+msgstr "Ange extra information för kursinformationssidan:"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:60
+msgid "Provide options for the courses page:"
+msgstr "Ange inställningar för kurslistningssidan:"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:61
+msgid ""
+"You can use shortcodes for output this fields: <strong>[apex-courses-list-"
+"before], [apex-courses-list],  [apex-courses-list-after]</strong>"
+msgstr ""
+"Du kan använda kortkoder för att visa dessa fält: <strong>[apex-courses-list-"
+"before], [apex-courses-list],  [apex-courses-list-after]</strong>"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:76
+msgid "Swedish Krona"
+msgstr "Svenska Kronor"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:77
+msgid "United States Dollars"
+msgstr "US dollar"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:78
+msgid "Euro"
+msgstr "Euro"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:79
+msgid "United Kingdom Pounds"
+msgstr "Engelska pund"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:88
+msgid "Enter Apex courses slug"
+msgstr "Ange slug för kurserna"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:95
+msgid "Enter server name"
+msgstr "Ange servernamn"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:102
+msgid "Enter public api key"
+msgstr "Ange publik api nyckel"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:109
+msgid "Enter private api key"
+msgstr "Ange privat api nyckel"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:116
+msgid "Enter portal ID"
+msgstr "Ange portal ID"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:125
+#: inc/WpApi/Callbacks/AdminCallbacks.php:138
+#: inc/WpApi/Callbacks/AdminCallbacks.php:149
+msgid "No"
+msgstr "Nej"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:126
+#: inc/WpApi/Callbacks/AdminCallbacks.php:139
+#: inc/WpApi/Callbacks/AdminCallbacks.php:150
+msgid "Yes"
+msgstr "Ja"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:158
+#: inc/WpApi/Callbacks/AdminCallbacks.php:169
+#: inc/WpApi/Callbacks/AdminCallbacks.php:179
+#: inc/WpApi/Callbacks/AdminCallbacks.php:189
+#: inc/WpApi/Callbacks/AdminCallbacks.php:199
+#: inc/WpApi/Callbacks/AdminCallbacks.php:209
+#: inc/WpApi/Callbacks/AdminCallbacks.php:219
+#: inc/WpApi/Callbacks/AdminCallbacks.php:229
+#: inc/WpApi/Callbacks/AdminCallbacks.php:239
+#: inc/WpApi/Callbacks/AdminCallbacks.php:249
+#: inc/WpApi/Callbacks/AdminCallbacks.php:259
+#: inc/WpApi/Callbacks/AdminCallbacks.php:269
+#: inc/WpApi/Callbacks/AdminCallbacks.php:285
+#: inc/WpApi/Callbacks/AdminCallbacks.php:295
+#: inc/WpApi/Callbacks/AdminCallbacks.php:305
+msgid ""
+"Example (add any another css styling):\n"
+"color: #fff;\n"
+"background: #222;\n"
+msgstr ""
+"Exempel (du kan ange vilken CSS som helst):\n"
+"color: #fff;\n"
+"background: #222;\n"
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:315
+msgid "Enter page title"
+msgstr "Ange sidans titel"
+
+#~ msgid "You successfully applied on this event!"
+#~ msgstr "Du är nu anmäld på kurstillfället!"
 
 #~ msgid "Number of days:"
 #~ msgstr "Antal dagar:"

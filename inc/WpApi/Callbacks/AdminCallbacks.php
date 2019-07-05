@@ -58,7 +58,7 @@ class AdminCallbacks extends BaseController
     public function apexPluginListingPage()
     {
         _e('Provide options for the courses page:', 'apex-wordpress-plugin');
-        echo '<p>' . __('You can use shortcodes for output this fields: <strong>[apex-courses-list-before], [apex-courses-list],  [apex-courses-list-after]</strong>', 'apex-wordpress-plugin') . '</p>';
+        echo '<p>' . __('You can use shortcodes for output this fields: <strong>[apex-courses-list-before], [apex-courses-list], [apex-courses-list-after]</strong>', 'apex-wordpress-plugin') . '</p>';
     }
 
     public function apexPluginUpdateFrequency()

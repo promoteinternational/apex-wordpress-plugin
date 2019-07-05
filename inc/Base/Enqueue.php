@@ -114,6 +114,8 @@ class Enqueue extends BaseController
             $courses = get_posts(array(
                 'post_type' => $courses_slug,
                 'numberposts' => -1,
+                'orderby' => 'title',
+                'order' => 'ASC',
                 'tax_query' => array(
                     array(
                         'taxonomy' => $taxonomy,

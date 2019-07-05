@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 18:20+0200\n"
+"POT-Creation-Date: 2019-07-05 22:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,48 +17,55 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/courses.php:80
+#: templates/courses.php:89
 msgid "Prices and upcoming dates:"
 msgstr ""
 
-#: templates/courses.php:112
-msgid "days"
-msgstr ""
-
-#: templates/courses.php:115
-msgid "day"
-msgstr ""
-
 #: templates/courses.php:120
+#, php-format
+msgid "%s days"
+msgstr ""
+
+#: templates/courses.php:122
+#, php-format
+msgid "%s day"
+msgstr ""
+
+#: templates/courses.php:138
 msgid "Dates"
 msgstr ""
 
-#: templates/courses.php:148
+#: templates/courses.php:153 templates/courses.php:244
 msgid "Available seats:"
 msgstr ""
 
-#: templates/courses.php:159
+#: templates/courses.php:165 templates/courses.php:255
 msgid "Apply Now"
 msgstr ""
 
-#: templates/courses.php:163
+#: templates/courses.php:169 templates/courses.php:260
 msgid "Few seats remaining"
 msgstr ""
 
-#: templates/courses.php:167
+#: templates/courses.php:173 templates/courses.php:264
 msgid "This event is fully booked"
 msgstr ""
 
-#: templates/courses.php:185
+#: templates/courses.php:191 templates/courses.php:282
 msgid "Your application was successfully submitted!"
 msgstr ""
 
-#: templates/courses.php:186
+#: templates/courses.php:192 templates/courses.php:283
 msgid "Something went wrong with your application"
 msgstr ""
 
-#: templates/courses.php:218 templates/courses.php:231
+#: templates/courses.php:220 templates/courses.php:311
 msgid "No upcoming events"
+msgstr ""
+
+#: templates/courses.php:234
+#, php-format
+msgid "Dates for %s"
 msgstr ""
 
 #: templates/modal.php:6
@@ -137,135 +144,143 @@ msgstr ""
 msgid "Apex Wordpress Plugin Settings"
 msgstr ""
 
-#: inc/Pages/Admin.php:175
+#: inc/Pages/Admin.php:183
 msgid "General Settings"
 msgstr ""
 
-#: inc/Pages/Admin.php:176
+#: inc/Pages/Admin.php:184
 msgid "API Settings"
 msgstr ""
 
-#: inc/Pages/Admin.php:177
+#: inc/Pages/Admin.php:185
 msgid "Additional CSS"
 msgstr ""
 
-#: inc/Pages/Admin.php:178
+#: inc/Pages/Admin.php:186
 msgid "Course extra information"
 msgstr ""
 
-#: inc/Pages/Admin.php:179
+#: inc/Pages/Admin.php:187
 msgid "Courses page"
 msgstr ""
 
-#: inc/Pages/Admin.php:218
+#: inc/Pages/Admin.php:226
 msgid "Amount of minutes before each update"
 msgstr ""
 
-#: inc/Pages/Admin.php:219
+#: inc/Pages/Admin.php:227
 msgid "Currency (Please verify, that selected currency exist in API)"
 msgstr ""
 
-#: inc/Pages/Admin.php:220
+#: inc/Pages/Admin.php:228
 msgid "Slug for courses"
 msgstr ""
 
-#: inc/Pages/Admin.php:221
-msgid "Server Name"
-msgstr ""
-
-#: inc/Pages/Admin.php:222
-msgid "Public API Key"
-msgstr ""
-
-#: inc/Pages/Admin.php:223
-msgid "Private API Key"
-msgstr ""
-
-#: inc/Pages/Admin.php:224
-msgid "Portal ID"
-msgstr ""
-
-#: inc/Pages/Admin.php:225
-msgid "Display Available Seats"
-msgstr ""
-
-#: inc/Pages/Admin.php:226
-msgid "Display Title"
-msgstr ""
-
-#: inc/Pages/Admin.php:227
-msgid "Display Sector"
-msgstr ""
-
-#: inc/Pages/Admin.php:228
-msgid "Courses Title"
-msgstr ""
-
 #: inc/Pages/Admin.php:229
-msgid "Courses Section"
+msgid "Display events"
 msgstr ""
 
 #: inc/Pages/Admin.php:230
-msgid "Courses Content"
+msgid "Add header and footer to course page"
 msgstr ""
 
 #: inc/Pages/Admin.php:231
-msgid "Courses Price Title"
+msgid "Server Name"
 msgstr ""
 
 #: inc/Pages/Admin.php:232
-msgid "Courses Price"
+msgid "Public API Key"
 msgstr ""
 
 #: inc/Pages/Admin.php:233
-msgid "Courses Days"
+msgid "Private API Key"
 msgstr ""
 
 #: inc/Pages/Admin.php:234
-msgid "Courses Event"
+msgid "Portal ID"
 msgstr ""
 
 #: inc/Pages/Admin.php:235
-msgid "Courses Event Date"
+msgid "Display Available Seats"
 msgstr ""
 
 #: inc/Pages/Admin.php:236
-msgid "Courses Event Text"
+msgid "Display Title"
 msgstr ""
 
 #: inc/Pages/Admin.php:237
-msgid "Courses Event Button"
+msgid "Display Sector"
 msgstr ""
 
 #: inc/Pages/Admin.php:238
-msgid "Few seats left text"
+msgid "Courses Title"
 msgstr ""
 
 #: inc/Pages/Admin.php:239
-msgid "Courses Modal Content"
+msgid "Courses Section"
 msgstr ""
 
 #: inc/Pages/Admin.php:240
-msgid "Courses Modal Button"
+msgid "Courses Content"
 msgstr ""
 
 #: inc/Pages/Admin.php:241
-msgid "Course extra info"
+msgid "Courses Price Title"
 msgstr ""
 
 #: inc/Pages/Admin.php:242
-msgid "Course extra info styles"
+msgid "Courses Price"
 msgstr ""
 
 #: inc/Pages/Admin.php:243
-msgid "Page title"
+msgid "Courses Days"
 msgstr ""
 
 #: inc/Pages/Admin.php:244
-msgid "Content before courses list"
+msgid "Courses Event"
 msgstr ""
 
 #: inc/Pages/Admin.php:245
+msgid "Courses Event Date"
+msgstr ""
+
+#: inc/Pages/Admin.php:246
+msgid "Courses Event Text"
+msgstr ""
+
+#: inc/Pages/Admin.php:247
+msgid "Courses Event Button"
+msgstr ""
+
+#: inc/Pages/Admin.php:248
+msgid "Few seats left text"
+msgstr ""
+
+#: inc/Pages/Admin.php:249
+msgid "Courses Modal Content"
+msgstr ""
+
+#: inc/Pages/Admin.php:250
+msgid "Courses Modal Button"
+msgstr ""
+
+#: inc/Pages/Admin.php:251
+msgid "Course extra info"
+msgstr ""
+
+#: inc/Pages/Admin.php:252
+msgid "Course extra info styles"
+msgstr ""
+
+#: inc/Pages/Admin.php:253
+msgid "Page title"
+msgstr ""
+
+#: inc/Pages/Admin.php:254
+msgid "Content before courses list"
+msgstr ""
+
+#: inc/Pages/Admin.php:255
 msgid "Content after courses list"
 msgstr ""
 
@@ -323,55 +338,65 @@ msgstr ""
 msgid "Enter Apex courses slug"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:95
-msgid "Enter server name"
+#: inc/WpApi/Callbacks/AdminCallbacks.php:97
+msgid "Show dates"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:102
-msgid "Enter public api key"
+#: inc/WpApi/Callbacks/AdminCallbacks.php:98
+msgid "Group by venue"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:109
-msgid "Enter private api key"
-msgstr ""
-
-#: inc/WpApi/Callbacks/AdminCallbacks.php:116
-msgid "Enter portal ID"
-msgstr ""
-
-#: inc/WpApi/Callbacks/AdminCallbacks.php:125
-#: inc/WpApi/Callbacks/AdminCallbacks.php:138
-#: inc/WpApi/Callbacks/AdminCallbacks.php:149
+#: inc/WpApi/Callbacks/AdminCallbacks.php:108
+#: inc/WpApi/Callbacks/AdminCallbacks.php:147
+#: inc/WpApi/Callbacks/AdminCallbacks.php:160
+#: inc/WpApi/Callbacks/AdminCallbacks.php:171
 msgid "No"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:126
-#: inc/WpApi/Callbacks/AdminCallbacks.php:139
-#: inc/WpApi/Callbacks/AdminCallbacks.php:150
+#: inc/WpApi/Callbacks/AdminCallbacks.php:109
+#: inc/WpApi/Callbacks/AdminCallbacks.php:148
+#: inc/WpApi/Callbacks/AdminCallbacks.php:161
+#: inc/WpApi/Callbacks/AdminCallbacks.php:172
 msgid "Yes"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:158
-#: inc/WpApi/Callbacks/AdminCallbacks.php:169
-#: inc/WpApi/Callbacks/AdminCallbacks.php:179
-#: inc/WpApi/Callbacks/AdminCallbacks.php:189
-#: inc/WpApi/Callbacks/AdminCallbacks.php:199
-#: inc/WpApi/Callbacks/AdminCallbacks.php:209
-#: inc/WpApi/Callbacks/AdminCallbacks.php:219
-#: inc/WpApi/Callbacks/AdminCallbacks.php:229
-#: inc/WpApi/Callbacks/AdminCallbacks.php:239
-#: inc/WpApi/Callbacks/AdminCallbacks.php:249
-#: inc/WpApi/Callbacks/AdminCallbacks.php:259
-#: inc/WpApi/Callbacks/AdminCallbacks.php:269
-#: inc/WpApi/Callbacks/AdminCallbacks.php:285
-#: inc/WpApi/Callbacks/AdminCallbacks.php:295
-#: inc/WpApi/Callbacks/AdminCallbacks.php:305
+#: inc/WpApi/Callbacks/AdminCallbacks.php:117
+msgid "Enter server name"
+msgstr ""
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:124
+msgid "Enter public api key"
+msgstr ""
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:131
+msgid "Enter private api key"
+msgstr ""
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:138
+msgid "Enter portal ID"
+msgstr ""
+
+#: inc/WpApi/Callbacks/AdminCallbacks.php:180
+#: inc/WpApi/Callbacks/AdminCallbacks.php:191
+#: inc/WpApi/Callbacks/AdminCallbacks.php:201
+#: inc/WpApi/Callbacks/AdminCallbacks.php:211
+#: inc/WpApi/Callbacks/AdminCallbacks.php:221
+#: inc/WpApi/Callbacks/AdminCallbacks.php:231
+#: inc/WpApi/Callbacks/AdminCallbacks.php:241
+#: inc/WpApi/Callbacks/AdminCallbacks.php:251
+#: inc/WpApi/Callbacks/AdminCallbacks.php:261
+#: inc/WpApi/Callbacks/AdminCallbacks.php:271
+#: inc/WpApi/Callbacks/AdminCallbacks.php:281
+#: inc/WpApi/Callbacks/AdminCallbacks.php:291
+#: inc/WpApi/Callbacks/AdminCallbacks.php:307
+#: inc/WpApi/Callbacks/AdminCallbacks.php:317
+#: inc/WpApi/Callbacks/AdminCallbacks.php:327
 msgid ""
 "Example (add any another css styling):\n"
 "color: #fff;\n"
 "background: #222;\n"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:315
+#: inc/WpApi/Callbacks/AdminCallbacks.php:337
 msgid "Enter page title"
 msgstr ""

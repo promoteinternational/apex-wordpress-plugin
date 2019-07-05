@@ -31,7 +31,7 @@ class Admin extends BaseController
 
     public function setPages()
     {
-        $translation = _('Apex Wordpress Plugin Settings');
+        $translation = __('Apex Wordpress Plugin Settings', 'apex-wordpress-plugin');
         $this->pages = [
             [
                 'page_title' => $translation,
@@ -115,6 +115,10 @@ class Admin extends BaseController
             ],
             [
                 'option_group' => 'apex_plugin_group',
+                'option_name' => 'apex_courses_day_styles',
+            ],
+            [
+                'option_group' => 'apex_plugin_group',
                 'option_name' => 'apex_courses_event_styles',
             ],
             [
@@ -132,6 +136,14 @@ class Admin extends BaseController
             [
                 'option_group' => 'apex_plugin_group',
                 'option_name' => 'apex_courses_event_button_styles',
+            ],
+            [
+                'option_group' => 'apex_plugin_group',
+                'option_name' => 'apex_courses_extra_info',
+            ],
+            [
+                'option_group' => 'apex_plugin_group',
+                'option_name' => 'apex_courses_extra_info_styles',
             ],
             [
                 'option_group' => 'apex_plugin_group',
@@ -160,10 +172,11 @@ class Admin extends BaseController
 
     public function setSections()
     {
-        $trGeneral = _('General Settings');
-        $trApi = _('API Settings');
-        $trCss = _('Additional CSS');
-        $trListing = _('Listing (archive) page.');
+        $trGeneral = __('General Settings', 'apex-wordpress-plugin');
+        $trApi = __('API Settings', 'apex-wordpress-plugin');
+        $trCss = __('Additional CSS', 'apex-wordpress-plugin');
+        $strExtraInfo = __('Course extra information', 'apex-wordpress-plugin');
+        $trListing = __('Courses page', 'apex-wordpress-plugin');
         $args = [
             [
                 'id' => 'apex_plugin_general_settings',
@@ -185,6 +198,12 @@ class Admin extends BaseController
                 'page' => 'apex_wordpress_plugin'
             ],
             [
+                'id' => 'apex_plugin_extra_course_info',
+                'title' => $strExtraInfo,
+                'callback' => [$this->callbacks, 'apexPluginCourseExtraInfo'],
+                'page' => 'apex_wordpress_plugin'
+            ],
+            [
                 'id' => 'apex_plugin_listing',
                 'title' => $trListing,
                 'callback' => [$this->callbacks,'apexPluginListingPage'],
@@ -196,31 +215,34 @@ class Admin extends BaseController
 
     public function setFields()
     {
-        $trUpdate = _('Amount of minutes before each update');
-        $trCurrency = _('Currency (Please verify, that selected currency exist in API)');
-        $trSlug = _('Slug for Apex event');
-        $trServerName = _('Server Name');
-        $trPublicKey = _('Public API Key');
-        $trPrivateKey = _('Private API Key');
-        $trPortalId = _('Portal ID');
-        $trDisplaySeats = _('Display Available Seats');
-        $trDisplayTitle = _('Display The Title');
-        $trDisplaySector = _('Display The Sector');
-        $trCoursesTitleStyles = _('Courses Title');
-        $trCoursesSectionStyles = _('Courses Section');
-        $trCoursesContentStyles = _('Courses Content');
-        $trCoursesPriceTitleStyles = _('Courses Price Title');
-        $trCoursesPriceStyles = _('Courses Price');
-        $trCoursesEventStyles = _('Courses Event');
-        $trCoursesEventTitleStyles = _('Courses Event Title');
-        $trCoursesEventDateStyles = _('Courses Event Date');
-        $trCoursesEventTextStyles = _('Courses Event Text');
-        $trCoursesEventButtonStyles = _('Courses Event Button');
-        $trCoursesModalContent = _('Courses Modal Content');
-        $trCoursesModalButton = _('Courses Modal Button');
-        $trListingTitle = _('Page title');
-        $trListingStartBlock = _('Content before courses list');
-        $trListingEndBlock = _('Content after courses list');
+        $trUpdate = __('Amount of minutes before each update', 'apex-wordpress-plugin');
+        $trCurrency = __('Currency (Please verify, that selected currency exist in API)', 'apex-wordpress-plugin');
+        $trSlug = __('Slug for courses', 'apex-wordpress-plugin');
+        $trServerName = __('Server Name', 'apex-wordpress-plugin');
+        $trPublicKey = __('Public API Key', 'apex-wordpress-plugin');
+        $trPrivateKey = __('Private API Key', 'apex-wordpress-plugin');
+        $trPortalId = __('Portal ID', 'apex-wordpress-plugin');
+        $trDisplaySeats = __('Display Available Seats', 'apex-wordpress-plugin');
+        $trDisplayTitle = __('Display Title', 'apex-wordpress-plugin');
+        $trDisplaySector = __('Display Sector', 'apex-wordpress-plugin');
+        $trCoursesTitleStyles = __('Courses Title', 'apex-wordpress-plugin');
+        $trCoursesSectionStyles = __('Courses Section', 'apex-wordpress-plugin');
+        $trCoursesContentStyles = __('Courses Content', 'apex-wordpress-plugin');
+        $trCoursesPriceTitleStyles = __('Courses Price Title', 'apex-wordpress-plugin');
+        $trCoursesPriceStyles = __('Courses Price', 'apex-wordpress-plugin');
+        $trCoursesDayStyles = __('Courses Days', 'apex-wordpress-plugin');
+        $trCoursesEventStyles = __('Courses Event', 'apex-wordpress-plugin');
+        $trCoursesEventDateStyles = __('Courses Event Date', 'apex-wordpress-plugin');
+        $trCoursesEventTextStyles = __('Courses Event Text', 'apex-wordpress-plugin');
+        $trCoursesEventButtonStyles = __('Courses Event Button', 'apex-wordpress-plugin');
+        $trCoursesEventFewPlacesStyles = __('Few seats left text', 'apex-wordpress-plugin');
+        $trCoursesModalContent = __('Courses Modal Content', 'apex-wordpress-plugin');
+        $trCoursesModalButton = __('Courses Modal Button', 'apex-wordpress-plugin');
+        $trCourseExtraInfo = __('Course extra info', 'apex-wordpress-plugin');
+        $trCourseExtraInfoStyles = __('Course extra info styles', 'apex-wordpress-plugin');
+        $trListingTitle = __('Page title', 'apex-wordpress-plugin');
+        $trListingStartBlock = __('Content before courses list', 'apex-wordpress-plugin');
+        $trListingEndBlock = __('Content after courses list', 'apex-wordpress-plugin');
         $args = [
             [
                 'id' => 'apex_update_frequency',
@@ -388,6 +410,17 @@ class Admin extends BaseController
                 ]
             ],
             [
+                'id' => 'apex_courses_day_styles',
+                'title' =>  $trCoursesDayStyles,
+                'callback' => [$this->callbacks,'apexCoursesDayStyles'],
+                'page' => 'apex_wordpress_plugin',
+                'section' =>  'apex_plugin_additional_css',
+                'args' => [
+                    'label_for' => 'apex_courses_day_styles',
+                    'class' => 'apex_courses_day_styles'
+                ]
+            ],
+            [
                 'id' => 'apex_courses_event_styles',
                 'title' =>  $trCoursesEventStyles,
                 'callback' => [$this->callbacks,'apexCoursesEventStyles'],
@@ -396,17 +429,6 @@ class Admin extends BaseController
                 'args' => [
                     'label_for' => 'apex_courses_event_styles',
                     'class' => 'apex_courses_event_styles'
-                ]
-            ],
-            [
-                'id' => 'apex_courses_event_title_styles',
-                'title' =>  $trCoursesEventTitleStyles,
-                'callback' => [$this->callbacks,'apexCoursesEventTitleStyles'],
-                'page' => 'apex_wordpress_plugin',
-                'section' =>  'apex_plugin_additional_css',
-                'args' => [
-                    'label_for' => 'apex_courses_event_title_styles',
-                    'class' => 'apex_courses_event_title_styles'
                 ]
             ],
             [
@@ -443,6 +465,28 @@ class Admin extends BaseController
                 ]
             ],
             [
+                'id' => 'apex_courses_event_few_places_styles',
+                'title' =>  $trCoursesEventFewPlacesStyles,
+                'callback' => [$this->callbacks,'apexCoursesEventFewPlacesStyles'],
+                'page' => 'apex_wordpress_plugin',
+                'section' =>  'apex_plugin_additional_css',
+                'args' => [
+                    'label_for' => 'apex_courses_event_few_places_styles',
+                    'class' => 'apex_courses_event_few_places_styles'
+                ]
+            ],
+            [
+                'id' => 'apex_courses_extra_info_styles',
+                'title' => $trCourseExtraInfoStyles,
+                'callback' => [$this->callbacks, 'apexCoursesExtraInfoStyles'],
+                'page' => 'apex_wordpress_plugin',
+                'section' => 'apex_plugin_additional_css',
+                'args' => [
+                    'label_for' => 'apex_courses_extra_info_styles',
+                    'class' => 'apex_courses_extra_info_styles'
+                ]
+            ],
+            [
                 'id' => 'apex_courses_modal_content',
                 'title' =>  $trCoursesModalContent,
                 'callback' => [$this->callbacks,'apexCoursesModalContent'],
@@ -462,6 +506,17 @@ class Admin extends BaseController
                 'args' => [
                     'label_for' => 'apex_courses_modal_button',
                     'class' => 'apex_courses_modal_button'
+                ]
+            ],
+            [
+                'id' => 'apex_courses_extra_info',
+                'title' => $trCourseExtraInfo,
+                'callback' => [$this->callbacks, 'apexCoursesExtraInfo'],
+                'page' => 'apex_wordpress_plugin',
+                'section' => 'apex_plugin_extra_course_info',
+                'args' => [
+                    'label_for' => 'apex_courses_extra_info',
+                    'class' => 'apex_courses_extra_info'
                 ]
             ],
             [

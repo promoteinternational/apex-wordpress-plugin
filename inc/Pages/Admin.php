@@ -73,12 +73,10 @@ class Admin extends BaseController
             [
                 'option_group' => 'apex_plugin_group',
                 'option_name' => 'apex_server_name',
-
             ],
             [
                 'option_group' => 'apex_plugin_group',
                 'option_name' => 'apex_public_api_key',
-
             ],
             [
                 'option_group' => 'apex_plugin_group',
@@ -87,7 +85,6 @@ class Admin extends BaseController
             [
                 'option_group' => 'apex_plugin_group',
                 'option_name' => 'apex_portal_id',
-
             ],
             [
                 'option_group' => 'apex_plugin_group',
@@ -100,6 +97,14 @@ class Admin extends BaseController
             [
                 'option_group' => 'apex_plugin_group',
                 'option_name' => 'apex_display_sector',
+            ],
+            [
+                'option_group' => 'apex_plugin_group',
+                'option_name' => 'apex_courses_extra_css',
+            ],
+            [
+                'option_group' => 'apex_plugin_group',
+                'option_name' => 'apex_courses_archive_extra_css',
             ],
             [
                 'option_group' => 'apex_plugin_group',
@@ -228,28 +233,16 @@ class Admin extends BaseController
         $trSlug = __('Slug for courses', 'apex-wordpress-plugin');
         $trDisplayVenues = __('Display events', 'apex-wordpress-plugin');
         $trAddHeaders = __('Add header and footer to course page', 'apex-wordpress-plugin');
-        $trServerName = __('Server Name', 'apex-wordpress-plugin');
+        $trServerName = __('Server address', 'apex-wordpress-plugin');
         $trPublicKey = __('Public API Key', 'apex-wordpress-plugin');
         $trPrivateKey = __('Private API Key', 'apex-wordpress-plugin');
         $trPortalId = __('Portal ID', 'apex-wordpress-plugin');
         $trDisplaySeats = __('Display Available Seats', 'apex-wordpress-plugin');
         $trDisplayTitle = __('Display Title', 'apex-wordpress-plugin');
         $trDisplaySector = __('Display Sector', 'apex-wordpress-plugin');
-        $trCoursesTitleStyles = __('Courses Title', 'apex-wordpress-plugin');
-        $trCoursesSectionStyles = __('Courses Section', 'apex-wordpress-plugin');
-        $trCoursesContentStyles = __('Courses Content', 'apex-wordpress-plugin');
-        $trCoursesPriceTitleStyles = __('Courses Price Title', 'apex-wordpress-plugin');
-        $trCoursesPriceStyles = __('Courses Price', 'apex-wordpress-plugin');
-        $trCoursesDayStyles = __('Courses Days', 'apex-wordpress-plugin');
-        $trCoursesEventStyles = __('Courses Event', 'apex-wordpress-plugin');
-        $trCoursesEventDateStyles = __('Courses Event Date', 'apex-wordpress-plugin');
-        $trCoursesEventTextStyles = __('Courses Event Text', 'apex-wordpress-plugin');
-        $trCoursesEventButtonStyles = __('Courses Event Button', 'apex-wordpress-plugin');
-        $trCoursesEventFewPlacesStyles = __('Few seats left text', 'apex-wordpress-plugin');
-        $trCoursesModalContent = __('Courses Modal Content', 'apex-wordpress-plugin');
-        $trCoursesModalButton = __('Courses Modal Button', 'apex-wordpress-plugin');
+        $trCoursesExtraCss = __('Extra course page CSS', 'apex-wordpress-plugin');
+        $trCourseArchiveExtraCss = __('Extra course archive page CSS', 'apex-wordpress-plugin');
         $trCourseExtraInfo = __('Course extra info', 'apex-wordpress-plugin');
-        $trCourseExtraInfoStyles = __('Course extra info styles', 'apex-wordpress-plugin');
         $trListingTitle = __('Page title', 'apex-wordpress-plugin');
         $trListingStartBlock = __('Content before courses list', 'apex-wordpress-plugin');
         $trListingEndBlock = __('Content after courses list', 'apex-wordpress-plugin');
@@ -387,157 +380,25 @@ class Admin extends BaseController
                 ]
             ],
             [
-                'id' => 'apex_courses_section_styles',
-                'title' =>  $trCoursesSectionStyles,
-                'callback' => [$this->callbacks,'apexCoursesSectionStyles'],
-                'page' => 'apex_wordpress_plugin',
-                'section' =>  'apex_plugin_additional_css',
-                'args' => [
-                    'label_for' => 'apex_courses_section_styles',
-                    'class' => 'apex_courses_section_styles'
-                ]
-            ],
-            [
-                'id' => 'apex_courses_title_styles',
-                'title' =>  $trCoursesTitleStyles,
-                'callback' => [$this->callbacks,'apexCoursesTitleStyles'],
-                'page' => 'apex_wordpress_plugin',
-                'section' =>  'apex_plugin_additional_css',
-                'args' => [
-                    'label_for' => 'apex_courses_title_styles',
-                    'class' => 'apex_courses_title_styles'
-                ]
-            ],
-            [
-                'id' => 'apex_courses_content_styles',
-                'title' =>  $trCoursesContentStyles,
-                'callback' => [$this->callbacks,'apexCoursesContentStyles'],
-                'page' => 'apex_wordpress_plugin',
-                'section' =>  'apex_plugin_additional_css',
-                'args' => [
-                    'label_for' => 'apex_courses_content_styles',
-                    'class' => 'apex_courses_content_styles'
-                ]
-            ],
-            [
-                'id' => 'apex_courses_price_title_styles',
-                'title' =>  $trCoursesPriceTitleStyles,
-                'callback' => [$this->callbacks,'apexCoursesPriceTitleStyles'],
-                'page' => 'apex_wordpress_plugin',
-                'section' =>  'apex_plugin_additional_css',
-                'args' => [
-                    'label_for' => 'apex_courses_price_title_styles',
-                    'class' => 'apex_courses_price_title_styles'
-                ]
-            ],
-            [
-                'id' => 'apex_courses_price_styles',
-                'title' =>  $trCoursesPriceStyles,
-                'callback' => [$this->callbacks,'apexCoursesPriceStyles'],
-                'page' => 'apex_wordpress_plugin',
-                'section' =>  'apex_plugin_additional_css',
-                'args' => [
-                    'label_for' => 'apex_courses_price_styles',
-                    'class' => 'apex_courses_price_styles'
-                ]
-            ],
-            [
-                'id' => 'apex_courses_day_styles',
-                'title' =>  $trCoursesDayStyles,
-                'callback' => [$this->callbacks,'apexCoursesDayStyles'],
-                'page' => 'apex_wordpress_plugin',
-                'section' =>  'apex_plugin_additional_css',
-                'args' => [
-                    'label_for' => 'apex_courses_day_styles',
-                    'class' => 'apex_courses_day_styles'
-                ]
-            ],
-            [
-                'id' => 'apex_courses_event_styles',
-                'title' =>  $trCoursesEventStyles,
-                'callback' => [$this->callbacks,'apexCoursesEventStyles'],
-                'page' => 'apex_wordpress_plugin',
-                'section' =>  'apex_plugin_additional_css',
-                'args' => [
-                    'label_for' => 'apex_courses_event_styles',
-                    'class' => 'apex_courses_event_styles'
-                ]
-            ],
-            [
-                'id' => 'apex_courses_event_date_styles',
-                'title' =>  $trCoursesEventDateStyles,
-                'callback' => [$this->callbacks,'apexCoursesEventDateStyles'],
-                'page' => 'apex_wordpress_plugin',
-                'section' =>  'apex_plugin_additional_css',
-                'args' => [
-                    'label_for' => 'apex_courses_event_date_styles',
-                    'class' => 'apex_courses_event_date_styles'
-                ]
-            ],
-            [
-                'id' => 'apex_courses_event_text_styles',
-                'title' =>  $trCoursesEventTextStyles,
-                'callback' => [$this->callbacks,'apexCoursesEventTextStyles'],
-                'page' => 'apex_wordpress_plugin',
-                'section' =>  'apex_plugin_additional_css',
-                'args' => [
-                    'label_for' => 'apex_courses_event_text_styles',
-                    'class' => 'apex_courses_event_text_styles'
-                ]
-            ],
-            [
-                'id' => 'apex_courses_event_button_styles',
-                'title' =>  $trCoursesEventButtonStyles,
-                'callback' => [$this->callbacks,'apexCoursesEventButtonStyles'],
-                'page' => 'apex_wordpress_plugin',
-                'section' =>  'apex_plugin_additional_css',
-                'args' => [
-                    'label_for' => 'apex_courses_event_button_styles',
-                    'class' => 'apex_courses_event_button_styles'
-                ]
-            ],
-            [
-                'id' => 'apex_courses_event_few_places_styles',
-                'title' =>  $trCoursesEventFewPlacesStyles,
-                'callback' => [$this->callbacks,'apexCoursesEventFewPlacesStyles'],
-                'page' => 'apex_wordpress_plugin',
-                'section' =>  'apex_plugin_additional_css',
-                'args' => [
-                    'label_for' => 'apex_courses_event_few_places_styles',
-                    'class' => 'apex_courses_event_few_places_styles'
-                ]
-            ],
-            [
-                'id' => 'apex_courses_extra_info_styles',
-                'title' => $trCourseExtraInfoStyles,
-                'callback' => [$this->callbacks, 'apexCoursesExtraInfoStyles'],
+                'id' => 'apex_courses_extra_css',
+                'title' => $trCoursesExtraCss,
+                'callback' => [$this->callbacks, 'apexCoursesExtraCss'],
                 'page' => 'apex_wordpress_plugin',
                 'section' => 'apex_plugin_additional_css',
                 'args' => [
-                    'label_for' => 'apex_courses_extra_info_styles',
-                    'class' => 'apex_courses_extra_info_styles'
+                    'label_for' => 'apex_courses_extra_css',
+                    'class' => 'apex_courses_extra_css'
                 ]
             ],
             [
-                'id' => 'apex_courses_modal_content',
-                'title' =>  $trCoursesModalContent,
-                'callback' => [$this->callbacks,'apexCoursesModalContent'],
+                'id' => 'apex_courses_archive_extra_css',
+                'title' => $trCourseArchiveExtraCss,
+                'callback' => [$this->callbacks, 'apexCoursesArchiveExtraCss'],
                 'page' => 'apex_wordpress_plugin',
-                'section' =>  'apex_plugin_additional_css',
+                'section' => 'apex_plugin_additional_css',
                 'args' => [
-                    'label_for' => 'apex_courses_modal_content',
-                    'class' => 'apex_courses_modal_content'
-                ]
-            ],
-            [
-                'id' => 'apex_courses_modal_button',
-                'title' =>  $trCoursesModalButton,
-                'callback' => [$this->callbacks,'apexCoursesModalButton'],
-                'page' => 'apex_wordpress_plugin',
-                'section' =>  'apex_plugin_additional_css',
-                'args' => [
-                    'label_for' => 'apex_courses_modal_button',
-                    'class' => 'apex_courses_modal_button'
+                    'label_for' => 'apex_courses_archive_extra_css',
+                    'class' => 'apex_courses_archive_extra_css'
                 ]
             ],
             [

@@ -8151,7 +8151,7 @@ a > .apex-bootstrap code {
 .apex-bootstrap .apex-courses__template-content h4,
 .apex-bootstrap .apex-courses__template-content h5,
 .apex-bootstrap .apex-courses__template-content h6 {
-  margin: 20px 0;
+  margin: 20px 0 0 0;
   font-weight: 600;
   color: inherit;
 }
@@ -8210,7 +8210,7 @@ a > .apex-bootstrap code {
 
 .apex-bootstrap .apex-courses__event {
   background: #FFFCF7;
-  padding: 20px;background: #FFFCF7;
+  padding: 20px;
   border-radius: 5px;
   margin: 2px 0;
   border: 1px solid #F2EFE9;
@@ -8320,5 +8320,6 @@ a > .apex-bootstrap code {
   width: 100% !important;
   height: 100% !important;
 }
+
 
 /*# sourceMappingURL=courses.css.map */

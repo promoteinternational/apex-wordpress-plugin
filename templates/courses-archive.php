@@ -8,11 +8,16 @@ $content_title = get_option('apex_courses_listing_title', 'courses');
 // Get header and footers setting
 $eventAddHeaders = get_option('apex_plugin_add_headers', 'no');
 
+// Courses archive styles
+$coursesArchiveStyles = get_option('apex_courses_archive_extra_css');
+
 if ($eventAddHeaders == 'yes') {
     get_header();
 }
 ?>
-
+<?php if (!empty($coursesArchiveStyles)) { ?>
+    <style><?= $coursesArchiveStyles ?></style>
+<?php } ?>
     <div class="content-area apex-courses apex-bootstrap">
         <section class="container">
             <div class="row">

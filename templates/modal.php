@@ -1,7 +1,7 @@
 <div class="modal fade" id="modal_<?= $event->id ?>" tabindex="-1" role="dialog"
      aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="<?= $modalContentStyles ?>">
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalLabel"><?php _e('Register on Event', 'apex-wordpress-plugin') ?></h5>
                 <button type="button" class="close" data-dismiss="modal"
@@ -83,27 +83,21 @@
                         ?>
 
                         <div class="form-group col-12">
-                            <label for="address_1"><?php _e('Address row 1 *', 'apex-wordpress-plugin') ?></label>
+                            <label for="address_1"><?php _e('Address *', 'apex-wordpress-plugin') ?></label>
                             <input type="text" name="address_1" id="address_1" class="form-control" required><br>
-                        </div>
-                        <div class="form-group col-12">
-                            <label for="address_2"><?php _e('Address row 2', 'apex-wordpress-plugin') ?></label>
                             <input type="text" name="address_2" id="address_2" class="form-control"><br>
                         </div>
-
-                        <div class="form-group col-12">
-
+                        <div class="form-group col-4">
                             <label for="zip_code"><?php _e('Zip Code *', 'apex-wordpress-plugin') ?></label>
                             <input type="number" name="zip_code" id="zip_code" class="form-control" required><br>
                         </div>
 
-                        <div class="form-group col-12">
+                        <div class="form-group col-8">
                             <label for="city"><?php _e('City *', 'apex-wordpress-plugin') ?></label>
                             <input type="text" name="city" id="city" class="form-control" required><br>
                         </div>
 
                         <div class="form-group col-12">
-
                             <label for="country"><?php _e('Country *', 'apex-wordpress-plugin') ?></label>
                             <select name="country" class="form-control" id="country">
                                 <option value="SE" selected><?php _e('Sweden', 'apex-wordpress-plugin') ?></option>
@@ -116,7 +110,7 @@
                         <div class="form-group col-12">
                             <input type="hidden" name='event_id' value="<?= $event->id ?>">
                             <input type="submit" id="formSubmit" class="btn btn-primary"
-                                   value="<?php _e('Apply', 'apex-wordpress-plugin') ?>" style="<?= $modalButtonStyles ?>">
+                                   value="<?php _e('Apply', 'apex-wordpress-plugin') ?>">
                         </div>
 
                     </div>

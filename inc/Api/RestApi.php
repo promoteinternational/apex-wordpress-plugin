@@ -30,7 +30,7 @@ class RestApi
 
     public function setData()
     {
-        $this->server_name = get_option('apex_server_name');
+        $this->server_name = 'https://' . get_option('apex_server_name');
         $this->publicKey = get_option('apex_public_api_key');
         $this->privateKey = get_option('apex_private_api_key');
         $this->portal_id = get_option('apex_portal_id');
@@ -147,7 +147,7 @@ class RestApi
     public function loadEvents($areaSlug, $templateSlug) {
         $portalID = $this->getPortalId();
         $serverName = $this->getServerName();
-        $service_url = $serverName . '/websites/' .  $portalID . '/areas/' . $areaSlug . '/templates/' . $templateSlug . '/events/';
+        $service_url = $serverName . '/api/v1/websites/' .  $portalID . '/areas/' . $areaSlug . '/templates/' . $templateSlug . '/events/';
         $headers = $this->create_request_headers($this->getPublicKey(), $this->getPrivateKey());
 
         $decoded = $this->performCurlRequest($headers, $service_url, ['start_date' => date('Y-m-d')]);
@@ -166,7 +166,7 @@ class RestApi
         $areas_taxonomy = 'apex-areas';
         $portalID = $this->getPortalId();
         $serverName = $this->getServerName();
-        $service_url = $serverName . '/websites/' . $portalID . '/areas/';
+        $service_url = $serverName . '/api/v1/websites/' . $portalID . '/areas/';
         $headers = $this->create_request_headers($this->getPublicKey(), $this->getPrivateKey());
 
         echo '<hr>';
@@ -287,7 +287,7 @@ class RestApi
         }
 
         // Save titles
-        $service_url = $serverName . '/participants/titles/';
+        $service_url = $serverName . '/api/v1/participants/titles/';
         $decoded = $this->performCurlRequest($headers, $service_url);
         $titles = $decoded->results;
         $titles_store = array();
@@ -299,7 +299,7 @@ class RestApi
         update_option('apex_plugin_titles', $titles_store, false);
 
         // Save sectors
-        $service_url = $serverName . '/companies/sectors/';
+        $service_url = $serverName . '/api/v1/companies/sectors/';
         $decoded = $this->performCurlRequest($headers, $service_url);
         $sectors = $decoded->results;
         $sectors_store = array();
@@ -316,7 +316,7 @@ class RestApi
     {
         $portalID = $this->getPortalId();
         $serverName = $this->getServerName();
-        $service_url = $serverName . '/websites/' . $portalID . '/events/' . $eventId . '/participants/';
+        $service_url = $serverName . '/api/v1/websites/' . $portalID . '/events/' . $eventId . '/participants/';
 
         $data = [
             'first_name' => $firstName,

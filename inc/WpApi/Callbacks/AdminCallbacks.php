@@ -174,161 +174,34 @@ class AdminCallbacks extends BaseController
         <?php
     }
 
-    public function apexCoursesTitleStyles()
+    public function apexCoursesExtraCss()
     {
-        $value = esc_attr(get_option('apex_courses_title_styles'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
+        $value = esc_attr(get_option('apex_courses_extra_css'));
+        $translation = __('Example (add css styling):
+h2 {
+  color: #fff;
+  background: #222;
+}
 ', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_title_styles" class="regular-text">' . $value . '</textarea>';
+        echo '<textarea placeholder="' . $translation . '" rows="10" name="apex_courses_extra_css" class="large-text">' . $value . '</textarea>';
     }
 
-
-    public function apexCoursesSectionStyles()
+    public function apexCoursesArchiveExtraCss()
     {
-        $value = esc_attr(get_option('apex_courses_section_styles'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
+        $value = esc_attr(get_option('apex_courses_archive_extra_css'));
+        $translation = __('Example (add css styling):
+h2 {
+  color: #fff;
+  background: #222;
+}
 ', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_section_styles" class="regular-text">' . $value . '</textarea>';
-    }
-
-    public function apexCoursesContentStyles()
-    {
-        $value = esc_attr(get_option('apex_courses_content_styles'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
-', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_content_styles" class="regular-text">' . $value . '</textarea>';
-    }
-
-    public function apexCoursesPriceTitleStyles()
-    {
-        $value = esc_attr(get_option('apex_courses_price_title_styles'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
-', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_price_title_styles" class="regular-text">' . $value . '</textarea>';
-    }
-
-    public function apexCoursesPriceStyles()
-    {
-        $value = esc_attr(get_option('apex_courses_price_styles'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
-', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_price_styles" class="regular-text">' . $value . '</textarea>';
-    }
-
-    public function apexCoursesDayStyles()
-    {
-        $value = esc_attr(get_option('apex_courses_day_styles'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
-', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_day_styles" class="regular-text">' . $value . '</textarea>';
-    }
-
-    public function apexCoursesEventStyles()
-    {
-        $value = esc_attr(get_option('apex_courses_event_styles'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
-', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_event_styles" class="regular-text">' . $value . '</textarea>';
-    }
-
-    public function apexCoursesEventTitleStyles()
-    {
-        $value = esc_attr(get_option('apex_courses_event_title_styles'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
-', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_event_title_styles" class="regular-text">' . $value . '</textarea>';
-    }
-
-    public function apexCoursesEventDateStyles()
-    {
-        $value = esc_attr(get_option('apex_courses_event_date_styles'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
-', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_event_date_styles" class="regular-text">' . $value . '</textarea>';
-    }
-
-    public function apexCoursesEventTextStyles()
-    {
-        $value = esc_attr(get_option('apex_courses_event_text_styles'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
-', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_event_text_styles" class="regular-text">' . $value . '</textarea>';
-    }
-
-    public function apexCoursesEventButtonStyles()
-    {
-        $value = esc_attr(get_option('apex_courses_event_button_styles'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
-', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_event_button_styles" class="regular-text">' . $value . '</textarea>';
-    }
-
-    public function apexCoursesEventFewPlacesStyles()
-    {
-        $value = esc_attr(get_option('apex_courses_event_few_places_styles'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
-', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_event_few_places_styles" class="regular-text">' . $value . '</textarea>';
+        echo '<textarea placeholder="' . $translation . '" rows="10" name="apex_courses_archive_extra_css" class="large-text">' . $value . '</textarea>';
     }
 
     public function apexCoursesExtraInfo()
     {
         $value = get_option('apex_courses_extra_info');
         wp_editor( $value, 'apex_courses_extra_info', $settings = array('textarea_rows'=> '8', 'textarea_name' => 'apex_courses_extra_info') );
-    }
-
-    public function apexCoursesExtraInfoStyles()
-    {
-        $value = esc_attr(get_option('apex_courses_extra_info_styles'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
-', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_extra_info_styles" class="regular-text">' . $value . '</textarea>';
-    }
-
-    public function apexCoursesModalContent()
-    {
-        $value = esc_attr(get_option('apex_courses_modal_content'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
-', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_modal_content" class="regular-text">' . $value . '</textarea>';
-    }
-
-    public function apexCoursesModalButton()
-    {
-        $value = esc_attr(get_option('apex_courses_modal_button'));
-        $translation = __('Example (add any another css styling):
-color: #fff;
-background: #222;
-', 'apex-wordpress-plugin');
-        echo '<textarea placeholder="' . $translation . '"  rows="4" name="apex_courses_modal_button" class="regular-text">' . $value . '</textarea>';
     }
 
     public function apexCoursesListingTitle()

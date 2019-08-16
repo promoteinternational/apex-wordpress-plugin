@@ -22,6 +22,7 @@ class RestApi
     private $coursesTitle;
     private $success;
     private $slug;
+    private $sendCalendar;
 
     public function register()
     {
@@ -37,6 +38,7 @@ class RestApi
         $this->updateFrequency = get_option('apex_update_frequency');
         $this->currency= get_option('apex_currency');
         $this->slug = get_option('apex_plugin_slug');
+        $this->sendCalendar = get_option('apex_send_calendar_file');
         $this->success = false;
     }
 
@@ -83,6 +85,11 @@ class RestApi
     public function getCoursesTitle()
     {
         return $this->coursesTitle;
+    }
+
+    public function getSendCalendar()
+    {
+        return $this->sendCalendar;
     }
 
     //Create API request headers function
@@ -336,9 +343,7 @@ class RestApi
                     "city" => $city,
                     "country" => $country
                 ]],
-                //'sector' => $sector
             ],
-            //'title' => $title
         ];
 
         if ($title) {
@@ -347,6 +352,10 @@ class RestApi
 
         if ($sector) {
             $data['company']['title'] = $sector;
+        }
+
+        if ($this->sendCalendar === 'yes') {
+            $data['send_calendar_file'] = true;
         }
 
         $dataJson = json_encode($data);

@@ -1,0 +1,23 @@
+{
+  "name": "apex-wordpress-plugin",
+  "version": "1.0.0",
+  "description": "Apex wordpress plugin",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "bootstrap-scss": "^4.3.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/promoteinternational/apex-wordpress-plugin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/promoteinternational/apex-wordpress-plugin/issues"
+  },
+  "homepage": "https://github.com/promoteinternational/apex-wordpress-plugin#readme"
+}

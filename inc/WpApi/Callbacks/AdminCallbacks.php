@@ -100,6 +100,14 @@ class AdminCallbacks extends BaseController
         <?php
     }
 
+
+    public function apexPluginVenueOrder()
+    {
+        $value = esc_attr(get_option('apex_plugin_venue_order'));
+        $translation = __('Venue order', 'apex-wordpress-plugin');
+        echo '<input type="text" class="regular-text" name="apex_plugin_venue_order" value="' . $value . '" placeholder="' . $translation . '">';
+    }
+
     public function apexPluginAddHeaders()
     {
         $value = esc_attr(get_option('apex_plugin_add_headers'));
@@ -139,6 +147,18 @@ class AdminCallbacks extends BaseController
         echo '<input type="number" min="1" class="regular-text" name="apex_portal_id" value="' . $value . '" placeholder="' . $translation . '">';
     }
 
+    public function apexPluginSendCalendarFile()
+    {
+        $value = esc_attr(get_option('apex_send_calendar_file'));
+        ?>
+        <select name="apex_send_calendar_file" class="apex_send_calendar_file">
+            <option value="no" <?= ($value == "no") ? 'selected="selected"' : '' ?> > <?php _e('No') ?></option>
+            <option value="yes" <?= ($value == "yes") ? 'selected="selected"' : '' ?>> <?php _e('Yes') ?></option>
+
+        </select>
+        <?php
+    }
+
     public function apexPluginDisplaySeats()
     {
         $value = esc_attr(get_option('apex_display_seats'));
@@ -148,7 +168,6 @@ class AdminCallbacks extends BaseController
             <option value="yes" <?= ($value == "yes") ? 'selected="selected"' : '' ?>> <?php _e('Yes') ?></option>
 
         </select>
-
         <?php
     }
 
@@ -173,6 +192,7 @@ class AdminCallbacks extends BaseController
         </select>
         <?php
     }
+
 
     public function apexCoursesExtraCss()
     {
@@ -222,5 +242,4 @@ h2 {
         $value = get_option('apex_courses_listing_end');
         wp_editor( $value, 'apex_courses_listing_end_block', $settings = array('textarea_rows'=> '8', 'textarea_name' => 'apex_courses_listing_end') );
     }
-
 }

@@ -68,6 +68,10 @@ class Admin extends BaseController
             ],
             [
                 'option_group' => 'apex_plugin_group',
+                'option_name' => 'apex_plugin_venue_order',
+            ],
+            [
+                'option_group' => 'apex_plugin_group',
                 'option_name' => 'apex_plugin_add_headers',
             ],
             [
@@ -85,6 +89,10 @@ class Admin extends BaseController
             [
                 'option_group' => 'apex_plugin_group',
                 'option_name' => 'apex_portal_id',
+            ],
+            [
+                'option_group' => 'apex_plugin_group',
+                'option_name' => 'apex_send_calendar_file',
             ],
             [
                 'option_group' => 'apex_plugin_group',
@@ -108,63 +116,7 @@ class Admin extends BaseController
             ],
             [
                 'option_group' => 'apex_plugin_group',
-                'option_name' => 'apex_courses_section_styles',
-            ],
-            [
-                'option_group' => 'apex_plugin_group',
-                'option_name' => 'apex_courses_title_styles',
-            ],
-            [
-                'option_group' => 'apex_plugin_group',
-                'option_name' => 'apex_courses_content_styles',
-            ],
-            [
-                'option_group' => 'apex_plugin_group',
-                'option_name' => 'apex_courses_price_title_styles',
-            ],
-            [
-                'option_group' => 'apex_plugin_group',
-                'option_name' => 'apex_courses_price_styles',
-            ],
-            [
-                'option_group' => 'apex_plugin_group',
-                'option_name' => 'apex_courses_day_styles',
-            ],
-            [
-                'option_group' => 'apex_plugin_group',
-                'option_name' => 'apex_courses_event_styles',
-            ],
-            [
-                'option_group' => 'apex_plugin_group',
-                'option_name' => 'apex_courses_event_title_styles',
-            ],
-            [
-                'option_group' => 'apex_plugin_group',
-                'option_name' => 'apex_courses_event_date_styles',
-            ],
-            [
-                'option_group' => 'apex_plugin_group',
-                'option_name' => 'apex_courses_event_text_styles',
-            ],
-            [
-                'option_group' => 'apex_plugin_group',
-                'option_name' => 'apex_courses_event_button_styles',
-            ],
-            [
-                'option_group' => 'apex_plugin_group',
                 'option_name' => 'apex_courses_extra_info',
-            ],
-            [
-                'option_group' => 'apex_plugin_group',
-                'option_name' => 'apex_courses_extra_info_styles',
-            ],
-            [
-                'option_group' => 'apex_plugin_group',
-                'option_name' => 'apex_courses_modal_content',
-            ],
-            [
-                'option_group' => 'apex_plugin_group',
-                'option_name' => 'apex_courses_modal_button',
             ],
             [
                 'option_group' => 'apex_plugin_group',
@@ -232,11 +184,13 @@ class Admin extends BaseController
         $trCurrency = __('Currency (Please verify, that selected currency exist in API)', 'apex-wordpress-plugin');
         $trSlug = __('Slug for courses', 'apex-wordpress-plugin');
         $trDisplayVenues = __('Display events', 'apex-wordpress-plugin');
+        $trVenueOrder = __('Venue order', 'apex-wordpress-plugin');
         $trAddHeaders = __('Add header and footer to course page', 'apex-wordpress-plugin');
         $trServerName = __('Server address', 'apex-wordpress-plugin');
         $trPublicKey = __('Public API Key', 'apex-wordpress-plugin');
         $trPrivateKey = __('Private API Key', 'apex-wordpress-plugin');
         $trPortalId = __('Portal ID', 'apex-wordpress-plugin');
+        $trSendCalendarFile = __('Send calendar file', 'apex-wordpress-plugin');
         $trDisplaySeats = __('Display Available Seats', 'apex-wordpress-plugin');
         $trDisplayTitle = __('Display Title', 'apex-wordpress-plugin');
         $trDisplaySector = __('Display Sector', 'apex-wordpress-plugin');
@@ -292,6 +246,17 @@ class Admin extends BaseController
                 ]
             ],
             [
+                'id' => 'apex_plugin_venue_order',
+                'title' => $trVenueOrder,
+                'callback' => [$this->callbacks, 'apexPluginVenueOrder'],
+                'page' => 'apex_wordpress_plugin',
+                'section' => 'apex_plugin_general_settings',
+                'args' => [
+                    'label_for' => 'apex_plugin_venue_order',
+                    'class' => 'apex_plugin_venue_order'
+                ]
+            ],
+            [
                 'id' => 'apex_plugin_add_headers',
                 'title' => $trAddHeaders,
                 'callback' => [$this->callbacks, 'apexPluginAddHeaders'],
@@ -344,6 +309,17 @@ class Admin extends BaseController
                 'args' => [
                     'label_for' => 'apex_portal_id',
                     'class' => 'apex_portal_id'
+                ]
+            ],
+            [
+                'id' => 'apex_send_calendar_file',
+                'title' => $trSendCalendarFile,
+                'callback' => [$this->callbacks,'apexPluginSendCalendarFile'],
+                'page' => 'apex_wordpress_plugin',
+                'section' =>  'apex_plugin_general_settings',
+                'args' => [
+                    'label_for' => 'apex_send_calendar_file',
+                    'class' => 'apex_send_calendar_file'
                 ]
             ],
             [

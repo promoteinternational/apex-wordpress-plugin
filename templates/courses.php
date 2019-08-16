@@ -44,6 +44,9 @@ $coursesStyles = get_option('apex_courses_extra_css');
 // Venues sort order
 $venuesSortOrder = explode(",", get_option('apex_plugin_venue_order', ''));
 
+// Venues replacements
+$venuesReplacements = explode(",", get_option('apex_plugin_venue_replacement', ''));
+
 //Initializing new class instance of RestApi
 $api = new RestApi();
 $api->register();
@@ -143,10 +146,24 @@ if ($eventAddHeaders == 'yes') {
                         //Creating new empty array for events, needed for decreasing available seats after successful registration
                         $newEvents = [];
                         $venueKeys = array_keys($venues);
+                        $venueReplacementArrays = [];
+
+                        foreach ($venuesReplacements as $replacement) {
+                            array_push($venueReplacementArrays, explode('-', $replacement));
+                        }
+
 
                         if (!empty($venuesSortOrder)) {
                             foreach ($venuesSortOrder as $key) {
                                 $event_array = $venues[$key];
+
+                                foreach($venueReplacementArrays as $replacement) {
+                                    if ($replacement[0] === $key) {
+                                        $key = $replacement[1];
+                                        break;
+                                    }
+                                }
+
                                 require 'venue_events.php';
                             }
                         }
@@ -154,6 +171,13 @@ if ($eventAddHeaders == 'yes') {
                         //Looping through each event and display event data
                         foreach ($venues as $key => $event_array) {
                             if (!in_array($key, $venuesSortOrder)) {
+                                foreach($venueReplacementArrays as $replacement) {
+                                    if ($replacement[0] === $key) {
+                                        $key = $replacement[1];
+                                        break;
+                                    }
+                                }
+
                                 require 'venue_events.php';
                             }
                         }

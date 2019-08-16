@@ -72,6 +72,10 @@ class Admin extends BaseController
             ],
             [
                 'option_group' => 'apex_plugin_group',
+                'option_name' => 'apex_plugin_venue_replacement',
+            ],
+            [
+                'option_group' => 'apex_plugin_group',
                 'option_name' => 'apex_plugin_add_headers',
             ],
             [
@@ -185,6 +189,7 @@ class Admin extends BaseController
         $trSlug = __('Slug for courses', 'apex-wordpress-plugin');
         $trDisplayVenues = __('Display events', 'apex-wordpress-plugin');
         $trVenueOrder = __('Venue order', 'apex-wordpress-plugin');
+        $trVenueReplace = __('Venue replacements', 'apex-wordpress-plugin');
         $trAddHeaders = __('Add header and footer to course page', 'apex-wordpress-plugin');
         $trServerName = __('Server address', 'apex-wordpress-plugin');
         $trPublicKey = __('Public API Key', 'apex-wordpress-plugin');
@@ -254,6 +259,17 @@ class Admin extends BaseController
                 'args' => [
                     'label_for' => 'apex_plugin_venue_order',
                     'class' => 'apex_plugin_venue_order'
+                ]
+            ],
+            [
+                'id' => 'apex_plugin_venue_replacement',
+                'title' => $trVenueReplace,
+                'callback' => [$this->callbacks, 'apexPluginVenueReplacement'],
+                'page' => 'apex_wordpress_plugin',
+                'section' => 'apex_plugin_general_settings',
+                'args' => [
+                    'label_for' => 'apex_plugin_venue_replacement',
+                    'class' => 'apex_plugin_venue_replacement'
                 ]
             ],
             [

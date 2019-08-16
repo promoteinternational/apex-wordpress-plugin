@@ -108,6 +108,13 @@ class AdminCallbacks extends BaseController
         echo '<input type="text" class="regular-text" name="apex_plugin_venue_order" value="' . $value . '" placeholder="' . $translation . '">';
     }
 
+    public function apexPluginVenueReplacement()
+    {
+        $value = esc_attr(get_option('apex_plugin_venue_replacement'));
+        $translation = __('Enter venue replacements', 'apex-wordpress-plugin');
+        echo '<input type="text" class="regular-text" name="apex_plugin_venue_replacement" value="' . $value . '" placeholder="' . $translation . '">';
+    }
+
     public function apexPluginAddHeaders()
     {
         $value = esc_attr(get_option('apex_plugin_add_headers'));

@@ -6225,7 +6225,7 @@
     padding: 5px !important;
     margin: 5px; }
   .apex-bootstrap .apex-courses__price {
-    margin-top: 40px;
+    margin: 40px 0 20px 0;
     padding: 20px 35px;
     border: 1px solid #F2EFE9; }
   .apex-bootstrap .apex-courses__price-title {

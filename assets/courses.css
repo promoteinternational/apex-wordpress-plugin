@@ -6304,14 +6304,16 @@
       max-height: 25px; } }
   .apex-bootstrap .modal {
     padding: 0; }
-  .apex-bootstrap .show {
-    overflow: hidden !important;
-    width: 100% !important;
-    height: 100% !important; }
-  .apex-bootstrap .modal-body label {
-    min-width: 100%; }
-  .apex-bootstrap .modal-open {
-    width: 100% !important;
-    height: 100% !important; }
+    .apex-bootstrap .modal.fade.in {
+      opacity: 1 !important; }
+    .apex-bootstrap .modal .form-group {
+      text-align: left;
+      margin-bottom: 0; }
+      .apex-bootstrap .modal .form-group input, .apex-bootstrap .modal .form-group select {
+        font-size: 16px; }
+      .apex-bootstrap .modal .form-group label {
+        padding-top: 10px;
+        margin-bottom: 0;
+        font-size: 12px; }
 
 /*# sourceMappingURL=courses.css.map */

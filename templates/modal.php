@@ -18,20 +18,20 @@
                         <div class="form-group col-6">
                             <label for="first_name"><?php _e('Given Name *', 'apex-wordpress-plugin') ?></label>
                             <input type="text" name="first_name" id="first_name" class="form-control"
-                                   required><br>
+                                   required>
                         </div>
                         <div class="form-group col-6">
                             <label for="last_name"><?php _e('Surname *', 'apex-wordpress-plugin') ?></label>
-                            <input type="text" name="last_name" id="last_name" class="form-control" required><br>
+                            <input type="text" name="last_name" id="last_name" class="form-control" required>
                         </div>
                         <div class="form-group col-6">
                             <label for="email"><?php _e('Email *', 'apex-wordpress-plugin') ?></label>
-                            <input type="email" name="email" id="email" class="form-control" required><br>
+                            <input type="email" name="email" id="email" class="form-control" required>
                         </div>
 
                         <div class="form-group col-6">
                             <label for="phone"><?php _e('Phone *', 'apex-wordpress-plugin') ?></label>
-                            <input type="text" name="phone" id="phone" class="form-control" required><br>
+                            <input type="text" name="phone" id="phone" class="form-control" required>
                         </div>
 
                         <?php
@@ -57,7 +57,7 @@
 
                         <div class="form-group col-12">
                             <label for="company"><?php _e('Company *', 'apex-wordpress-plugin') ?></label>
-                            <input type="text" name="company" id="company" class="form-control" required><br>
+                            <input type="text" name="company" id="company" class="form-control" required>
                         </div>
 
                         <?php
@@ -84,17 +84,17 @@
 
                         <div class="form-group col-12">
                             <label for="address_1"><?php _e('Address *', 'apex-wordpress-plugin') ?></label>
-                            <input type="text" name="address_1" id="address_1" class="form-control" required><br>
-                            <input type="text" name="address_2" id="address_2" class="form-control"><br>
+                            <input type="text" name="address_1" id="address_1" class="form-control" required>
+                            <input type="text" name="address_2" id="address_2" class="form-control">
                         </div>
                         <div class="form-group col-4">
                             <label for="zip_code"><?php _e('Zip Code *', 'apex-wordpress-plugin') ?></label>
-                            <input type="number" name="zip_code" id="zip_code" class="form-control" required><br>
+                            <input type="number" name="zip_code" id="zip_code" class="form-control" required>
                         </div>
 
                         <div class="form-group col-8">
                             <label for="city"><?php _e('City *', 'apex-wordpress-plugin') ?></label>
-                            <input type="text" name="city" id="city" class="form-control" required><br>
+                            <input type="text" name="city" id="city" class="form-control" required>
                         </div>
 
                         <div class="form-group col-12">

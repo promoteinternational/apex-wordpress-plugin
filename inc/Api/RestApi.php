@@ -170,6 +170,7 @@ class RestApi
     //Load all templates
     public function loadTemplates()
     {
+        $currentTerms = [];
         $areas_taxonomy = 'apex-areas';
         $portalID = $this->getPortalId();
         $serverName = $this->getServerName();
@@ -198,15 +199,31 @@ class RestApi
             $currentCourses[$existingTemplate->post_name] = $course;
         }
 
+        $area_terms = get_terms(array(
+            'taxonomy' => $areas_taxonomy,
+            'hide_empty' => false
+        ));
+
+        foreach($area_terms as $existingTerm) {
+            $term = new \stdClass();
+
+            $term->term_id = $existingTerm->term_id;
+            $term->status = 0;
+
+            $currentTerms[$existingTerm->name] = $term;
+        }
+
         foreach ($areas as $area) {
             // Create or modify taxonomies
             $area_term = $area->slug;
             $course_id = 0;
             if (!term_exists($area_term, $areas_taxonomy)) {
                 wp_insert_term($area->name, $areas_taxonomy, [
-                   'slug' =>  $area_term,
+                    'slug' => $area_term,
                 ]);
             }
+
+            $currentTerms[$area->name]->status = 1;
 
             foreach ($area->area_templates as $template) {
                 $events = $this->loadEvents($area_term, $template->slug);
@@ -286,12 +303,20 @@ class RestApi
             }
         }
 
-        // delete courses, not present in the API responce
+        // delete courses, not present in the API response
         foreach ($currentCourses as $currentCourse) {
             if ($currentCourse->status === 0) {
                 wp_delete_post($currentCourse->id, true);
             }
         }
+
+        foreach($currentTerms as $term) {
+            if ($term->status == 0) {
+                wp_delete_term($term->term_id, $areas_taxonomy);
+            }
+        }
+
+        echo "Updated terms";
 
         // Save titles
         $service_url = $serverName . '/api/v1/participants/titles/';

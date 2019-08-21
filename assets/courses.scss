@@ -176,21 +176,26 @@
 
   .modal {
     padding: 0;
-  }
 
-  .show {
-    overflow: hidden !important;
-    width: 100% !important;
-    height: 100% !important;
-  }
+    &.fade {
+      &.in {
+        opacity: 1 !important;
+      }
+    }
 
-  .modal-body label {
-    min-width: 100%;
-  }
+    .form-group {
+      text-align: left;
+      margin-bottom: 0;
 
-  .modal-open {
-    width: 100% !important;
-    height: 100% !important;
+      input, select {
+        font-size: 16px;
+      }
 
+      label {
+        padding-top: 10px;
+        margin-bottom: 0;
+        font-size: 12px;
+      }
+    }
   }
 }

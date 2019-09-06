@@ -151,7 +151,7 @@ class AdminCallbacks extends BaseController
     {
         $value = esc_attr(get_option('apex_portal_id'));
         $translation = __('Enter portal ID', 'apex-wordpress-plugin');
-        echo '<input type="number" min="1" class="regular-text" name="apex_portal_id" value="' . $value . '" placeholder="' . $translation . '">';
+        echo '<input type="text" class="regular-text" name="apex_portal_id" value="' . $value . '" placeholder="' . $translation . '">';
     }
 
     public function apexPluginSendCalendarFile()
@@ -229,6 +229,18 @@ h2 {
     {
         $value = get_option('apex_courses_extra_info');
         wp_editor( $value, 'apex_courses_extra_info', $settings = array('textarea_rows'=> '8', 'textarea_name' => 'apex_courses_extra_info') );
+    }
+
+    public function apexPluginExtraBookingInfo()
+    {
+        $value = get_option('apex_plugin_extra_booking_info');
+        wp_editor( $value, 'apex_plugin_extra_booking_info', $settings = array('textarea_rows'=> '8', 'textarea_name' => 'apex_plugin_extra_booking_info') );
+    }
+
+    public function apexPluginBookingTerms()
+    {
+        $value = get_option('apex_plugin_booking_terms');
+        wp_editor( $value, 'apex_plugin_booking_terms', $settings = array('textarea_rows'=> '8', 'textarea_name' => 'apex_plugin_booking_terms') );
     }
 
     public function apexCoursesListingTitle()

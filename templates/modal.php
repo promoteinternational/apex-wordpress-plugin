@@ -14,6 +14,11 @@
 
                 <form action="<?= get_site_url(); ?>/<?= $apex_slug ?>/<?= $post->post_name ?>"
                       method="post">
+                    <?php if (!empty($extraBookingInfo)) : ?>
+                    <div class="row">
+                        <div class="col-12 extra-booking-info"><?= $extraBookingInfo ?></div>
+                    </div>
+                    <?php endif ?>
                     <div class="form-row">
                         <div class="form-group col-6">
                             <label for="first_name"><?php _e('Given Name *', 'apex-wordpress-plugin') ?></label>
@@ -35,9 +40,7 @@
                         </div>
 
                         <?php
-                        $showTitle = get_option('apex_display_title', false);
                         if ($showTitle === 'yes'):
-                            $titles = get_option('apex_plugin_titles', array());
                             if ($titles && is_array($titles)):
                                 ?>
                                 <div class="apex-col-12">
@@ -61,9 +64,7 @@
                         </div>
 
                         <?php
-                        $showSector = get_option('apex_display_sector', false);
                         if ($showSector === 'yes'):
-                            $sectors = get_option('apex_plugin_sectors', array());
                             if ($sectors && is_array($sectors)):
                                 ?>
                                 <div class="form-group col-12">
@@ -107,17 +108,25 @@
                             </select>
                         </div>
 
+                        <?php if (!empty($bookingTerms)) : ?>
+                        <div class="form-group col-12">
+                            <input type="checkbox" name="terms" id="bookingTerms"> <label for="bookingTerms" class="checkbox-label"><?= $bookingTerms ?></label>
+                        </div>
+                        <?php endif; ?>
+
                         <div class="form-group col-12">
                             <input type="hidden" name='event_id' value="<?= $event->id ?>">
-                            <input type="submit" id="formSubmit" class="btn btn-primary"
+                            <input type="submit" id="formSubmit" class="btn btn-primary"<?php if (!empty($bookingTerms)) { ?> disabled<?php } ?>
                                    value="<?php _e('Apply', 'apex-wordpress-plugin') ?>">
                         </div>
-
                     </div>
-
                 </form>
             </div>
-
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $("#modal_<?= $event->id ?>").find('#bookingTerms').change(function(e) {
+        $("#modal_<?= $event->id ?>").find("#formSubmit").prop("disabled", !$(this).is(":checked"));
+    });
+</script>

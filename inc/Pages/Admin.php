@@ -124,6 +124,14 @@ class Admin extends BaseController
             ],
             [
                 'option_group' => 'apex_plugin_group',
+                'option_name' => 'apex_plugin_extra_booking_info',
+            ],
+            [
+                'option_group' => 'apex_plugin_group',
+                'option_name' => 'apex_plugin_booking_terms',
+            ],
+            [
+                'option_group' => 'apex_plugin_group',
                 'option_name' => 'apex_courses_listing_title',
             ],
             [
@@ -202,6 +210,8 @@ class Admin extends BaseController
         $trCoursesExtraCss = __('Extra course page CSS', 'apex-wordpress-plugin');
         $trCourseArchiveExtraCss = __('Extra course archive page CSS', 'apex-wordpress-plugin');
         $trCourseExtraInfo = __('Course extra info', 'apex-wordpress-plugin');
+        $trExtraBookingInfo = __('Extra booking info', 'apex-wordpress-plugin');
+        $trBookingTerms = __('Booking terms', 'apex-wordpress-plugin');
         $trListingTitle = __('Page title', 'apex-wordpress-plugin');
         $trListingStartBlock = __('Content before courses list', 'apex-wordpress-plugin');
         $trListingEndBlock = __('Content after courses list', 'apex-wordpress-plugin');
@@ -402,6 +412,28 @@ class Admin extends BaseController
                 'args' => [
                     'label_for' => 'apex_courses_extra_info',
                     'class' => 'apex_courses_extra_info'
+                ]
+            ],
+            [
+                'id' => 'apex_plugin_extra_booking_info',
+                'title' => $trExtraBookingInfo,
+                'callback' => [$this->callbacks, 'apexPluginExtraBookingInfo'],
+                'page' => 'apex_wordpress_plugin',
+                'section' => 'apex_plugin_extra_course_info',
+                'args' => [
+                    'label_for' => 'apex_plugin_extra_booking_info',
+                    'class' => 'apex_plugin_extra_booking_info'
+                ]
+            ],
+            [
+                'id' => 'apex_plugin_booking_terms',
+                'title' => $trBookingTerms,
+                'callback' => [$this->callbacks, 'apexPluginBookingTerms'],
+                'page' => 'apex_wordpress_plugin',
+                'section' => 'apex_plugin_extra_course_info',
+                'args' => [
+                    'label_for' => 'apex_plugin_booking_terms',
+                    'class' => 'apex_plugin_booking_terms'
                 ]
             ],
             [

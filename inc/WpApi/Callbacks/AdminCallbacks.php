@@ -151,7 +151,7 @@ class AdminCallbacks extends BaseController
     {
         $value = esc_attr(get_option('apex_portal_id'));
         $translation = __('Enter portal ID', 'apex-wordpress-plugin');
-        echo '<input type="number" min="1" class="regular-text" name="apex_portal_id" value="' . $value . '" placeholder="' . $translation . '">';
+        echo '<input type="text" class="regular-text" name="apex_portal_id" value="' . $value . '" placeholder="' . $translation . '">';
     }
 
     public function apexPluginSendCalendarFile()

@@ -37,8 +37,6 @@ function deactivate_apex_wordpress_plugin(){
 }
 register_deactivation_hook(__FILE__,'deactivate_apex_wordpress_plugin');
 
-
-
 //Initialize all the core classes of the plugin
 if (class_exists('Inc\\Init')){
     Inc\Init::register_services();

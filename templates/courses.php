@@ -47,6 +47,20 @@ $venuesSortOrder = explode(",", get_option('apex_plugin_venue_order', ''));
 // Venues replacements
 $venuesReplacements = explode(",", get_option('apex_plugin_venue_replacement', ''));
 
+// Titles
+$showTitle = get_option('apex_display_title', false);
+$titles = get_option('apex_plugin_titles', array());
+
+// Sectors
+$showSector = get_option('apex_display_sector', false);
+$sectors = get_option('apex_plugin_sectors', array());
+
+// Booking terms
+$bookingTerms = (!empty(get_option('apex_plugin_booking_terms')) ? get_option('apex_plugin_booking_terms') : '');
+
+// Booking extra info
+$extraBookingInfo = (!empty(get_option('apex_plugin_extra_booking_info')) ? get_option('apex_plugin_extra_booking_info') : '');
+
 //Initializing new class instance of RestApi
 $api = new RestApi();
 $api->register();

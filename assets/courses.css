@@ -6306,14 +6306,16 @@
     padding: 0; }
     .apex-bootstrap .modal.fade.in {
       opacity: 1 !important; }
-    .apex-bootstrap .modal .form-group {
+    .apex-bootstrap .modal .modal-body {
       text-align: left;
-      margin-bottom: 0; }
-      .apex-bootstrap .modal .form-group input, .apex-bootstrap .modal .form-group select {
-        font-size: 16px; }
-      .apex-bootstrap .modal .form-group label {
-        padding-top: 10px;
-        margin-bottom: 0;
-        font-size: 12px; }
+      font-size: 14px; }
+      .apex-bootstrap .modal .modal-body .form-group {
+        margin-bottom: 0; }
+        .apex-bootstrap .modal .modal-body .form-group input, .apex-bootstrap .modal .modal-body .form-group select {
+          font-size: 16px; }
+        .apex-bootstrap .modal .modal-body .form-group label {
+          padding-top: 10px;
+          margin-bottom: 0;
+          font-size: 12px; }
 
 /*# sourceMappingURL=courses.css.map */

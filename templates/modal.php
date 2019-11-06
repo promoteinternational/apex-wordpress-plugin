@@ -110,7 +110,7 @@
 
                         <?php if (!empty($bookingTerms)) : ?>
                         <div class="form-group col-12">
-                            <input type="checkbox" name="terms" id="bookingTerms"> <label for="bookingTerms" class="checkbox-label"><?= $bookingTerms ?></label>
+                            <input type="checkbox" name="terms" id="booking_terms_<?= $event->id ?>" class="booking-terms"> <label for="booking_terms_<?= $event->id ?>" class="checkbox-label"><?= $bookingTerms ?></label>
                         </div>
                         <?php endif; ?>
 
@@ -126,7 +126,14 @@
     </div>
 </div>
 <script type="text/javascript">
-    $("#modal_<?= $event->id ?>").find('#bookingTerms').change(function(e) {
-        $("#modal_<?= $event->id ?>").find("#formSubmit").prop("disabled", !$(this).is(":checked"));
+    document.getElementById("modal_<?= $event->id ?>").getElementsByClassName("booking-terms")[0].addEventListener('change', function() {
+        var button = document.getElementById("modal_<?= $event->id ?>").getElementsByClassName("btn-primary")[0];
+
+        if (this.checked) {
+            button.disabled = false;
+            button.removeAttribute("disabled");
+        } else {
+            button.disabled = true;
+        }
     });
 </script>

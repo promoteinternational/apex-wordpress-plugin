@@ -100,11 +100,24 @@ class Enqueue extends BaseController
         ob_start();
 
         $courses_slug = get_option('apex_plugin_slug', 'courses');
+        $courses_sort = get_option('apex_courses_listing_sort', 'alphabetic');
         $taxonomy =  'apex-areas';
         $terms = get_terms([
             'taxonomy' => $taxonomy,
             'hide_empty' => false,
+            'orderby' => 'name',
+            'order' => 'ASC'
         ]);
+
+        if ($courses_sort == 'numeric') {
+            $number_of_courses = array();
+            foreach($terms as $term => $row) {
+                $number_of_courses[$term] = get_term_meta($row->term_id, 'number_of_courses');
+            }
+
+            array_multisort($number_of_courses, SORT_DESC, $terms);
+        }
+
         ?>
         <div class="content-area apex-courses apex-bootstrap">
         <section class="container">

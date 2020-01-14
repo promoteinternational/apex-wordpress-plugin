@@ -128,11 +128,19 @@ class Admin extends BaseController
             ],
             [
                 'option_group' => 'apex_plugin_group',
+                'option_name' => 'apex_plugin_after_booking',
+            ],
+            [
+                'option_group' => 'apex_plugin_group',
                 'option_name' => 'apex_plugin_booking_terms',
             ],
             [
                 'option_group' => 'apex_plugin_group',
                 'option_name' => 'apex_courses_listing_title',
+            ],
+            [
+                'option_group' => 'apex_plugin_group',
+                'option_name' => 'apex_courses_listing_sort',
             ],
             [
                 'option_group' => 'apex_plugin_group',
@@ -211,8 +219,10 @@ class Admin extends BaseController
         $trCourseArchiveExtraCss = __('Extra course archive page CSS', 'apex-wordpress-plugin');
         $trCourseExtraInfo = __('Course extra info', 'apex-wordpress-plugin');
         $trExtraBookingInfo = __('Extra booking info', 'apex-wordpress-plugin');
+        $trAfterBooking = __('Extra after booking code', 'apex-wordpress-plugin');
         $trBookingTerms = __('Booking terms', 'apex-wordpress-plugin');
         $trListingTitle = __('Page title', 'apex-wordpress-plugin');
+        $trListingSort = __('Course sorting', 'apex-wordpress-plugin');
         $trListingStartBlock = __('Content before courses list', 'apex-wordpress-plugin');
         $trListingEndBlock = __('Content after courses list', 'apex-wordpress-plugin');
         $args = [
@@ -426,6 +436,17 @@ class Admin extends BaseController
                 ]
             ],
             [
+                'id' => 'apex_plugin_after_booking',
+                'title' => $trAfterBooking,
+                'callback' => [$this->callbacks, 'apexPluginAfterBooking'],
+                'page' => 'apex_wordpress_plugin',
+                'section' => 'apex_plugin_extra_course_info',
+                'args' => [
+                    'label_for' => 'apex_plugin_after_booking',
+                    'class' => 'apex_plugin_after_booking'
+                ]
+            ],
+            [
                 'id' => 'apex_plugin_booking_terms',
                 'title' => $trBookingTerms,
                 'callback' => [$this->callbacks, 'apexPluginBookingTerms'],
@@ -445,6 +466,17 @@ class Admin extends BaseController
                 'args' => [
                     'label_for' => 'apex_courses_listing_title',
                     'class' => 'apex_courses_listing_title'
+                ]
+            ],
+            [
+                'id' => 'apex_courses_listing_sort',
+                'title' => $trListingSort,
+                'callback' => [$this->callbacks, 'apexCoursesListingSort'],
+                'page' => 'apex_wordpress_plugin',
+                'section' =>  'apex_plugin_listing',
+                'args' => [
+                    'label_for' => 'apex_courses_listing_sort',
+                    'class' => 'apex_courses_listing_sort'
                 ]
             ],
             [

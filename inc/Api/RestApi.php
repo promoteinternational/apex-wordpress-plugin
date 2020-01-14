@@ -31,7 +31,11 @@ class RestApi
 
     public function setData()
     {
-        $this->server_name = 'https://' . get_option('apex_server_name');
+        if (get_option('apex_server_name') != 'localhost') {
+            $this->server_name = 'https://' . get_option('apex_server_name');
+        } else {
+            $this->server_name = 'http://' . get_option('apex_server_name') . ':8000';
+        }
         $this->publicKey = get_option('apex_public_api_key');
         $this->privateKey = get_option('apex_private_api_key');
         $this->portal_id = get_option('apex_portal_id');
@@ -126,7 +130,7 @@ class RestApi
 
         $curl_array = array(
             CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => $service_url . '/?' . http_build_query($post_data,null,'&'),
+            CURLOPT_URL => $service_url . '?' . http_build_query($post_data,null,'&'),
             CURLOPT_HTTPHEADER => $headers
         );
 
@@ -157,7 +161,7 @@ class RestApi
         $service_url = $serverName . '/api/v1/websites/' .  $portalID . '/areas/' . $areaSlug . '/templates/' . $templateSlug . '/events/';
         $headers = $this->create_request_headers($this->getPublicKey(), $this->getPrivateKey());
 
-        $decoded = $this->performCurlRequest($headers, $service_url, ['start_date' => date('Y-m-d')]);
+        $decoded = $this->performCurlRequest($headers, $service_url, ['extra_fields' => 'sessions', 'start_date' => date('Y-m-d')]);
 
         if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
             error_log('error occurred: ' . $decoded->response->errormessage);
@@ -217,22 +221,49 @@ class RestApi
             // Create or modify taxonomies
             $area_term = $area->slug;
             $course_id = 0;
-            if (!term_exists($area_term, $areas_taxonomy)) {
-                wp_insert_term($area->name, $areas_taxonomy, [
+            $term = term_exists($area_term, $areas_taxonomy);
+
+            if (!$term) {
+                $term = wp_insert_term($area->name, $areas_taxonomy, [
                     'slug' => $area_term,
                 ]);
+            } else {
+                delete_term_meta((int) $term['term_id'], 'number_of_courses');
             }
 
+            add_term_meta((int) $term['term_id'], 'number_of_courses', (string) sizeof($area->area_templates));
+
             $currentTerms[$area->name]->status = 1;
+
+            wp_update_term($area->nane, $areas_taxonomy, [
+                'slug' => $area_term,
+                'meta_input' => [
+                    'number_of_templates' => sizeof($area->area_templates)
+                ]
+            ]);
 
             foreach ($area->area_templates as $template) {
                 $events = $this->loadEvents($area_term, $template->slug);
                 $places_events = [];
 
                 foreach ($events as $event) {
+                    $event_dates = [];
+
                     if (!key_exists($event->venue_city, $places_events)) {
                         $places_events[$event->venue_city] = [];
                     }
+
+                    foreach($event->sessions as $session) {
+                        $dates = date_i18n('d M', strtotime($session->start_date));
+
+                        if ($session->number_of_days > 1) {
+                            $dates = $dates . ' - ' . date_i18n('d M', strtotime($session->end_date));
+                        }
+
+                        array_push($event_dates, $dates);
+                    }
+
+                    $event = (object) array_merge((array) $event, array('event_dates' => implode(",<br>", $event_dates)));
 
                     array_push($places_events[$event->venue_city], $event);
                 }

@@ -5,7 +5,7 @@ $availableSeats = $event->max_participants - $event->booked_participant_count;
 <div class="apex-courses__event">
     <div class="col-6">
         <div class="apex-courses__event-date">
-            <?= date_i18n('d M', strtotime($event->start_date)) ?><?php if ($days > 1): ?> - <?= date_i18n('d M', strtotime($event->end_date)) ?><?php endif; ?>
+            <?= $event->event_dates ?>
         </div>
         <?php if (!empty($venue_city)): ?>
             <div class="apex-courses__event-place">
@@ -25,20 +25,23 @@ $availableSeats = $event->max_participants - $event->booked_participant_count;
                     data-toggle="modal" data-target="#modal_<?= $event->id ?>">
                 <?php _e('Apply Now', 'apex-wordpress-plugin') ?>
             </button>
-            <?php if ($availableSeats < $event->max_participants / 2): ?>
-                <div class="apex-courses__event-few-places">
-                    <?php _e('Few seats remaining', 'apex-wordpress-plugin') ?>
-                </div>
-            <?php endif;
+            <?php
             //Connect Modal template
             require 'modal.php'
             ?>
-        <?php else: ?>
-            <div class="alert alert-warning"> <?php _e('This event is fully booked', 'apex-wordpress-plugin') ?> </div>
         <?php endif; ?>
     </div>
-    <?php
-
+    <?php if (empty($availableSeats) || $availableSeats == 0):  ?>
+    <div class="col-12">
+        <div class="alert alert-warning"> <?php _e('This event is fully booked', 'apex-wordpress-plugin') ?> </div>
+    </div>
+    <?php elseif ($availableSeats < $event->max_participants / 2): ?>
+    <div class="col-12">
+        <div class="apex-courses__event-few-places">
+            <?php _e('Few seats remaining', 'apex-wordpress-plugin') ?>
+        </div>
+    </div>
+    <?php endif;
     //If not empty form data, display message
     if (!empty($_POST['event_id']) && $_POST['event_id'] == $event->id):?>
         <div class="apex-courses__confirmation">
@@ -52,6 +55,14 @@ $availableSeats = $event->max_participants - $event->booked_participant_count;
             if ($success) {
                 $event->booked_participant_count = $event->booked_participant_count + 1;
                 echo '<div class="alert alert-success">' . $trSuccess . '</div>';
+                if (!empty($afterBooking)) {
+                    $transactionId = md5($_POST['email'] . $post->post_name);
+                    ?><script type="text/javascript">
+                        course.transactionId="<?php echo $transactionId ?>";
+                        <?php echo $afterBooking ?>
+                    </script>
+                    <?php
+                }
             } else {
                 echo '<div class="alert alert-danger">' . $trError . '</div>';
             }

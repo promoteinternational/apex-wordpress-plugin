@@ -61,6 +61,9 @@ $bookingTerms = (!empty(get_option('apex_plugin_booking_terms')) ? get_option('a
 // Booking extra info
 $extraBookingInfo = (!empty(get_option('apex_plugin_extra_booking_info')) ? get_option('apex_plugin_extra_booking_info') : '');
 
+// After booking javascript
+$afterBooking = (!empty(get_option('apex_plugin_after_booking')) ? get_option('apex_plugin_after_booking') : '');
+
 //Initializing new class instance of RestApi
 $api = new RestApi();
 $api->register();
@@ -69,6 +72,19 @@ $pluginCurrency = $api->getCurrency();
 //Get Current Time
 $currentDate = time();
 
+foreach ($prices as $price) {
+    array_push($onlyCurrencyName, $price->currency_name);
+}
+if (in_array($pluginCurrency, $onlyCurrencyName)) {
+    foreach ($prices as $price) {
+        if ($pluginCurrency === $price->currency_name) {
+            $course_price = $price;
+        }
+    }
+} else {
+    $course_price = $prices[0];
+}
+
 if ($eventAddHeaders == 'yes') {
     get_header();
 }
@@ -76,6 +92,15 @@ if ($eventAddHeaders == 'yes') {
 <?php if (!empty($coursesStyles)) { ?>
     <style><?= $coursesStyles ?></style>
 <?php } ?>
+    <script type="text/javascript">
+        var course = {
+            name: "<?php echo $post->post_title ?>",
+            currency: "<?php echo $course_price->currency_name ?>",
+            price: <?php echo $course_price->price ?>,
+            slug: "<?php echo $post->post_name ?>"
+        }
+    </script>
+
 <section class="apex-courses apex-bootstrap">
     <div class="container">
         <div class="row">
@@ -93,33 +118,9 @@ if ($eventAddHeaders == 'yes') {
                     <div class="apex-courses__price-title">
                         <?php _e('Prices and upcoming dates:', 'apex-wordpress-plugin') ?>
                     </div>
-
-                    <?php
-                    foreach ($prices as $price) {
-                        array_push($onlyCurrencyName, $price->currency_name);
-                    }
-                    if (in_array($pluginCurrency, $onlyCurrencyName)) {
-                        foreach ($prices as $price) {
-                            if ($pluginCurrency === $price->currency_name) {
-
-                                ?>
-                                <div class="apex-courses__price-price">
-                                    <?php echo format_currency($price->currency_name, $price->price); ?>
-                                </div>
-                                <?php
-                            }
-                        }
-
-                    } else {
-                        ?>
-
-                        <div class="apex-courses__price-price">
-                            <?php echo format_currency($prices[0]->currency_name, $prices[0]->price); ?>
-                        </div>
-
-                        <?php
-                    }
-                    ?>
+                    <div class="apex-courses__price-price">
+                        <?php echo format_currency($course_price->currency_name, $course_price->price); ?>
+                    </div>
                     <div class="apex-courses__price-days">
                         <?php if ($days > 1) {
                             printf(__('%s days', 'apex-wordpress-plugin'), $days);
@@ -166,19 +167,20 @@ if ($eventAddHeaders == 'yes') {
                             array_push($venueReplacementArrays, explode('-', $replacement));
                         }
 
-
                         if (!empty($venuesSortOrder)) {
                             foreach ($venuesSortOrder as $key) {
                                 $event_array = $venues[$key];
 
-                                foreach($venueReplacementArrays as $replacement) {
-                                    if ($replacement[0] === $key) {
-                                        $key = $replacement[1];
-                                        break;
+                                if (!empty($event_array)) {
+                                    foreach($venueReplacementArrays as $replacement) {
+                                        if ($replacement[0] === $key) {
+                                            $key = $replacement[1];
+                                            break;
+                                        }
                                     }
-                                }
 
-                                require 'venue_events.php';
+                                    require 'venue_events.php';
+                                }
                             }
                         }
 

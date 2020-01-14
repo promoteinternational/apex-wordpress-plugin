@@ -243,6 +243,22 @@ h2 {
         wp_editor( $value, 'apex_plugin_booking_terms', $settings = array('textarea_rows'=> '8', 'textarea_name' => 'apex_plugin_booking_terms') );
     }
 
+    public function apexPluginAfterBooking()
+    {
+        $value = get_option('apex_plugin_after_booking');
+        $translation = __('Example (extra javascript):
+    alert(course.transactionId);
+
+Valid properties:
+course.transactionId = The transactionId
+course.price = The price of the course
+course.currency = The currency of the price
+course.name = The name of the course
+course.slug = The slug of the course
+', 'apex-wordpress-plugin');
+        echo '<textarea placeholder="' . $translation . '" rows="10" name="apex_plugin_after_booking" class="large-text">' . $value . '</textarea>';
+    }
+
     public function apexCoursesListingTitle()
     {
         $value = esc_attr(get_option('apex_courses_listing_title'));
@@ -260,5 +276,16 @@ h2 {
     {
         $value = get_option('apex_courses_listing_end');
         wp_editor( $value, 'apex_courses_listing_end_block', $settings = array('textarea_rows'=> '8', 'textarea_name' => 'apex_courses_listing_end') );
+    }
+
+    public function apexCoursesListingSort()
+    {
+        $value = esc_attr(get_option('apex_courses_listing_sort', 'alphabetic'));
+        ?>
+        <select name="apex_courses_listing_sort" class="apex_courses_listing_sort">
+            <option value="alphabetic" <?= ($value == "alphabetic") ? 'selected="selected"' : '' ?>> <?php _e('Alphabetic', 'apex-wordpress-plugin') ?></option>
+            <option value="numeric" <?= ($value == "numeric") ? 'selected="selected"' : '' ?>> <?php _e('Numeric', 'apex-wordpress-plugin') ?></option>
+        </select>
+        <?php
     }
 }

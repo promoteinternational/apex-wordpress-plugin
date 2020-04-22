@@ -14,7 +14,7 @@ $availableSeats = $event->max_participants - $event->booked_participant_count;
         <?php endif; ?>
         <?php if (!empty($availableSeats) && $availableSeats >= 1 && $displaySeats === 'yes'): ?>
             <div class="apex-courses__event-available">
-                <?php _e('Available seats:', 'apex-wordpress-plugin') ?>
+                <?php _e('Available seats:', 'promote-apex-plugin') ?>
                 <?= $availableSeats ?>
             </div>
         <?php endif; ?>
@@ -23,7 +23,7 @@ $availableSeats = $event->max_participants - $event->booked_participant_count;
         <?php if (!empty($availableSeats) && $availableSeats >= 1): ?>
             <button type="button" class="btn apex-courses__event-button"
                     data-toggle="modal" data-target="#modal_<?= $event->id ?>">
-                <?php _e('Apply Now', 'apex-wordpress-plugin') ?>
+                <?php _e('Apply Now', 'promote-apex-plugin') ?>
             </button>
             <?php
             //Connect Modal template
@@ -33,12 +33,12 @@ $availableSeats = $event->max_participants - $event->booked_participant_count;
     </div>
     <?php if (empty($availableSeats) || $availableSeats == 0):  ?>
     <div class="col-12">
-        <div class="alert alert-warning"> <?php _e('This event is fully booked', 'apex-wordpress-plugin') ?> </div>
+        <div class="alert alert-warning"> <?php _e('This event is fully booked', 'promote-apex-plugin') ?> </div>
     </div>
     <?php elseif ($availableSeats < $event->max_participants / 2): ?>
     <div class="col-12">
         <div class="apex-courses__event-few-places">
-            <?php _e('Few seats remaining', 'apex-wordpress-plugin') ?>
+            <?php _e('Few seats remaining', 'promote-apex-plugin') ?>
         </div>
     </div>
     <?php endif;
@@ -50,8 +50,8 @@ $availableSeats = $event->max_participants - $event->booked_participant_count;
 
             // Update booked participant count in wp database.
             $success = $api->getSuccess();
-            $trSuccess = __('Your application was successfully submitted!', 'apex-wordpress-plugin');
-            $trError = __('Something went wrong with your application', 'apex-wordpress-plugin');
+            $trSuccess = __('Your application was successfully submitted!', 'promote-apex-plugin');
+            $trError = __('Something went wrong with your application', 'promote-apex-plugin');
             if ($success) {
                 $event->booked_participant_count = $event->booked_participant_count + 1;
                 echo '<div class="alert alert-success">' . $trSuccess . '</div>';

@@ -1,14 +1,14 @@
 <?php
 /**
- * @package  ApexWordpressPlugin
+ * @package  PromoteApexPlugin
  */
 
 /*
-Plugin Name: Apex Wordpress Plugin
+Plugin Name: Promote Apex Plugin
 Plugin URI: https://github.com/promoteinternational/apex-wordpress-plugin
-Text Domain: apex-wordpress-plugin
+Text Domain: promote-apex-plugin
 Description: Plugin used to connect a wordpress website with Apex
-Version: 1.1.0
+Version: 1.2.0
 Author: Promote International AB
 Author URI: https://www.promoteint.com
 License: GPLv2 or later
@@ -26,16 +26,16 @@ if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')){
 }
 
 //Code that runs during plugin activation
-function activate_apex_wordpress_plugin(){
+function activate_promote_apex_plugin(){
     Activate::activate();
 }
-register_activation_hook(__FILE__,'activate_apex_wordpress_plugin');
+register_activation_hook(__FILE__,'activate_promote_apex_plugin');
 
 //Code that runs during plugin deactivation
-function deactivate_apex_wordpress_plugin(){
+function deactivate_promote_apex_plugin(){
     Deactivate::deactivate();
 }
-register_deactivation_hook(__FILE__,'deactivate_apex_wordpress_plugin');
+register_deactivation_hook(__FILE__,'deactivate_promote_apex_plugin');
 
 
 
@@ -44,11 +44,11 @@ if (class_exists('Inc\\Init')){
     Inc\Init::register_services();
 }
 
-function apex_wordpress_plugin_load_text_domain() {
-    load_plugin_textdomain('apex-wordpress-plugin', false, basename(dirname(__FILE__)).'/languages');
+function promote_apex_plugin_load_text_domain() {
+    load_plugin_textdomain('promote-apex-plugin', false, basename(dirname(__FILE__)).'/languages');
 }
 
-add_action('plugins_loaded', 'apex_wordpress_plugin_load_text_domain');
+add_action('plugins_loaded', 'promote_apex_plugin_load_text_domain');
 
 function format_currency($currency_name, $value) {
     switch($currency_name) {

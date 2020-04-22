@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-14 12:03+0100\n"
+"POT-Creation-Date: 2020-04-21 14:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,11 @@ msgstr ""
 
 #: inc/Api/CronRequest.php:33
 msgid "Custom Settings"
+msgstr ""
+
+#: inc/Api/RestApi.php:271
+#, php-format
+msgid "between %1$s-%2$s"
 msgstr ""
 
 #: inc/Base/SettingsLinks.php:19

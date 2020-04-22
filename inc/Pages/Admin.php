@@ -31,13 +31,13 @@ class Admin extends BaseController
 
     public function setPages()
     {
-        $translation = __('Apex Wordpress Plugin Settings', 'apex-wordpress-plugin');
+        $translation = __('Apex Wordpress Plugin Settings', 'promote-apex-plugin');
         $this->pages = [
             [
                 'page_title' => $translation,
                 'menu_title' => 'Apex Plugin',
                 'capability' => 'manage_options',
-                'menu_slug' => 'apex_wordpress_plugin',
+                'menu_slug' => 'promote_apex_plugin',
                 'callback' => [ $this->callbacks, 'adminDashboard'],
                 'icon_url' => 'dashicons-analytics',
                 'position' => 110
@@ -157,42 +157,42 @@ class Admin extends BaseController
 
     public function setSections()
     {
-        $trGeneral = __('General Settings', 'apex-wordpress-plugin');
-        $trApi = __('API Settings', 'apex-wordpress-plugin');
-        $trCss = __('Additional CSS', 'apex-wordpress-plugin');
-        $strExtraInfo = __('Course extra information', 'apex-wordpress-plugin');
-        $trListing = __('Courses page', 'apex-wordpress-plugin');
+        $trGeneral = __('General Settings', 'promote-apex-plugin');
+        $trApi = __('API Settings', 'promote-apex-plugin');
+        $trCss = __('Additional CSS', 'promote-apex-plugin');
+        $strExtraInfo = __('Course extra information', 'promote-apex-plugin');
+        $trListing = __('Courses page', 'promote-apex-plugin');
         $args = [
             [
                 'id' => 'apex_plugin_general_settings',
                 'title' => $trGeneral,
                 'callback' => [$this->callbacks,'apexPluginGeneralSettings'],
-                'page' => 'apex_wordpress_plugin'
+                'page' => 'promote_apex_plugin'
             ],
 
             [
                 'id' => 'apex_plugin_api_settings',
                 'title' => $trApi,
                 'callback' => [$this->callbacks,'apexPluginApiSettings'],
-                'page' => 'apex_wordpress_plugin'
+                'page' => 'promote_apex_plugin'
             ],
             [
                 'id' => 'apex_plugin_additional_css',
                 'title' => $trCss,
                 'callback' => [$this->callbacks,'apexPluginAdditionalCss'],
-                'page' => 'apex_wordpress_plugin'
+                'page' => 'promote_apex_plugin'
             ],
             [
                 'id' => 'apex_plugin_extra_course_info',
                 'title' => $strExtraInfo,
                 'callback' => [$this->callbacks, 'apexPluginCourseExtraInfo'],
-                'page' => 'apex_wordpress_plugin'
+                'page' => 'promote_apex_plugin'
             ],
             [
                 'id' => 'apex_plugin_listing',
                 'title' => $trListing,
                 'callback' => [$this->callbacks,'apexPluginListingPage'],
-                'page' => 'apex_wordpress_plugin'
+                'page' => 'promote_apex_plugin'
             ],
         ];
         $this->settings->setSections($args);
@@ -200,37 +200,37 @@ class Admin extends BaseController
 
     public function setFields()
     {
-        $trUpdate = __('Amount of minutes before each update', 'apex-wordpress-plugin');
-        $trCurrency = __('Currency (Please verify, that selected currency exist in API)', 'apex-wordpress-plugin');
-        $trSlug = __('Slug for courses', 'apex-wordpress-plugin');
-        $trDisplayVenues = __('Display events', 'apex-wordpress-plugin');
-        $trVenueOrder = __('Venue order', 'apex-wordpress-plugin');
-        $trVenueReplace = __('Venue replacements', 'apex-wordpress-plugin');
-        $trAddHeaders = __('Add header and footer to course page', 'apex-wordpress-plugin');
-        $trServerName = __('Server address', 'apex-wordpress-plugin');
-        $trPublicKey = __('Public API Key', 'apex-wordpress-plugin');
-        $trPrivateKey = __('Private API Key', 'apex-wordpress-plugin');
-        $trPortalId = __('Portal ID', 'apex-wordpress-plugin');
-        $trSendCalendarFile = __('Send calendar file', 'apex-wordpress-plugin');
-        $trDisplaySeats = __('Display Available Seats', 'apex-wordpress-plugin');
-        $trDisplayTitle = __('Display Title', 'apex-wordpress-plugin');
-        $trDisplaySector = __('Display Sector', 'apex-wordpress-plugin');
-        $trCoursesExtraCss = __('Extra course page CSS', 'apex-wordpress-plugin');
-        $trCourseArchiveExtraCss = __('Extra course archive page CSS', 'apex-wordpress-plugin');
-        $trCourseExtraInfo = __('Course extra info', 'apex-wordpress-plugin');
-        $trExtraBookingInfo = __('Extra booking info', 'apex-wordpress-plugin');
-        $trAfterBooking = __('Extra after booking code', 'apex-wordpress-plugin');
-        $trBookingTerms = __('Booking terms', 'apex-wordpress-plugin');
-        $trListingTitle = __('Page title', 'apex-wordpress-plugin');
-        $trListingSort = __('Course sorting', 'apex-wordpress-plugin');
-        $trListingStartBlock = __('Content before courses list', 'apex-wordpress-plugin');
-        $trListingEndBlock = __('Content after courses list', 'apex-wordpress-plugin');
+        $trUpdate = __('Amount of minutes before each update', 'promote-apex-plugin');
+        $trCurrency = __('Currency (Please verify, that selected currency exist in API)', 'promote-apex-plugin');
+        $trSlug = __('Slug for courses', 'promote-apex-plugin');
+        $trDisplayVenues = __('Display events', 'promote-apex-plugin');
+        $trVenueOrder = __('Venue order', 'promote-apex-plugin');
+        $trVenueReplace = __('Venue replacements', 'promote-apex-plugin');
+        $trAddHeaders = __('Add header and footer to course page', 'promote-apex-plugin');
+        $trServerName = __('Server address', 'promote-apex-plugin');
+        $trPublicKey = __('Public API Key', 'promote-apex-plugin');
+        $trPrivateKey = __('Private API Key', 'promote-apex-plugin');
+        $trPortalId = __('Portal ID', 'promote-apex-plugin');
+        $trSendCalendarFile = __('Send calendar file', 'promote-apex-plugin');
+        $trDisplaySeats = __('Display Available Seats', 'promote-apex-plugin');
+        $trDisplayTitle = __('Display Title', 'promote-apex-plugin');
+        $trDisplaySector = __('Display Sector', 'promote-apex-plugin');
+        $trCoursesExtraCss = __('Extra course page CSS', 'promote-apex-plugin');
+        $trCourseArchiveExtraCss = __('Extra course archive page CSS', 'promote-apex-plugin');
+        $trCourseExtraInfo = __('Course extra info', 'promote-apex-plugin');
+        $trExtraBookingInfo = __('Extra booking info', 'promote-apex-plugin');
+        $trAfterBooking = __('Extra after booking code', 'promote-apex-plugin');
+        $trBookingTerms = __('Booking terms', 'promote-apex-plugin');
+        $trListingTitle = __('Page title', 'promote-apex-plugin');
+        $trListingSort = __('Course sorting', 'promote-apex-plugin');
+        $trListingStartBlock = __('Content before courses list', 'promote-apex-plugin');
+        $trListingEndBlock = __('Content after courses list', 'promote-apex-plugin');
         $args = [
             [
                 'id' => 'apex_update_frequency',
                 'title' => $trUpdate,
                 'callback' => [$this->callbacks,'apexPluginUpdateFrequency'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_general_settings',
                 'args' => [
                     'label_for' => 'apex_update_frequency',
@@ -241,7 +241,7 @@ class Admin extends BaseController
                 'id' => 'apex_currency',
                 'title' => $trCurrency,
                 'callback' => [$this->callbacks,'apexPluginSetCurrency'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_general_settings',
                 'args' => [
                     'label_for' => 'apex_currency',
@@ -252,7 +252,7 @@ class Admin extends BaseController
                 'id' => 'apex_plugin_slug',
                 'title' => $trSlug,
                 'callback' => [$this->callbacks,'apexPluginSetSlug'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_general_settings',
                 'args' => [
                     'label_for' => 'apex_plugin_slug',
@@ -263,7 +263,7 @@ class Admin extends BaseController
                 'id' => 'apex_plugin_display_venue',
                 'title' => $trDisplayVenues,
                 'callback' => [$this->callbacks, 'apexPluginDisplayVenue'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' => 'apex_plugin_general_settings',
                 'args' => [
                     'label_for' => 'apex_plugin_display_venue',
@@ -274,7 +274,7 @@ class Admin extends BaseController
                 'id' => 'apex_plugin_venue_order',
                 'title' => $trVenueOrder,
                 'callback' => [$this->callbacks, 'apexPluginVenueOrder'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' => 'apex_plugin_general_settings',
                 'args' => [
                     'label_for' => 'apex_plugin_venue_order',
@@ -285,7 +285,7 @@ class Admin extends BaseController
                 'id' => 'apex_plugin_venue_replacement',
                 'title' => $trVenueReplace,
                 'callback' => [$this->callbacks, 'apexPluginVenueReplacement'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' => 'apex_plugin_general_settings',
                 'args' => [
                     'label_for' => 'apex_plugin_venue_replacement',
@@ -296,7 +296,7 @@ class Admin extends BaseController
                 'id' => 'apex_plugin_add_headers',
                 'title' => $trAddHeaders,
                 'callback' => [$this->callbacks, 'apexPluginAddHeaders'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' => 'apex_plugin_general_settings',
                 'args' => [
                     'label_for' => 'apex_plugin_add_headers',
@@ -307,7 +307,7 @@ class Admin extends BaseController
                 'id' => 'apex_server_name',
                 'title' => $trServerName,
                 'callback' => [$this->callbacks,'apexPluginServerName'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_api_settings',
                 'args' => [
                     'label_for' => 'apex_server_name',
@@ -318,7 +318,7 @@ class Admin extends BaseController
                 'id' => 'apex_public_api_key',
                 'title' => $trPublicKey,
                 'callback' => [$this->callbacks,'apexPluginPublicApiKey'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_api_settings',
                 'args' => [
                     'label_for' => 'apex_public_api_key',
@@ -329,7 +329,7 @@ class Admin extends BaseController
                 'id' => 'apex_private_api_key',
                 'title' => $trPrivateKey,
                 'callback' => [$this->callbacks,'apexPluginPrivateApiKey'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_api_settings',
                 'args' => [
                     'label_for' => 'apex_private_api_key',
@@ -340,7 +340,7 @@ class Admin extends BaseController
                 'id' => 'apex_portal_id',
                 'title' => $trPortalId,
                 'callback' => [$this->callbacks,'apexPluginPortalId'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_api_settings',
                 'args' => [
                     'label_for' => 'apex_portal_id',
@@ -351,7 +351,7 @@ class Admin extends BaseController
                 'id' => 'apex_send_calendar_file',
                 'title' => $trSendCalendarFile,
                 'callback' => [$this->callbacks,'apexPluginSendCalendarFile'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_general_settings',
                 'args' => [
                     'label_for' => 'apex_send_calendar_file',
@@ -362,7 +362,7 @@ class Admin extends BaseController
                 'id' => 'apex_display_seats',
                 'title' => $trDisplaySeats,
                 'callback' => [$this->callbacks,'apexPluginDisplaySeats'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_general_settings',
                 'args' => [
                     'label_for' => 'apex_display_seats',
@@ -373,7 +373,7 @@ class Admin extends BaseController
                 'id' => 'apex_display_title',
                 'title' => $trDisplayTitle,
                 'callback' => [$this->callbacks,'apexPluginDisplayTitle'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_general_settings',
                 'args' => [
                     'label_for' => 'apex_display_title',
@@ -384,7 +384,7 @@ class Admin extends BaseController
                 'id' => 'apex_display_sector',
                 'title' => $trDisplaySector,
                 'callback' => [$this->callbacks,'apexPluginDisplaySector'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_general_settings',
                 'args' => [
                     'label_for' => 'apex_display_sector',
@@ -395,7 +395,7 @@ class Admin extends BaseController
                 'id' => 'apex_courses_extra_css',
                 'title' => $trCoursesExtraCss,
                 'callback' => [$this->callbacks, 'apexCoursesExtraCss'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' => 'apex_plugin_additional_css',
                 'args' => [
                     'label_for' => 'apex_courses_extra_css',
@@ -406,7 +406,7 @@ class Admin extends BaseController
                 'id' => 'apex_courses_archive_extra_css',
                 'title' => $trCourseArchiveExtraCss,
                 'callback' => [$this->callbacks, 'apexCoursesArchiveExtraCss'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' => 'apex_plugin_additional_css',
                 'args' => [
                     'label_for' => 'apex_courses_archive_extra_css',
@@ -417,7 +417,7 @@ class Admin extends BaseController
                 'id' => 'apex_courses_extra_info',
                 'title' => $trCourseExtraInfo,
                 'callback' => [$this->callbacks, 'apexCoursesExtraInfo'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' => 'apex_plugin_extra_course_info',
                 'args' => [
                     'label_for' => 'apex_courses_extra_info',
@@ -428,7 +428,7 @@ class Admin extends BaseController
                 'id' => 'apex_plugin_extra_booking_info',
                 'title' => $trExtraBookingInfo,
                 'callback' => [$this->callbacks, 'apexPluginExtraBookingInfo'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' => 'apex_plugin_extra_course_info',
                 'args' => [
                     'label_for' => 'apex_plugin_extra_booking_info',
@@ -439,7 +439,7 @@ class Admin extends BaseController
                 'id' => 'apex_plugin_after_booking',
                 'title' => $trAfterBooking,
                 'callback' => [$this->callbacks, 'apexPluginAfterBooking'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' => 'apex_plugin_extra_course_info',
                 'args' => [
                     'label_for' => 'apex_plugin_after_booking',
@@ -450,7 +450,7 @@ class Admin extends BaseController
                 'id' => 'apex_plugin_booking_terms',
                 'title' => $trBookingTerms,
                 'callback' => [$this->callbacks, 'apexPluginBookingTerms'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' => 'apex_plugin_extra_course_info',
                 'args' => [
                     'label_for' => 'apex_plugin_booking_terms',
@@ -461,7 +461,7 @@ class Admin extends BaseController
                 'id' => 'apex_courses_listing_title',
                 'title' =>  $trListingTitle,
                 'callback' => [$this->callbacks,'apexCoursesListingTitle'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_listing',
                 'args' => [
                     'label_for' => 'apex_courses_listing_title',
@@ -472,7 +472,7 @@ class Admin extends BaseController
                 'id' => 'apex_courses_listing_sort',
                 'title' => $trListingSort,
                 'callback' => [$this->callbacks, 'apexCoursesListingSort'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_listing',
                 'args' => [
                     'label_for' => 'apex_courses_listing_sort',
@@ -483,7 +483,7 @@ class Admin extends BaseController
                 'id' => 'apex_courses_listing_start',
                 'title' =>  $trListingStartBlock,
                 'callback' => [$this->callbacks,'apexCoursesListingStart'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_listing',
                 'args' => [
                     'label_for' => 'apex_courses_listing_start',
@@ -494,7 +494,7 @@ class Admin extends BaseController
                 'id' => 'apex_courses_listing_end',
                 'title' =>  $trListingEndBlock,
                 'callback' => [$this->callbacks,'apexCoursesListingEnd'],
-                'page' => 'apex_wordpress_plugin',
+                'page' => 'promote_apex_plugin',
                 'section' =>  'apex_plugin_listing',
                 'args' => [
                     'label_for' => 'apex_courses_listing_end',

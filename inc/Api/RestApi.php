@@ -245,6 +245,7 @@ class RestApi
             foreach ($area->area_templates as $template) {
                 $events = $this->loadEvents($area_term, $template->slug);
                 $places_events = [];
+                $number_of_days = $template->number_of_days;
 
                 foreach ($events as $event) {
                     $event_dates = [];
@@ -258,6 +259,27 @@ class RestApi
 
                         if ($session->number_of_days > 1) {
                             $dates = $dates . ' - ' . date_i18n('d M', strtotime($session->end_date));
+                        } else {
+                            $day = reset($session->days);
+                            if ($day) {
+                                $start_date = new \DateTime();
+                                $time_zone = new \DateTimeZone($session->timezone);
+                                $start_date->setTimestamp(strtotime($day->start_date));
+                                $start_date->setTimezone($time_zone);
+
+                                $end_date = new \DateTime();
+                                $end_date->setTimestamp(strtotime($day->end_date));
+                                $end_date->setTimezone($time_zone);
+
+                                $seconds = $end_date->getTimestamp() - $start_date->getTimestamp();
+
+                                if ($seconds < 21600) {
+                                    if (count($event->sessions) == 1) {
+                                        $number_of_days = '1/2';
+                                    }
+                                    $dates = $dates . ' ' . sprintf(__('between %1$s-%2$s', 'promote-apex-plugin'), $start_date->format('H:i'), $end_date->format('H:i'));
+                                }
+                            }
                         }
 
                         array_push($event_dates, $dates);
@@ -288,7 +310,7 @@ class RestApi
                                     'apex_course_event_id'        => $template->event_id,
                                     'apex_course_venue'           => $template->venue,
                                     'apex_course_timezone'        => $template->timezone,
-                                    'apex_course_number_of_days'  => $template->number_of_days,
+                                    'apex_course_number_of_days'  => $number_of_days,
                                     'apex_course_is_active'       => $template->is_active,
                                     'apex_course_is_template'     => $template->is_template,
                                     'apex_course_prices'          => $template->prices,
@@ -312,7 +334,7 @@ class RestApi
                             'apex_course_event_id'          => $template->event_id,
                             'apex_course_venue'             => $template->venue,
                             'apex_course_timezone'          => $template->timezone,
-                            'apex_course_number_of_days'    => $template->number_of_days,
+                            'apex_course_number_of_days'    => $number_of_days,
                             'apex_course_is_active'         => $template->is_active,
                             'apex_course_is_template'       => $template->is_template,
                             'apex_course_prices'            => $template->prices,

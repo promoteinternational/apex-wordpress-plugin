@@ -17,7 +17,7 @@ class SettingsLinks extends BaseController
     function settings_link($links)
     {
         $translation = _e('Settings');
-        $settings_link = '<a href="admin.php?page=apex_wordpress_plugin">'.$translation.'</a>';
+        $settings_link = '<a href="admin.php?page=promote_apex_plugin">'.$translation.'</a>';
         array_push($links, $settings_link);
         return $links;
     }

@@ -5,7 +5,7 @@
     <form method='post' action="options.php">
         <?php
             settings_fields('apex_plugin_group');
-            do_settings_sections('apex_wordpress_plugin');
+            do_settings_sections('promote_apex_plugin');
             submit_button();
         ?>
     </form>

@@ -1,7 +1,7 @@
 {
-  "name": "apex-wordpress-plugin",
-  "version": "1.0.0",
-  "description": "Apex wordpress plugin",
+  "name": "promote-apex-plugin",
+  "version": "1.2.0",
+  "description": "Promote Apex plugin",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {

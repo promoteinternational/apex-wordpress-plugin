@@ -116,16 +116,16 @@ if ($eventAddHeaders == 'yes') {
             <div class="col-12 col-lg-4">
                 <div class="apex-courses__price">
                     <div class="apex-courses__price-title">
-                        <?php _e('Prices and upcoming dates:', 'apex-wordpress-plugin') ?>
+                        <?php _e('Prices and upcoming dates:', 'promote-apex-plugin') ?>
                     </div>
                     <div class="apex-courses__price-price">
                         <?php echo format_currency($course_price->currency_name, $course_price->price); ?>
                     </div>
                     <div class="apex-courses__price-days">
-                        <?php if ($days > 1) {
-                            printf(__('%s days', 'apex-wordpress-plugin'), $days);
+                        <?php if ($days > 1 && $days != '1/2') {
+                            printf(__('%s days', 'promote-apex-plugin'), $days);
                         } else {
-                            printf(__('%s day', 'apex-wordpress-plugin'), $days);
+                            printf(__('%s day', 'promote-apex-plugin'), $days);
                         }
                         ?>
                     </div>
@@ -137,7 +137,7 @@ if ($eventAddHeaders == 'yes') {
                         $newEvents = [];
 
                         ?>
-                        <div class="apex-courses__events-dates"><?php _e("Dates", 'apex-wordpress-plugin') ?></div>
+                        <div class="apex-courses__events-dates"><?php _e("Dates", 'promote-apex-plugin') ?></div>
                         <?php
                         //Looping through each event and display event data
                         foreach ($events as $event) {
@@ -150,7 +150,7 @@ if ($eventAddHeaders == 'yes') {
                         <div class="apex-courses__event">
 
                             <div class="alert alert-info">
-                                <?php _e('No upcoming events', 'apex-wordpress-plugin') ?>
+                                <?php _e('No upcoming events', 'promote-apex-plugin') ?>
                             </div>
                         </div>
                         <!-- /.apex-courses__events -->
@@ -201,7 +201,7 @@ if ($eventAddHeaders == 'yes') {
                     ?>
                     <div class="apex-courses__event">
                         <div class="alert alert-info">
-                            <?php _e('No upcoming events', 'apex-wordpress-plugin') ?>
+                            <?php _e('No upcoming events', 'promote-apex-plugin') ?>
                         </div>
                     </div>
                     <!-- /.apex-courses__events -->

@@ -1,5 +1,4 @@
-=== Plugin Name ===
-
+=== Promote Apex Plugin ===
 Contributors: ankupromote
 Plugin Name: Promote Apex Plugin
 Plugin URL: https://github.com/promoteinternational/apex-wordpress-plugin
@@ -15,7 +14,6 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Plugin used to connect a Promote Apex course administration system to a wordpress page and display courses.
 
 == Description ==
-
 The Promote Apex plugin is used to display course information from a Apex installation on a wordpress site.
 The plugin uses a cron script to download information about the courses and display them in a configurable way on a
 wordpress site.
@@ -25,15 +23,12 @@ course information. These pages will be updated by the script according to the s
 page.
 
 == Installation ==
-
 To install the plugin you need to do the following steps:
 1. Install the plugin through the Wordpress plugin screens.
 2. Activate the plugin thought the 'Plugins' section in wordpress.
 3. Configure the apex plugin in the menu "Apex Plugin".
 
-== Upgrade Notice ==
-
+== Changelog ==
 = 1.2 =
 * First release under the Promote Apex plugin name
 * Updated so that each course that is less than 6 hours will display information about start and end times.
-

@@ -1,6 +1,6 @@
-=== Promote Apex Plugin ===
+=== Promote Apex ===
 Contributors: ankupromote
-Plugin Name: Promote Apex Plugin
+Plugin Name: Promote Apex
 Plugin URL: https://github.com/promoteinternational/apex-wordpress-plugin
 Tags: wp, promote, apex
 Requires at least: 5.0
@@ -30,5 +30,5 @@ To install the plugin you need to do the following steps:
 
 == Changelog ==
 = 1.2 =
-* First release under the Promote Apex plugin name
+* First release under the Promote Apex name
 * Updated so that each course that is less than 6 hours will display information about start and end times.

@@ -1,21 +1,21 @@
 <?php
 /**
- * @package  PromoteApexPlugin
+ * @package  PromoteApex
  */
 
 /*
-Plugin Name: Promote Apex Plugin
+Plugin Name: Promote Apex
 Plugin URI: https://github.com/promoteinternational/apex-wordpress-plugin
-Text Domain: promote-apex-plugin
+Text Domain: promote-apex
 Description: Plugin used to connect a wordpress website with Apex
 Version: 1.2.0
 Author: Promote International AB
 Author URI: https://www.promoteint.com
 License: GPLv2 or later
-
 */
-use Inc\Base\Activate;
-use Inc\Base\Deactivate;
+
+use Apex\Base\Activate;
+use Apex\Base\Deactivate;
 
 //If this file called directly, abort execution!
 defined('ABSPATH') or die('Hey, access denied!');
@@ -26,29 +26,29 @@ if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')){
 }
 
 //Code that runs during plugin activation
-function activate_promote_apex_plugin(){
+function activate_promote_apex(){
     Activate::activate();
 }
-register_activation_hook(__FILE__,'activate_promote_apex_plugin');
+register_activation_hook(__FILE__, 'activate_promote_apex');
 
 //Code that runs during plugin deactivation
-function deactivate_promote_apex_plugin(){
+function deactivate_promote_apex(){
     Deactivate::deactivate();
 }
-register_deactivation_hook(__FILE__,'deactivate_promote_apex_plugin');
+register_deactivation_hook(__FILE__, 'deactivate_promote_apex');
 
 
 
 //Initialize all the core classes of the plugin
-if (class_exists('Inc\\Init')){
-    Inc\Init::register_services();
+if (class_exists('Apex\\Init')){
+    apex\Init::register_services();
 }
 
-function promote_apex_plugin_load_text_domain() {
-    load_plugin_textdomain('promote-apex-plugin', false, basename(dirname(__FILE__)).'/languages');
+function promote_apex_load_text_domain() {
+    load_plugin_textdomain('promote-apex', false, basename(dirname(__FILE__)).'/languages');
 }
 
-add_action('plugins_loaded', 'promote_apex_plugin_load_text_domain');
+add_action('plugins_loaded', 'promote_apex_load_text_domain');
 
 function format_currency($currency_name, $value) {
     switch($currency_name) {

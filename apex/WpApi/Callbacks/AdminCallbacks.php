@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @package  ApexWordpressPlugin
+ * @package   PromoteApex
  */
 
-namespace Inc\WpApi\Callbacks;
+namespace Apex\WpApi\Callbacks;
 
-use Inc\Base\BaseController;
+use Apex\Base\BaseController;
 
 class AdminCallbacks extends BaseController
 {
@@ -36,29 +36,29 @@ class AdminCallbacks extends BaseController
 
     public function apexPluginGeneralSettings()
     {
-        _e('Provide the general plugin settings', 'promote-apex-plugin');
+        _e('Provide the general plugin settings', 'promote-apex');
     }
 
 
     public function apexPluginApiSettings()
     {
-        _e('Provide the API settings:', 'promote-apex-plugin');
+        _e('Provide the API settings:', 'promote-apex');
     }
 
     public function apexPluginAdditionalCss()
     {
-        _e('Provide additional CSS (optional):', 'promote-apex-plugin');
+        _e('Provide additional CSS (optional):', 'promote-apex');
     }
 
     public function apexPluginCourseExtraInfo()
     {
-        _e('Provide extra information for the course information page:', 'promote-apex-plugin');
+        _e('Provide extra information for the course information page:', 'promote-apex');
     }
 
     public function apexPluginListingPage()
     {
-        _e('Provide options for the courses page:', 'promote-apex-plugin');
-        echo '<p>' . __('You can use shortcodes for output this fields: <strong>[apex-courses-list-before], [apex-courses-list], [apex-courses-list-after]</strong>', 'promote-apex-plugin') . '</p>';
+        _e('Provide options for the courses page:', 'promote-apex');
+        echo '<p>' . __('You can use shortcodes for output this fields: <strong>[Apex-courses-list-before], [Apex-courses-list], [Apex-courses-list-after]</strong>', 'promote-apex') . '</p>';
     }
 
     public function apexPluginUpdateFrequency()
@@ -73,10 +73,10 @@ class AdminCallbacks extends BaseController
         ?>
 
         <select name="apex_currency" class="apex_currency">
-            <option value="SEK" <?= ($value == "SEK") ? 'selected="selected"' : '' ?>><?php _e('Swedish Krona', 'promote-apex-plugin') ?></option>
-            <option value="USD" <?= ($value == "USD") ? 'selected="selected"' : '' ?> ><?php _e('United States Dollars', 'promote-apex-plugin') ?></option>
-            <option value="EUR" <?= ($value == "EUR") ? 'selected="selected"' : '' ?> ><?php _e('Euro', 'promote-apex-plugin'); ?></option>
-            <option value="GBP" <?= ($value == "GBP") ? 'selected="selected"' : '' ?>><?php _e('United Kingdom Pounds', 'promote-apex-plugin'); ?></option>
+            <option value="SEK" <?= ($value == "SEK") ? 'selected="selected"' : '' ?>><?php _e('Swedish Krona', 'promote-apex') ?></option>
+            <option value="USD" <?= ($value == "USD") ? 'selected="selected"' : '' ?> ><?php _e('United States Dollars', 'promote-apex') ?></option>
+            <option value="EUR" <?= ($value == "EUR") ? 'selected="selected"' : '' ?> ><?php _e('Euro', 'promote-apex'); ?></option>
+            <option value="GBP" <?= ($value == "GBP") ? 'selected="selected"' : '' ?>><?php _e('United Kingdom Pounds', 'promote-apex'); ?></option>
         </select>
 
         <?php
@@ -85,7 +85,7 @@ class AdminCallbacks extends BaseController
     public function apexPluginSetSlug()
     {
         $value = esc_attr(get_option('apex_plugin_slug'));
-        $translation = __('Enter Apex courses slug', 'promote-apex-plugin');
+        $translation = __('Enter Apex courses slug', 'promote-apex');
         echo '<input type="text" class="regular-text" name="apex_plugin_slug" value="' . $value . '" placeholder="' . $translation . '">';
     }
 
@@ -94,8 +94,8 @@ class AdminCallbacks extends BaseController
         $value = esc_attr(get_option('apex_plugin_display_venue'));
         ?>
         <select name="apex_plugin_display_venue" class="apex_plugin_display_venue">
-            <option value="dates" <?= ($value == "dates") ? 'selected="selected"' : '' ?> > <?php _e('Show dates', 'promote-apex-plugin') ?></option>
-            <option value="venues" <?= ($value == "venues") ? 'selected="selected"' : '' ?>> <?php _e('Group by venue', 'promote-apex-plugin') ?></option>
+            <option value="dates" <?= ($value == "dates") ? 'selected="selected"' : '' ?> > <?php _e('Show dates', 'promote-apex') ?></option>
+            <option value="venues" <?= ($value == "venues") ? 'selected="selected"' : '' ?>> <?php _e('Group by venue', 'promote-apex') ?></option>
         </select>
         <?php
     }
@@ -104,14 +104,14 @@ class AdminCallbacks extends BaseController
     public function apexPluginVenueOrder()
     {
         $value = esc_attr(get_option('apex_plugin_venue_order'));
-        $translation = __('Venue order', 'promote-apex-plugin');
+        $translation = __('Venue order', 'promote-apex');
         echo '<input type="text" class="regular-text" name="apex_plugin_venue_order" value="' . $value . '" placeholder="' . $translation . '">';
     }
 
     public function apexPluginVenueReplacement()
     {
         $value = esc_attr(get_option('apex_plugin_venue_replacement'));
-        $translation = __('Enter venue replacements', 'promote-apex-plugin');
+        $translation = __('Enter venue replacements', 'promote-apex');
         echo '<input type="text" class="regular-text" name="apex_plugin_venue_replacement" value="' . $value . '" placeholder="' . $translation . '">';
     }
 
@@ -129,28 +129,28 @@ class AdminCallbacks extends BaseController
     public function apexPluginServerName()
     {
         $value = esc_attr(get_option('apex_server_name'));
-        $translation = __('Enter server name', 'promote-apex-plugin');
+        $translation = __('Enter server name', 'promote-apex');
         echo '<input type="text" class="regular-text" name="apex_server_name" value="' . $value . '" placeholder="' . $translation . '">';
     }
 
     public function apexPluginPublicApiKey()
     {
         $value = esc_attr(get_option('apex_public_api_key'));
-        $translation = __('Enter public api key', 'promote-apex-plugin');
+        $translation = __('Enter public api key', 'promote-apex');
         echo '<input type="text" class="regular-text" name="apex_public_api_key" value="' . $value . '" placeholder="' . $translation . '">';
     }
 
     public function apexPluginPrivateApiKey()
     {
         $value = esc_attr(get_option('apex_private_api_key'));
-        $translation = __('Enter private api key', 'promote-apex-plugin');
+        $translation = __('Enter private api key', 'promote-apex');
         echo '<input type="text" class="regular-text" name="apex_private_api_key" value="' . $value . '" placeholder="' . $translation . '">';
     }
 
     public function apexPluginPortalId()
     {
         $value = esc_attr(get_option('apex_portal_id'));
-        $translation = __('Enter portal ID', 'promote-apex-plugin');
+        $translation = __('Enter portal ID', 'promote-apex');
         echo '<input type="text" class="regular-text" name="apex_portal_id" value="' . $value . '" placeholder="' . $translation . '">';
     }
 
@@ -209,7 +209,7 @@ h2 {
   color: #fff;
   background: #222;
 }
-', 'promote-apex-plugin');
+', 'promote-apex');
         echo '<textarea placeholder="' . $translation . '" rows="10" name="apex_courses_extra_css" class="large-text">' . $value . '</textarea>';
     }
 
@@ -221,7 +221,7 @@ h2 {
   color: #fff;
   background: #222;
 }
-', 'promote-apex-plugin');
+', 'promote-apex');
         echo '<textarea placeholder="' . $translation . '" rows="10" name="apex_courses_archive_extra_css" class="large-text">' . $value . '</textarea>';
     }
 
@@ -255,14 +255,14 @@ course.price = The price of the course
 course.currency = The currency of the price
 course.name = The name of the course
 course.slug = The slug of the course
-', 'promote-apex-plugin');
+', 'promote-apex');
         echo '<textarea placeholder="' . $translation . '" rows="10" name="apex_plugin_after_booking" class="large-text">' . $value . '</textarea>';
     }
 
     public function apexCoursesListingTitle()
     {
         $value = esc_attr(get_option('apex_courses_listing_title'));
-        $translation = __('Enter page title', 'promote-apex-plugin');
+        $translation = __('Enter page title', 'promote-apex');
         echo '<input type="text" class="regular-text" name="apex_courses_listing_title" value="' . $value . '" placeholder="' . $translation . '">';
     }
 
@@ -283,8 +283,8 @@ course.slug = The slug of the course
         $value = esc_attr(get_option('apex_courses_listing_sort', 'alphabetic'));
         ?>
         <select name="apex_courses_listing_sort" class="apex_courses_listing_sort">
-            <option value="alphabetic" <?= ($value == "alphabetic") ? 'selected="selected"' : '' ?>> <?php _e('Alphabetic', 'promote-apex-plugin') ?></option>
-            <option value="numeric" <?= ($value == "numeric") ? 'selected="selected"' : '' ?>> <?php _e('Numeric', 'promote-apex-plugin') ?></option>
+            <option value="alphabetic" <?= ($value == "alphabetic") ? 'selected="selected"' : '' ?>> <?php _e('Alphabetic', 'promote-apex') ?></option>
+            <option value="numeric" <?= ($value == "numeric") ? 'selected="selected"' : '' ?>> <?php _e('Numeric', 'promote-apex') ?></option>
         </select>
         <?php
     }

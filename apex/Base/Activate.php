@@ -1,9 +1,9 @@
 <?php
 /**
- *  @package  ApexWordpressPlugin
+ *  @package   PromoteApex
  */
 
-namespace Inc\Base;
+namespace Apex\Base;
 
 class Activate
 {

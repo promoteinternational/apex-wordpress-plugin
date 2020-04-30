@@ -1,10 +1,10 @@
 <?php
 /**
- * @package  ApexWordpressPlugin
+ * @package   PromoteApex
  */
 
 
-namespace Inc\WpApi;
+namespace Apex\WpApi;
 
 class WpApiSettings
 {

@@ -21,237 +21,237 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: inc/Api/CronRequest.php:33
+#: apex/Api/CronRequest.php:33
 msgid "Custom Settings"
 msgstr "Anpassade inställningar"
 
-#: inc/Api/RestApi.php:271
+#: apex/Api/RestApi.php:271
 #, php-format
 msgid "between %1$s-%2$s"
 msgstr "mellan %1$s-%2$s"
 
-#: inc/Base/SettingsLinks.php:19
+#: apex/Base/SettingsLinks.php:19
 msgid "Settings"
 msgstr "Inställningar"
 
-#: inc/Pages/Admin.php:34
+#: apex/Pages/Admin.php:34
 msgid "Apex Wordpress Plugin Settings"
 msgstr "Apex Wordpress Inställningar"
 
-#: inc/Pages/Admin.php:160
+#: apex/Pages/Admin.php:160
 msgid "General Settings"
 msgstr "Allmänna inställningar"
 
-#: inc/Pages/Admin.php:161
+#: apex/Pages/Admin.php:161
 msgid "API Settings"
 msgstr "API Inställningar"
 
-#: inc/Pages/Admin.php:162
+#: apex/Pages/Admin.php:162
 msgid "Additional CSS"
 msgstr "Extra CSS"
 
-#: inc/Pages/Admin.php:163
+#: apex/Pages/Admin.php:163
 msgid "Course extra information"
 msgstr "Extra kursinforation"
 
-#: inc/Pages/Admin.php:164
+#: apex/Pages/Admin.php:164
 msgid "Courses page"
 msgstr "Kurslistningssida"
 
-#: inc/Pages/Admin.php:203
+#: apex/Pages/Admin.php:203
 msgid "Amount of minutes before each update"
 msgstr "Antal minuter mellan uppdateringar"
 
-#: inc/Pages/Admin.php:204
+#: apex/Pages/Admin.php:204
 msgid "Currency (Please verify, that selected currency exist in API)"
 msgstr "Valuta (se till att valutan existerar i API:et)"
 
-#: inc/Pages/Admin.php:205
+#: apex/Pages/Admin.php:205
 msgid "Slug for courses"
 msgstr "Slug för kurser"
 
-#: inc/Pages/Admin.php:206
+#: apex/Pages/Admin.php:206
 msgid "Display events"
 msgstr "Visa kurstillfällen"
 
-#: inc/Pages/Admin.php:207 inc/WpApi/Callbacks/AdminCallbacks.php:107
+#: apex/Pages/Admin.php:207 apex/WpApi/Callbacks/AdminCallbacks.php:107
 msgid "Venue order"
 msgstr "Plats ordning"
 
-#: inc/Pages/Admin.php:208
+#: apex/Pages/Admin.php:208
 msgid "Venue replacements"
 msgstr "Plats ersättningar"
 
-#: inc/Pages/Admin.php:209
+#: apex/Pages/Admin.php:209
 msgid "Add header and footer to course page"
 msgstr "Lägg till huvud och fot på kurssidan"
 
-#: inc/Pages/Admin.php:210
+#: apex/Pages/Admin.php:210
 msgid "Server address"
 msgstr "Serveradress"
 
-#: inc/Pages/Admin.php:211
+#: apex/Pages/Admin.php:211
 msgid "Public API Key"
 msgstr "Publik API nyckel"
 
-#: inc/Pages/Admin.php:212
+#: apex/Pages/Admin.php:212
 msgid "Private API Key"
 msgstr "Privat API nyckel"
 
-#: inc/Pages/Admin.php:213
+#: apex/Pages/Admin.php:213
 msgid "Portal ID"
 msgstr "Portal ID"
 
-#: inc/Pages/Admin.php:214
+#: apex/Pages/Admin.php:214
 msgid "Send calendar file"
 msgstr "Skicka kalenderfil"
 
-#: inc/Pages/Admin.php:215
+#: apex/Pages/Admin.php:215
 msgid "Display Available Seats"
 msgstr "Visa tillgängliga platser"
 
-#: inc/Pages/Admin.php:216
+#: apex/Pages/Admin.php:216
 msgid "Display Title"
 msgstr "Visa titel"
 
-#: inc/Pages/Admin.php:217
+#: apex/Pages/Admin.php:217
 msgid "Display Sector"
 msgstr "Visa bransch"
 
-#: inc/Pages/Admin.php:218
+#: apex/Pages/Admin.php:218
 msgid "Extra course page CSS"
 msgstr "Extra CSS på kurssidan"
 
-#: inc/Pages/Admin.php:219
+#: apex/Pages/Admin.php:219
 msgid "Extra course archive page CSS"
 msgstr "Extra CSS på kurslistningssidan"
 
-#: inc/Pages/Admin.php:220
+#: apex/Pages/Admin.php:220
 msgid "Course extra info"
 msgstr "Extra kursinformation"
 
-#: inc/Pages/Admin.php:221
+#: apex/Pages/Admin.php:221
 msgid "Extra booking info"
 msgstr "Extra bokningsinformation"
 
-#: inc/Pages/Admin.php:222
+#: apex/Pages/Admin.php:222
 msgid "Extra after booking code"
 msgstr "Extra bokningskod"
 
-#: inc/Pages/Admin.php:223
+#: apex/Pages/Admin.php:223
 msgid "Booking terms"
 msgstr "Bokningsvillkor"
 
-#: inc/Pages/Admin.php:224
+#: apex/Pages/Admin.php:224
 msgid "Page title"
 msgstr "Sidtitel"
 
-#: inc/Pages/Admin.php:225
+#: apex/Pages/Admin.php:225
 msgid "Course sorting"
 msgstr "Kurssortering"
 
-#: inc/Pages/Admin.php:226
+#: apex/Pages/Admin.php:226
 msgid "Content before courses list"
 msgstr "Innehåll före kurslistningen"
 
-#: inc/Pages/Admin.php:227
+#: apex/Pages/Admin.php:227
 msgid "Content after courses list"
 msgstr "Innehåll efter kurslistningen"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:39
+#: apex/WpApi/Callbacks/AdminCallbacks.php:39
 msgid "Provide the general plugin settings"
 msgstr "Ange allmänna inställningar"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:45
+#: apex/WpApi/Callbacks/AdminCallbacks.php:45
 msgid "Provide the API settings:"
 msgstr "Ange API inställningar:"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:50
+#: apex/WpApi/Callbacks/AdminCallbacks.php:50
 msgid "Provide additional CSS (optional):"
 msgstr "Ange extra CSS (valfritt):"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:55
+#: apex/WpApi/Callbacks/AdminCallbacks.php:55
 msgid "Provide extra information for the course information page:"
 msgstr "Ange extra information för kursinformationssidan:"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:60
+#: apex/WpApi/Callbacks/AdminCallbacks.php:60
 msgid "Provide options for the courses page:"
 msgstr "Ange inställningar för kurslistningssidan:"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:61
+#: apex/WpApi/Callbacks/AdminCallbacks.php:61
 msgid ""
-"You can use shortcodes for output this fields: <strong>[apex-courses-list-"
-"before], [apex-courses-list], [apex-courses-list-after]</strong>"
+"You can use shortcodes for output this fields: <strong>[Apex-courses-list-"
+"before], [Apex-courses-list], [Apex-courses-list-after]</strong>"
 msgstr ""
-"Du kan använda kortkoder för att visa dessa fält: <strong>[apex-courses-list-"
-"before], [apex-courses-list], [apex-courses-list-after]</strong>"
+"Du kan använda kortkoder för att visa dessa fält: <strong>[Apex-courses-list-"
+"before], [Apex-courses-list], [Apex-courses-list-after]</strong>"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:76
+#: apex/WpApi/Callbacks/AdminCallbacks.php:76
 msgid "Swedish Krona"
 msgstr "Svenska Kronor"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:77
+#: apex/WpApi/Callbacks/AdminCallbacks.php:77
 msgid "United States Dollars"
 msgstr "US dollar"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:78
+#: apex/WpApi/Callbacks/AdminCallbacks.php:78
 msgid "Euro"
 msgstr "Euro"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:79
+#: apex/WpApi/Callbacks/AdminCallbacks.php:79
 msgid "United Kingdom Pounds"
 msgstr "Engelska pund"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:88
+#: apex/WpApi/Callbacks/AdminCallbacks.php:88
 msgid "Enter Apex courses slug"
 msgstr "Ange slug för kurserna"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:97
+#: apex/WpApi/Callbacks/AdminCallbacks.php:97
 msgid "Show dates"
 msgstr "Visa datum"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:98
+#: apex/WpApi/Callbacks/AdminCallbacks.php:98
 msgid "Group by venue"
 msgstr "Gruppera efter plats"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:114
+#: apex/WpApi/Callbacks/AdminCallbacks.php:114
 msgid "Enter venue replacements"
 msgstr "Ange platsbyten"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:123
-#: inc/WpApi/Callbacks/AdminCallbacks.php:162
-#: inc/WpApi/Callbacks/AdminCallbacks.php:174
-#: inc/WpApi/Callbacks/AdminCallbacks.php:186
-#: inc/WpApi/Callbacks/AdminCallbacks.php:197
+#: apex/WpApi/Callbacks/AdminCallbacks.php:123
+#: apex/WpApi/Callbacks/AdminCallbacks.php:162
+#: apex/WpApi/Callbacks/AdminCallbacks.php:174
+#: apex/WpApi/Callbacks/AdminCallbacks.php:186
+#: apex/WpApi/Callbacks/AdminCallbacks.php:197
 msgid "No"
 msgstr "Nej"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:124
-#: inc/WpApi/Callbacks/AdminCallbacks.php:163
-#: inc/WpApi/Callbacks/AdminCallbacks.php:175
-#: inc/WpApi/Callbacks/AdminCallbacks.php:187
-#: inc/WpApi/Callbacks/AdminCallbacks.php:198
+#: apex/WpApi/Callbacks/AdminCallbacks.php:124
+#: apex/WpApi/Callbacks/AdminCallbacks.php:163
+#: apex/WpApi/Callbacks/AdminCallbacks.php:175
+#: apex/WpApi/Callbacks/AdminCallbacks.php:187
+#: apex/WpApi/Callbacks/AdminCallbacks.php:198
 msgid "Yes"
 msgstr "Ja"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:132
+#: apex/WpApi/Callbacks/AdminCallbacks.php:132
 msgid "Enter server name"
 msgstr "Ange servernamn"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:139
+#: apex/WpApi/Callbacks/AdminCallbacks.php:139
 msgid "Enter public api key"
 msgstr "Ange publik api nyckel"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:146
+#: apex/WpApi/Callbacks/AdminCallbacks.php:146
 msgid "Enter private api key"
 msgstr "Ange privat api nyckel"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:153
+#: apex/WpApi/Callbacks/AdminCallbacks.php:153
 msgid "Enter portal ID"
 msgstr "Ange portal ID"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:207
-#: inc/WpApi/Callbacks/AdminCallbacks.php:219
+#: apex/WpApi/Callbacks/AdminCallbacks.php:207
+#: apex/WpApi/Callbacks/AdminCallbacks.php:219
 msgid ""
 "Example (add css styling):\n"
 "h2 {\n"
@@ -265,7 +265,7 @@ msgstr ""
 "  background: #222;\n"
 "}\n"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:249
+#: apex/WpApi/Callbacks/AdminCallbacks.php:249
 msgid ""
 "Example (extra javascript):\n"
 "    alert(course.transactionId);\n"
@@ -287,15 +287,15 @@ msgstr ""
 "course.name = Namnet på kursen\n"
 "course.slug = Slug för kursen\n"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:265
+#: apex/WpApi/Callbacks/AdminCallbacks.php:265
 msgid "Enter page title"
 msgstr "Ange sidans titel"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:286
+#: apex/WpApi/Callbacks/AdminCallbacks.php:286
 msgid "Alphabetic"
 msgstr "Alfabetisk"
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:287
+#: apex/WpApi/Callbacks/AdminCallbacks.php:287
 msgid "Numeric"
 msgstr "Numerisk"
 

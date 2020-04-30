@@ -1,13 +1,13 @@
 <?php
 /**
- * @package  ApexWordpressPlugin
+ * @package   PromoteApex
  */
 
-namespace Inc\Pages;
+namespace Apex\Pages;
 
-use Inc\Base\BaseController;
-use Inc\WpApi\WpApiSettings;
-use Inc\WpApi\Callbacks\AdminCallbacks;
+use Apex\Base\BaseController;
+use Apex\WpApi\WpApiSettings;
+use Apex\WpApi\Callbacks\AdminCallbacks;
 
 
 class Admin extends BaseController
@@ -31,7 +31,7 @@ class Admin extends BaseController
 
     public function setPages()
     {
-        $translation = __('Apex Wordpress Plugin Settings', 'promote-apex-plugin');
+        $translation = __('Apex Wordpress Plugin Settings', 'promote-apex');
         $this->pages = [
             [
                 'page_title' => $translation,
@@ -39,7 +39,7 @@ class Admin extends BaseController
                 'capability' => 'manage_options',
                 'menu_slug' => 'promote_apex_plugin',
                 'callback' => [ $this->callbacks, 'adminDashboard'],
-                'icon_url' => 'dashicons-analytics',
+                'icon_url' => 'dashicons-book-alt',
                 'position' => 110
             ],
         ];
@@ -157,11 +157,11 @@ class Admin extends BaseController
 
     public function setSections()
     {
-        $trGeneral = __('General Settings', 'promote-apex-plugin');
-        $trApi = __('API Settings', 'promote-apex-plugin');
-        $trCss = __('Additional CSS', 'promote-apex-plugin');
-        $strExtraInfo = __('Course extra information', 'promote-apex-plugin');
-        $trListing = __('Courses page', 'promote-apex-plugin');
+        $trGeneral = __('General Settings', 'promote-apex');
+        $trApi = __('API Settings', 'promote-apex');
+        $trCss = __('Additional CSS', 'promote-apex');
+        $strExtraInfo = __('Course extra information', 'promote-apex');
+        $trListing = __('Courses page', 'promote-apex');
         $args = [
             [
                 'id' => 'apex_plugin_general_settings',
@@ -200,31 +200,31 @@ class Admin extends BaseController
 
     public function setFields()
     {
-        $trUpdate = __('Amount of minutes before each update', 'promote-apex-plugin');
-        $trCurrency = __('Currency (Please verify, that selected currency exist in API)', 'promote-apex-plugin');
-        $trSlug = __('Slug for courses', 'promote-apex-plugin');
-        $trDisplayVenues = __('Display events', 'promote-apex-plugin');
-        $trVenueOrder = __('Venue order', 'promote-apex-plugin');
-        $trVenueReplace = __('Venue replacements', 'promote-apex-plugin');
-        $trAddHeaders = __('Add header and footer to course page', 'promote-apex-plugin');
-        $trServerName = __('Server address', 'promote-apex-plugin');
-        $trPublicKey = __('Public API Key', 'promote-apex-plugin');
-        $trPrivateKey = __('Private API Key', 'promote-apex-plugin');
-        $trPortalId = __('Portal ID', 'promote-apex-plugin');
-        $trSendCalendarFile = __('Send calendar file', 'promote-apex-plugin');
-        $trDisplaySeats = __('Display Available Seats', 'promote-apex-plugin');
-        $trDisplayTitle = __('Display Title', 'promote-apex-plugin');
-        $trDisplaySector = __('Display Sector', 'promote-apex-plugin');
-        $trCoursesExtraCss = __('Extra course page CSS', 'promote-apex-plugin');
-        $trCourseArchiveExtraCss = __('Extra course archive page CSS', 'promote-apex-plugin');
-        $trCourseExtraInfo = __('Course extra info', 'promote-apex-plugin');
-        $trExtraBookingInfo = __('Extra booking info', 'promote-apex-plugin');
-        $trAfterBooking = __('Extra after booking code', 'promote-apex-plugin');
-        $trBookingTerms = __('Booking terms', 'promote-apex-plugin');
-        $trListingTitle = __('Page title', 'promote-apex-plugin');
-        $trListingSort = __('Course sorting', 'promote-apex-plugin');
-        $trListingStartBlock = __('Content before courses list', 'promote-apex-plugin');
-        $trListingEndBlock = __('Content after courses list', 'promote-apex-plugin');
+        $trUpdate = __('Amount of minutes before each update', 'promote-apex');
+        $trCurrency = __('Currency (Please verify, that selected currency exist in API)', 'promote-apex');
+        $trSlug = __('Slug for courses', 'promote-apex');
+        $trDisplayVenues = __('Display events', 'promote-apex');
+        $trVenueOrder = __('Venue order', 'promote-apex');
+        $trVenueReplace = __('Venue replacements', 'promote-apex');
+        $trAddHeaders = __('Add header and footer to course page', 'promote-apex');
+        $trServerName = __('Server address', 'promote-apex');
+        $trPublicKey = __('Public API Key', 'promote-apex');
+        $trPrivateKey = __('Private API Key', 'promote-apex');
+        $trPortalId = __('Portal ID', 'promote-apex');
+        $trSendCalendarFile = __('Send calendar file', 'promote-apex');
+        $trDisplaySeats = __('Display Available Seats', 'promote-apex');
+        $trDisplayTitle = __('Display Title', 'promote-apex');
+        $trDisplaySector = __('Display Sector', 'promote-apex');
+        $trCoursesExtraCss = __('Extra course page CSS', 'promote-apex');
+        $trCourseArchiveExtraCss = __('Extra course archive page CSS', 'promote-apex');
+        $trCourseExtraInfo = __('Course extra info', 'promote-apex');
+        $trExtraBookingInfo = __('Extra booking info', 'promote-apex');
+        $trAfterBooking = __('Extra after booking code', 'promote-apex');
+        $trBookingTerms = __('Booking terms', 'promote-apex');
+        $trListingTitle = __('Page title', 'promote-apex');
+        $trListingSort = __('Course sorting', 'promote-apex');
+        $trListingStartBlock = __('Content before courses list', 'promote-apex');
+        $trListingEndBlock = __('Content after courses list', 'promote-apex');
         $args = [
             [
                 'id' => 'apex_update_frequency',

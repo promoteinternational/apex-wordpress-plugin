@@ -1,11 +1,9 @@
 <?php
 /**
- * @package  ApexWordpressPlugin
+ * @package   PromoteApex
  */
 
-namespace Inc\Base;
-
-use Inc\Base\BaseController;
+namespace Apex\Base;
 
 class SettingsLinks extends BaseController
 {

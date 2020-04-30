@@ -1,5 +1,9 @@
 <?php
-use Inc\Api\RestApi;
+/**
+ * Template for displaying the information for a course in wordpress.
+ */
+
+use Apex\Api\RestApi;
 
 //Get the ID of the current post
 $postID = get_the_ID();
@@ -116,16 +120,16 @@ if ($eventAddHeaders == 'yes') {
             <div class="col-12 col-lg-4">
                 <div class="apex-courses__price">
                     <div class="apex-courses__price-title">
-                        <?php _e('Prices and upcoming dates:', 'promote-apex-plugin') ?>
+                        <?php _e('Prices and upcoming dates:', 'promote-apex') ?>
                     </div>
                     <div class="apex-courses__price-price">
                         <?php echo format_currency($course_price->currency_name, $course_price->price); ?>
                     </div>
                     <div class="apex-courses__price-days">
                         <?php if ($days > 1 && $days != '1/2') {
-                            printf(__('%s days', 'promote-apex-plugin'), $days);
+                            printf(__('%s days', 'promote-apex'), $days);
                         } else {
-                            printf(__('%s day', 'promote-apex-plugin'), $days);
+                            printf(__('%s day', 'promote-apex'), $days);
                         }
                         ?>
                     </div>
@@ -137,7 +141,7 @@ if ($eventAddHeaders == 'yes') {
                         $newEvents = [];
 
                         ?>
-                        <div class="apex-courses__events-dates"><?php _e("Dates", 'promote-apex-plugin') ?></div>
+                        <div class="apex-courses__events-dates"><?php _e("Dates", 'promote-apex') ?></div>
                         <?php
                         //Looping through each event and display event data
                         foreach ($events as $event) {
@@ -150,7 +154,7 @@ if ($eventAddHeaders == 'yes') {
                         <div class="apex-courses__event">
 
                             <div class="alert alert-info">
-                                <?php _e('No upcoming events', 'promote-apex-plugin') ?>
+                                <?php _e('No upcoming events', 'promote-apex') ?>
                             </div>
                         </div>
                         <!-- /.apex-courses__events -->
@@ -201,7 +205,7 @@ if ($eventAddHeaders == 'yes') {
                     ?>
                     <div class="apex-courses__event">
                         <div class="alert alert-info">
-                            <?php _e('No upcoming events', 'promote-apex-plugin') ?>
+                            <?php _e('No upcoming events', 'promote-apex') ?>
                         </div>
                     </div>
                     <!-- /.apex-courses__events -->

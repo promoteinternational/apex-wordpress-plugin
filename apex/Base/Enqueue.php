@@ -1,9 +1,9 @@
 <?php
 /**
- *  @package  ApexWordpressPlugin
+ *  @package   PromoteApex
  */
 
-namespace Inc\Base;
+namespace Apex\Base;
 
 class Enqueue extends BaseController
 {
@@ -16,9 +16,9 @@ class Enqueue extends BaseController
         add_filter('archive_template', [$this,'register_courses_template_archive'] ) ;
 
         // Shortcodes
-        add_shortcode( 'apex-courses-list', [$this,'apex_courses_list'] );
-        add_shortcode( 'apex-courses-list-before', [$this,'apex_courses_list_before'] );
-        add_shortcode( 'apex-courses-list-after', [$this,'apex_courses_list_after'] );
+        add_shortcode( 'Apex-courses-list', [$this,'apex_courses_list'] );
+        add_shortcode( 'Apex-courses-list-before', [$this,'apex_courses_list_before'] );
+        add_shortcode( 'Apex-courses-list-after', [$this,'apex_courses_list_after'] );
     }
 
     function enqueueAdmin() {
@@ -45,20 +45,21 @@ class Enqueue extends BaseController
         $translation = _(ucfirst($this->plugin_slug));
 
         register_post_type($this->plugin_slug, [
-            'public'    => true,
-            'label'     => $translation,
-            'capabilities'  => array(
-                'create_posts'  => 'do_not_allow'
-            ),
-            'map_meta_cap'  => true,
-            'has_archive'   => true,
+                'public' => true,
+                'label' => $translation,
+                'capabilities' => array(
+                    'create_posts' => 'do_not_allow'
+                ),
+                'map_meta_cap' => true,
+                'has_archive' => true,
+                'menu_icon' => 'dashicons-book-alt',
             ]
         );
 
-        register_taxonomy('apex-areas', $this->plugin_slug, [
-            'label'     => 'Areas',
-            'capabilities'  => array(
-                'manage_terms'  => 'do_not_allow'
+        register_taxonomy('Apex-areas', $this->plugin_slug, [
+            'label' => 'Areas',
+            'capabilities' => array(
+                'manage_terms' => 'do_not_allow'
             ),
         ]);
 
@@ -101,7 +102,7 @@ class Enqueue extends BaseController
 
         $courses_slug = get_option('apex_plugin_slug', 'courses');
         $courses_sort = get_option('apex_courses_listing_sort', 'alphabetic');
-        $taxonomy =  'apex-areas';
+        $taxonomy =  'Apex-areas';
         $terms = get_terms([
             'taxonomy' => $taxonomy,
             'hide_empty' => false,
@@ -140,7 +141,7 @@ class Enqueue extends BaseController
             ));
 
             if (!count($courses)) continue;
-            echo '<div class="col-lg-4 apex-area">';
+            echo '<div class="col-lg-4 Apex-area">';
             echo '<h2>'.$term->name.'</h2>';
 
             foreach ($courses as $course):
@@ -162,7 +163,7 @@ class Enqueue extends BaseController
 
         if ($content_start) {
             ob_start();
-            echo '<div class="col-12 apex-area-content">';
+            echo '<div class="col-12 Apex-area-content">';
             echo apply_filters('the_content', $content_start);
             echo '</div>';
             return ob_get_clean();
@@ -177,7 +178,7 @@ class Enqueue extends BaseController
 
         if ($content_end) {
             ob_start();
-            echo '<div class="col-12 apex-area-content">';
+            echo '<div class="col-12 Apex-area-content">';
             echo apply_filters('the_content', $content_end);
             echo '</div>';
             return ob_get_clean();

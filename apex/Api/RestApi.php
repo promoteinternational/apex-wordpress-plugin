@@ -1,13 +1,9 @@
 <?php
-
 /**
- * Created by PhpStorm.
- * User: user
- * Date: 04-Dec-18
- * Time: 16:47
+ *  @package   PromoteApex
  */
 
-namespace Inc\Api;
+namespace Apex\Api;
 
 class RestApi
 {
@@ -20,7 +16,6 @@ class RestApi
     private $currency;
     private $displaySeats;
     private $coursesTitle;
-    private $success;
     private $slug;
     private $sendCalendar;
 
@@ -43,12 +38,6 @@ class RestApi
         $this->currency= get_option('apex_currency');
         $this->slug = get_option('apex_plugin_slug');
         $this->sendCalendar = get_option('apex_send_calendar_file');
-        $this->success = false;
-    }
-
-    public function getSuccess()
-    {
-        return $this->success;
     }
 
     public function getPrivateKey()
@@ -64,6 +53,11 @@ class RestApi
     public function getServerName()
     {
         return $this->server_name;
+    }
+
+    public function getServerUrl($path)
+    {
+        return $this->getServerName() . $path;
     }
 
     public function getPortalId()
@@ -97,8 +91,10 @@ class RestApi
     }
 
     //Create API request headers function
-    public function create_request_headers(string $public_key, string $private_key, $data = [])
+    public function create_request_headers($data = [])
     {
+        $private_key = $this->getPrivateKey();
+        $public_key = $this->getPublicKey();
         $timestamp = date('Y-m-d\TH:i:s.u', time());
 
         if ($data) {
@@ -109,7 +105,6 @@ class RestApi
 
         $signature = hash('sha256', $public_key . $encoded_body . $timestamp . $private_key);
 
-
         return [
             'Signature: ' . base64_encode($signature),
             'Timestamp: ' . $timestamp,
@@ -119,36 +114,48 @@ class RestApi
     }
 
     /**
-     * Perform a Curl request with provided headers and url
-     * @param $headers
-     * @param $service_url
-     * @param $post_data
+     * Perform a get request with provided url
+     * @param $service_path
+     * @param array $data
      * @return array|mixed|object
      */
-    private function performCurlRequest($headers, $service_url, $post_data = []) {
-        $curl = curl_init($service_url);
-
-        $curl_array = array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => $service_url . '?' . http_build_query($post_data,null,'&'),
-            CURLOPT_HTTPHEADER => $headers
-        );
-
-        curl_setopt_array($curl, $curl_array);
-        $curl_response = curl_exec($curl);
-        if ($curl_response === false) {
-            $info = curl_getinfo($curl);
-            curl_close($curl);
-            die('error occurred during curl exec. Additional info: ' . var_export($info));
+    private function get($service_path, $data = []) {
+        if (count($data)) {
+            $service_path = $service_path . '?' . http_build_query($data);
         }
+        $response = wp_remote_get($this->getServerUrl($service_path), array('headers' => $this->create_request_headers()));
 
-        curl_close($curl);
-
-        return json_decode($curl_response);
+        if (is_wp_error($response)) {
+            error_log('error occurred during API get call. Additional info: ' . $response->get_error_message());
+            return false;
+        } else {
+            return json_decode(wp_remote_retrieve_body($response));
+        }
     }
 
     /**
-     * Load the events for a specific template. Query apex once more to only get upcoming events.
+     * Perform a post request with provided url and data
+     * @param $service_path
+     * @param array $data
+     * @return bool|mixed
+     */
+    private function post($service_path, $data = []) {
+        $response = wp_remote_get($this->getServerUrl($service_path), array(
+            'body' => $data,
+            'headers' => $this->create_request_headers($data)
+        ));
+
+        if (is_wp_error($response)) {
+            error_log('error occurred during API post. Additional info: ' . $response->get_error_message());
+            return false;
+        } else {
+            return json_decode(wp_remote_retrieve_body($response));
+        }
+    }
+
+
+    /**
+     * Load the events for a specific template. Query Apex once more to only get upcoming events.
      *
      * @param $areaSlug - the slug of the current area.
      * @param $templateSlug - the slug of the template that should be used.
@@ -157,11 +164,14 @@ class RestApi
      */
     public function loadEvents($areaSlug, $templateSlug) {
         $portalID = $this->getPortalId();
-        $serverName = $this->getServerName();
-        $service_url = $serverName . '/api/v1/websites/' .  $portalID . '/areas/' . $areaSlug . '/templates/' . $templateSlug . '/events/';
-        $headers = $this->create_request_headers($this->getPublicKey(), $this->getPrivateKey());
+        $service_url = '/api/v1/websites/' .  $portalID . '/areas/' . $areaSlug . '/templates/' . $templateSlug . '/events/';
 
-        $decoded = $this->performCurlRequest($headers, $service_url, ['extra_fields' => 'sessions', 'start_date' => date('Y-m-d')]);
+        $decoded = $this->get($service_url, ['extra_fields' => 'sessions', 'start_date' => date('Y-m-d')]);
+
+        if (!$decoded) {
+            error_log('error occurred in API call');
+            return [];
+        }
 
         if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
             error_log('error occurred: ' . $decoded->response->errormessage);
@@ -175,14 +185,12 @@ class RestApi
     public function loadTemplates()
     {
         $currentTerms = [];
-        $areas_taxonomy = 'apex-areas';
+        $areas_taxonomy = 'Apex-areas';
         $portalID = $this->getPortalId();
-        $serverName = $this->getServerName();
-        $service_url = $serverName . '/api/v1/websites/' . $portalID . '/areas/';
-        $headers = $this->create_request_headers($this->getPublicKey(), $this->getPrivateKey());
+        $service_url = '/api/v1/websites/' . $portalID . '/areas/';
 
         echo '<hr>';
-        $decoded = $this->performCurlRequest($headers, $service_url, ['limit' => 'null']);
+        $decoded = $this->get($service_url, ['limit' => 'null']);
 
         if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
             error_log('error occurred: ' . $decoded->response->errormessage);
@@ -277,7 +285,7 @@ class RestApi
                                     if (count($event->sessions) == 1) {
                                         $number_of_days = '1/2';
                                     }
-                                    $dates = $dates . ' ' . sprintf(__('between %1$s-%2$s', 'promote-apex-plugin'), $start_date->format('H:i'), $end_date->format('H:i'));
+                                    $dates = $dates . ' ' . sprintf(__('between %1$s-%2$s', 'promote-apex'), $start_date->format('H:i'), $end_date->format('H:i'));
                                 }
                             }
                         }
@@ -372,36 +380,39 @@ class RestApi
         echo "Updated terms";
 
         // Save titles
-        $service_url = $serverName . '/api/v1/participants/titles/';
-        $decoded = $this->performCurlRequest($headers, $service_url);
-        $titles = $decoded->results;
-        $titles_store = array();
-        if (is_array($titles) && count($titles)):
-            foreach ($titles as $title) {
-                $titles_store[$title->id] = $title->name;
+        $service_url = '/api/v1/participants/titles/';
+        $decoded = $this->get($service_url);
+        if ($decoded) {
+            $titles = $decoded->results;
+            $titles_store = array();
+            if (is_array($titles) && count($titles)) {
+                foreach ($titles as $title) {
+                    $titles_store[$title->id] = $title->name;
+                }
             }
-        endif;
-        update_option('apex_plugin_titles', $titles_store, false);
+            update_option('apex_plugin_titles', $titles_store, false);
+        }
 
         // Save sectors
-        $service_url = $serverName . '/api/v1/companies/sectors/';
-        $decoded = $this->performCurlRequest($headers, $service_url);
-        $sectors = $decoded->results;
-        $sectors_store = array();
-        if (is_array($sectors) && count($sectors)):
-            foreach ($sectors as $sector) {
-                $sectors_store[$sector->id] = $sector->name;
+        $service_url = '/api/v1/companies/sectors/';
+        $decoded = $this->get($service_url);
+        if ($decoded) {
+            $sectors = $decoded->results;
+            $sectors_store = array();
+            if (is_array($sectors) && count($sectors)) {
+                foreach ($sectors as $sector) {
+                    $sectors_store[$sector->id] = $sector->name;
+                }
             }
-        endif;
-        update_option('apex_plugin_sectors', $sectors_store, false);
+            update_option('apex_plugin_sectors', $sectors_store, false);
+        }
     }
 
-    //Create add participant on event function
-    public function addParticipant($firstName, $LastName, $company, $email, $phone, $country, $city, $address1, $address2, $zipCode, $sector, $title, $eventId)
+    // Add participant on event function
+    public function addParticipant($eventId, $firstName, $LastName, $email, $phone, $company, $address1, $address2, $zipCode, $city, $country, $sector, $title)
     {
         $portalID = $this->getPortalId();
-        $serverName = $this->getServerName();
-        $service_url = $serverName . '/api/v1/websites/' . $portalID . '/events/' . $eventId . '/participants/';
+        $service_url = '/api/v1/websites/' . $portalID . '/events/' . $eventId . '/participants/';
 
         $data = [
             'first_name' => $firstName,
@@ -429,7 +440,7 @@ class RestApi
         }
 
         if ($sector) {
-            $data['company']['title'] = $sector;
+            $data['company']['sector'] = $sector;
         }
 
         if ($this->sendCalendar === 'yes') {
@@ -437,34 +448,17 @@ class RestApi
         }
 
         $dataJson = json_encode($data);
-        $headers = $this->create_request_headers($this->getPublicKey(), $this->getPrivateKey(), $data);
+        $response = $this->post($service_url, $dataJson);
 
-        $curl = curl_init($service_url);
-
-        curl_setopt_array($curl, array(
-
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => $service_url,
-            CURLOPT_HTTPHEADER => $headers,
-            CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => $dataJson
-        ));
-
-        $response = curl_exec($curl);
-        $response = json_decode($response);
-        $err = curl_error($curl);
-
-        curl_close($curl);
-
-        if ($err) {
-            echo '<div class="alert alert-danger">cURL Error #:' . $err.'</div>';
+        if (!$response) {
+            error_log("There was an error adding the participant to the event");
+            return false;
         } else {
-
             if(isset($response->participant[0])){
-                $this->success = false;
+                return false;
             }
             if(isset($response->confirmation_sent)){
-                $this->success = true;
+                return true;
             }
         }
     }

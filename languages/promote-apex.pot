@@ -20,235 +20,235 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: inc/Api/CronRequest.php:33
+#: apex/Api/CronRequest.php:33
 msgid "Custom Settings"
 msgstr ""
 
-#: inc/Api/RestApi.php:271
+#: apex/Api/RestApi.php:271
 #, php-format
 msgid "between %1$s-%2$s"
 msgstr ""
 
-#: inc/Base/SettingsLinks.php:19
+#: apex/Base/SettingsLinks.php:19
 msgid "Settings"
 msgstr ""
 
-#: inc/Pages/Admin.php:34
+#: apex/Pages/Admin.php:34
 msgid "Apex Wordpress Plugin Settings"
 msgstr ""
 
-#: inc/Pages/Admin.php:160
+#: apex/Pages/Admin.php:160
 msgid "General Settings"
 msgstr ""
 
-#: inc/Pages/Admin.php:161
+#: apex/Pages/Admin.php:161
 msgid "API Settings"
 msgstr ""
 
-#: inc/Pages/Admin.php:162
+#: apex/Pages/Admin.php:162
 msgid "Additional CSS"
 msgstr ""
 
-#: inc/Pages/Admin.php:163
+#: apex/Pages/Admin.php:163
 msgid "Course extra information"
 msgstr ""
 
-#: inc/Pages/Admin.php:164
+#: apex/Pages/Admin.php:164
 msgid "Courses page"
 msgstr ""
 
-#: inc/Pages/Admin.php:203
+#: apex/Pages/Admin.php:203
 msgid "Amount of minutes before each update"
 msgstr ""
 
-#: inc/Pages/Admin.php:204
+#: apex/Pages/Admin.php:204
 msgid "Currency (Please verify, that selected currency exist in API)"
 msgstr ""
 
-#: inc/Pages/Admin.php:205
+#: apex/Pages/Admin.php:205
 msgid "Slug for courses"
 msgstr ""
 
-#: inc/Pages/Admin.php:206
+#: apex/Pages/Admin.php:206
 msgid "Display events"
 msgstr ""
 
-#: inc/Pages/Admin.php:207 inc/WpApi/Callbacks/AdminCallbacks.php:107
+#: apex/Pages/Admin.php:207 apex/WpApi/Callbacks/AdminCallbacks.php:107
 msgid "Venue order"
 msgstr ""
 
-#: inc/Pages/Admin.php:208
+#: apex/Pages/Admin.php:208
 msgid "Venue replacements"
 msgstr ""
 
-#: inc/Pages/Admin.php:209
+#: apex/Pages/Admin.php:209
 msgid "Add header and footer to course page"
 msgstr ""
 
-#: inc/Pages/Admin.php:210
+#: apex/Pages/Admin.php:210
 msgid "Server address"
 msgstr ""
 
-#: inc/Pages/Admin.php:211
+#: apex/Pages/Admin.php:211
 msgid "Public API Key"
 msgstr ""
 
-#: inc/Pages/Admin.php:212
+#: apex/Pages/Admin.php:212
 msgid "Private API Key"
 msgstr ""
 
-#: inc/Pages/Admin.php:213
+#: apex/Pages/Admin.php:213
 msgid "Portal ID"
 msgstr ""
 
-#: inc/Pages/Admin.php:214
+#: apex/Pages/Admin.php:214
 msgid "Send calendar file"
 msgstr ""
 
-#: inc/Pages/Admin.php:215
+#: apex/Pages/Admin.php:215
 msgid "Display Available Seats"
 msgstr ""
 
-#: inc/Pages/Admin.php:216
+#: apex/Pages/Admin.php:216
 msgid "Display Title"
 msgstr ""
 
-#: inc/Pages/Admin.php:217
+#: apex/Pages/Admin.php:217
 msgid "Display Sector"
 msgstr ""
 
-#: inc/Pages/Admin.php:218
+#: apex/Pages/Admin.php:218
 msgid "Extra course page CSS"
 msgstr ""
 
-#: inc/Pages/Admin.php:219
+#: apex/Pages/Admin.php:219
 msgid "Extra course archive page CSS"
 msgstr ""
 
-#: inc/Pages/Admin.php:220
+#: apex/Pages/Admin.php:220
 msgid "Course extra info"
 msgstr ""
 
-#: inc/Pages/Admin.php:221
+#: apex/Pages/Admin.php:221
 msgid "Extra booking info"
 msgstr ""
 
-#: inc/Pages/Admin.php:222
+#: apex/Pages/Admin.php:222
 msgid "Extra after booking code"
 msgstr ""
 
-#: inc/Pages/Admin.php:223
+#: apex/Pages/Admin.php:223
 msgid "Booking terms"
 msgstr ""
 
-#: inc/Pages/Admin.php:224
+#: apex/Pages/Admin.php:224
 msgid "Page title"
 msgstr ""
 
-#: inc/Pages/Admin.php:225
+#: apex/Pages/Admin.php:225
 msgid "Course sorting"
 msgstr ""
 
-#: inc/Pages/Admin.php:226
+#: apex/Pages/Admin.php:226
 msgid "Content before courses list"
 msgstr ""
 
-#: inc/Pages/Admin.php:227
+#: apex/Pages/Admin.php:227
 msgid "Content after courses list"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:39
+#: apex/WpApi/Callbacks/AdminCallbacks.php:39
 msgid "Provide the general plugin settings"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:45
+#: apex/WpApi/Callbacks/AdminCallbacks.php:45
 msgid "Provide the API settings:"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:50
+#: apex/WpApi/Callbacks/AdminCallbacks.php:50
 msgid "Provide additional CSS (optional):"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:55
+#: apex/WpApi/Callbacks/AdminCallbacks.php:55
 msgid "Provide extra information for the course information page:"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:60
+#: apex/WpApi/Callbacks/AdminCallbacks.php:60
 msgid "Provide options for the courses page:"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:61
+#: apex/WpApi/Callbacks/AdminCallbacks.php:61
 msgid ""
-"You can use shortcodes for output this fields: <strong>[apex-courses-list-"
-"before], [apex-courses-list], [apex-courses-list-after]</strong>"
+"You can use shortcodes for output this fields: <strong>[Apex-courses-list-"
+"before], [Apex-courses-list], [Apex-courses-list-after]</strong>"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:76
+#: apex/WpApi/Callbacks/AdminCallbacks.php:76
 msgid "Swedish Krona"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:77
+#: apex/WpApi/Callbacks/AdminCallbacks.php:77
 msgid "United States Dollars"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:78
+#: apex/WpApi/Callbacks/AdminCallbacks.php:78
 msgid "Euro"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:79
+#: apex/WpApi/Callbacks/AdminCallbacks.php:79
 msgid "United Kingdom Pounds"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:88
+#: apex/WpApi/Callbacks/AdminCallbacks.php:88
 msgid "Enter Apex courses slug"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:97
+#: apex/WpApi/Callbacks/AdminCallbacks.php:97
 msgid "Show dates"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:98
+#: apex/WpApi/Callbacks/AdminCallbacks.php:98
 msgid "Group by venue"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:114
+#: apex/WpApi/Callbacks/AdminCallbacks.php:114
 msgid "Enter venue replacements"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:123
-#: inc/WpApi/Callbacks/AdminCallbacks.php:162
-#: inc/WpApi/Callbacks/AdminCallbacks.php:174
-#: inc/WpApi/Callbacks/AdminCallbacks.php:186
-#: inc/WpApi/Callbacks/AdminCallbacks.php:197
+#: apex/WpApi/Callbacks/AdminCallbacks.php:123
+#: apex/WpApi/Callbacks/AdminCallbacks.php:162
+#: apex/WpApi/Callbacks/AdminCallbacks.php:174
+#: apex/WpApi/Callbacks/AdminCallbacks.php:186
+#: apex/WpApi/Callbacks/AdminCallbacks.php:197
 msgid "No"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:124
-#: inc/WpApi/Callbacks/AdminCallbacks.php:163
-#: inc/WpApi/Callbacks/AdminCallbacks.php:175
-#: inc/WpApi/Callbacks/AdminCallbacks.php:187
-#: inc/WpApi/Callbacks/AdminCallbacks.php:198
+#: apex/WpApi/Callbacks/AdminCallbacks.php:124
+#: apex/WpApi/Callbacks/AdminCallbacks.php:163
+#: apex/WpApi/Callbacks/AdminCallbacks.php:175
+#: apex/WpApi/Callbacks/AdminCallbacks.php:187
+#: apex/WpApi/Callbacks/AdminCallbacks.php:198
 msgid "Yes"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:132
+#: apex/WpApi/Callbacks/AdminCallbacks.php:132
 msgid "Enter server name"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:139
+#: apex/WpApi/Callbacks/AdminCallbacks.php:139
 msgid "Enter public api key"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:146
+#: apex/WpApi/Callbacks/AdminCallbacks.php:146
 msgid "Enter private api key"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:153
+#: apex/WpApi/Callbacks/AdminCallbacks.php:153
 msgid "Enter portal ID"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:207
-#: inc/WpApi/Callbacks/AdminCallbacks.php:219
+#: apex/WpApi/Callbacks/AdminCallbacks.php:207
+#: apex/WpApi/Callbacks/AdminCallbacks.php:219
 msgid ""
 "Example (add css styling):\n"
 "h2 {\n"
@@ -257,7 +257,7 @@ msgid ""
 "}\n"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:249
+#: apex/WpApi/Callbacks/AdminCallbacks.php:249
 msgid ""
 "Example (extra javascript):\n"
 "    alert(course.transactionId);\n"
@@ -270,15 +270,15 @@ msgid ""
 "course.slug = The slug of the course\n"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:265
+#: apex/WpApi/Callbacks/AdminCallbacks.php:265
 msgid "Enter page title"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:286
+#: apex/WpApi/Callbacks/AdminCallbacks.php:286
 msgid "Alphabetic"
 msgstr ""
 
-#: inc/WpApi/Callbacks/AdminCallbacks.php:287
+#: apex/WpApi/Callbacks/AdminCallbacks.php:287
 msgid "Numeric"
 msgstr ""
 

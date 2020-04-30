@@ -1,5 +1,5 @@
 {
-  "name": "promote-apex-plugin",
+  "name": "promote-apex",
   "version": "1.2.0",
   "description": "Promote Apex plugin",
   "main": "index.js",

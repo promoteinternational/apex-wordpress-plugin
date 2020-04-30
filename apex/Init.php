@@ -1,14 +1,10 @@
 <?php
 
-
 /**
- *  @package  ApexWordpressPlugin
+ *  @package   PromoteApex
  */
 
-namespace Inc;
-
-use Inc\Api\RestApi;
-use Inc\Api\CronRequest;
+namespace Apex;
 
 final class Init
 {
@@ -23,7 +19,6 @@ final class Init
             Base\Enqueue::class,
             Base\SettingsLinks::class,
             Api\CronRequest::class
-
         ];
     }
 

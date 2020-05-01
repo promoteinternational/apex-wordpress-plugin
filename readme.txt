@@ -5,8 +5,8 @@ Plugin URL: https://github.com/promoteinternational/apex-wordpress-plugin
 Tags: wp, promote, apex
 Requires at least: 5.0
 Tested up to: 5.4
-Stable tag: 1.2
-Version: 1.2
+Stable tag: 1.2.1
+Version: 1.2.1
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -29,6 +29,9 @@ To install the plugin you need to do the following steps:
 3. Configure the apex plugin in the menu "Apex Plugin".
 
 == Changelog ==
-= 1.2 =
+= 1.2.1 =
+* Updated how times are added to shorter events
+
+= 1.2.0 =
 * First release under the Promote Apex name
 * Updated so that each course that is less than 6 hours will display information about start and end times.

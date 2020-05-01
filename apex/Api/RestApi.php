@@ -285,7 +285,7 @@ class RestApi
                                     if (count($event->sessions) == 1) {
                                         $number_of_days = '1/2';
                                     }
-                                    $dates = $dates . ' ' . sprintf(__('between %1$s-%2$s', 'promote-apex'), $start_date->format('H:i'), $end_date->format('H:i'));
+                                    $dates = $dates . ' ' . $start_date->format('H:i') . '-' .  $end_date->format('H:i');
                                 }
                             }
                         }

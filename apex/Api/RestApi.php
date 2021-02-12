@@ -225,143 +225,154 @@ class RestApi
             $currentTerms[$existingTerm->name] = $term;
         }
 
-        foreach ($areas as $area) {
-            // Create or modify taxonomies
-            $area_term = $area->slug;
-            $course_id = 0;
-            $term = term_exists($area_term, $areas_taxonomy);
+        remove_filter('content_save_pre', 'wp_filter_post_kses');
+        remove_filter('content_filtered_save_pre', 'wp_filter_post_kses');
 
-            if (!$term) {
-                $term = wp_insert_term($area->name, $areas_taxonomy, [
-                    'slug' => $area_term,
-                ]);
-            } else {
-                delete_term_meta((int) $term['term_id'], 'number_of_courses');
-            }
+        try {
+            foreach ($areas as $area) {
+                // Create or modify taxonomies
+                $area_term = $area->slug;
+                $course_id = 0;
+                $term = term_exists($area_term, $areas_taxonomy);
 
-            add_term_meta((int) $term['term_id'], 'number_of_courses', (string) sizeof($area->area_templates));
-
-            $currentTerms[$area->name]->status = 1;
-
-            wp_update_term($area->nane, $areas_taxonomy, [
-                'slug' => $area_term,
-                'meta_input' => [
-                    'number_of_templates' => sizeof($area->area_templates)
-                ]
-            ]);
-
-            foreach ($area->area_templates as $template) {
-                $events = $this->loadEvents($area_term, $template->slug);
-                $places_events = [];
-                $number_of_days = $template->number_of_days;
-
-                foreach ($events as $event) {
-                    $event_dates = [];
-
-                    if (!key_exists($event->venue_city, $places_events)) {
-                        $places_events[$event->venue_city] = [];
-                    }
-
-                    foreach($event->sessions as $session) {
-                        $dates = date_i18n('d M', strtotime($session->start_date));
-
-                        if ($session->number_of_days > 1) {
-                            $dates = $dates . ' - ' . date_i18n('d M', strtotime($session->end_date));
-                        } else {
-                            $day = reset($session->days);
-                            if ($day) {
-                                $start_date = new \DateTime();
-                                $time_zone = new \DateTimeZone($session->timezone);
-                                $start_date->setTimestamp(strtotime($day->start_date));
-                                $start_date->setTimezone($time_zone);
-
-                                $end_date = new \DateTime();
-                                $end_date->setTimestamp(strtotime($day->end_date));
-                                $end_date->setTimezone($time_zone);
-
-                                $seconds = $end_date->getTimestamp() - $start_date->getTimestamp();
-
-                                if ($seconds < 21600) {
-                                    if (count($event->sessions) == 1) {
-                                        $number_of_days = '1/2';
-                                    }
-                                    $dates = $dates . ' ' . $start_date->format('H:i') . '-' .  $end_date->format('H:i');
-                                }
-                            }
-                        }
-
-                        array_push($event_dates, $dates);
-                    }
-
-                    $event = (object) array_merge((array) $event, array('event_dates' => implode(",<br>", $event_dates)));
-
-                    array_push($places_events[$event->venue_city], $event);
+                if (!$term) {
+                    $term = wp_insert_term($area->name, $areas_taxonomy, [
+                        'slug' => $area_term,
+                    ]);
+                } else {
+                    delete_term_meta((int)$term['term_id'], 'number_of_courses');
                 }
 
-                ksort($places_events);
+                add_term_meta((int)$term['term_id'], 'number_of_courses', (string)sizeof($area->area_templates));
 
-                if (key_exists($template->slug, $currentCourses)) { // if course already present
-                    $course_id = $currentCourses[$template->slug]->id;
+                $currentTerms[$area->name]->status = 1;
 
-                    // check for duplicates, if already updated - do not update
-                    if ($currentCourses[$template->slug]->status === 0) {
-                        wp_update_post(array(
-                                'ID' => $course_id,
+                wp_update_term($area->nane, $areas_taxonomy, [
+                    'slug' => $area_term,
+                    'meta_input' => [
+                        'number_of_templates' => sizeof($area->area_templates)
+                    ]
+                ]);
+
+                foreach ($area->area_templates as $template) {
+                    $events = $this->loadEvents($area_term, $template->slug);
+                    $places_events = [];
+                    $number_of_days = $template->number_of_days;
+
+                    foreach ($events as $event) {
+                        $event_dates = [];
+
+                        if (!key_exists($event->venue_city, $places_events)) {
+                            $places_events[$event->venue_city] = [];
+                        }
+
+                        foreach ($event->sessions as $session) {
+                            $dates = date_i18n('d M', strtotime($session->start_date));
+
+                            if ($session->number_of_days > 1) {
+                                $dates = $dates . ' - ' . date_i18n('d M', strtotime($session->end_date));
+                            } else {
+                                $day = reset($session->days);
+                                if ($day) {
+                                    $start_date = new \DateTime();
+                                    $time_zone = new \DateTimeZone($session->timezone);
+                                    $start_date->setTimestamp(strtotime($day->start_date));
+                                    $start_date->setTimezone($time_zone);
+
+                                    $end_date = new \DateTime();
+                                    $end_date->setTimestamp(strtotime($day->end_date));
+                                    $end_date->setTimezone($time_zone);
+
+                                    $seconds = $end_date->getTimestamp() - $start_date->getTimestamp();
+
+                                    if ($seconds < 21600) {
+                                        if (count($event->sessions) == 1) {
+                                            $number_of_days = '1/2';
+                                        }
+                                        $dates = $dates . ' ' . $start_date->format('H:i') . '-' . $end_date->format('H:i');
+                                    }
+                                }
+                            }
+
+                            array_push($event_dates, $dates);
+                        }
+
+                        $event = (object)array_merge((array)$event, array('event_dates' => implode(",<br>", $event_dates)));
+
+                        array_push($places_events[$event->venue_city], $event);
+                    }
+
+                    ksort($places_events);
+
+                    if (key_exists($template->slug, $currentCourses)) { // if course already present
+                        $course_id = $currentCourses[$template->slug]->id;
+
+                        // check for duplicates, if already updated - do not update
+                        if ($currentCourses[$template->slug]->status === 0) {
+                            wp_update_post(array(
+                                    'ID' => $course_id,
+                                    'post_title' => $template->name,
+                                    'post_name' => $template->slug,
+                                    'post_type' => $this->slug,
+                                    'post_content' => $template->description,
+                                    'post_status' => 'publish',
+                                    'meta_input' => [
+                                        'apex_course_id' => $template->id,
+                                        'apex_course_identifier' => $template->identifier,
+                                        'apex_course_event_id' => $template->event_id,
+                                        'apex_course_venue' => $template->venue,
+                                        'apex_course_timezone' => $template->timezone,
+                                        'apex_course_number_of_days' => $number_of_days,
+                                        'apex_course_is_active' => $template->is_active,
+                                        'apex_course_is_template' => $template->is_template,
+                                        'apex_course_prices' => $template->prices,
+                                        'apex_course_template_events' => $events,
+                                        'apex_course_template_places' => $places_events
+                                    ])
+                            );
+
+                            $currentCourses[$template->slug]->status = 1;
+                        }
+                    } else { // new course
+                        $course_id = wp_insert_post(array(
                                 'post_title' => $template->name,
                                 'post_name' => $template->slug,
                                 'post_type' => $this->slug,
                                 'post_content' => $template->description,
                                 'post_status' => 'publish',
                                 'meta_input' => [
-                                    'apex_course_id'              => $template->id,
-                                    'apex_course_identifier'      => $template->identifier,
-                                    'apex_course_event_id'        => $template->event_id,
-                                    'apex_course_venue'           => $template->venue,
-                                    'apex_course_timezone'        => $template->timezone,
-                                    'apex_course_number_of_days'  => $number_of_days,
-                                    'apex_course_is_active'       => $template->is_active,
-                                    'apex_course_is_template'     => $template->is_template,
-                                    'apex_course_prices'          => $template->prices,
+                                    'apex_course_id' => $template->id,
+                                    'apex_course_identifier' => $template->identifier,
+                                    'apex_course_event_id' => $template->event_id,
+                                    'apex_course_venue' => $template->venue,
+                                    'apex_course_timezone' => $template->timezone,
+                                    'apex_course_number_of_days' => $number_of_days,
+                                    'apex_course_is_active' => $template->is_active,
+                                    'apex_course_is_template' => $template->is_template,
+                                    'apex_course_prices' => $template->prices,
                                     'apex_course_template_events' => $events,
                                     'apex_course_template_places' => $places_events
                                 ])
                         );
 
-                        $currentCourses[$template->slug]->status = 1;
+                        $currentCourses[$template->slug] = new \stdClass();
+                        $currentCourses[$template->slug]->id = $template->id;
+                        $currentCourses[$template->slug]->name = $template->slug;
+                        $currentCourses[$template->slug]->status = 2;
                     }
-                } else { // new course
-                    $course_id = wp_insert_post(array(
-                        'post_title'    => $template->name,
-                        'post_name'     => $template->slug,
-                        'post_type'     => $this->slug,
-                        'post_content'  => $template->description,
-                        'post_status'   => 'publish',
-                        'meta_input'    => [
-                            'apex_course_id'                => $template->id,
-                            'apex_course_identifier'        => $template->identifier,
-                            'apex_course_event_id'          => $template->event_id,
-                            'apex_course_venue'             => $template->venue,
-                            'apex_course_timezone'          => $template->timezone,
-                            'apex_course_number_of_days'    => $number_of_days,
-                            'apex_course_is_active'         => $template->is_active,
-                            'apex_course_is_template'       => $template->is_template,
-                            'apex_course_prices'            => $template->prices,
-                            'apex_course_template_events'   => $events,
-                            'apex_course_template_places'   => $places_events
-                        ])
-                    );
 
-                    $currentCourses[$template->slug] = new \stdClass();
-                    $currentCourses[$template->slug]->id        = $template->id;
-                    $currentCourses[$template->slug]->name      = $template->slug;
-                    $currentCourses[$template->slug]->status    = 2;
-                }
-
-                // Set term
-                if (!has_term($area_term, $areas_taxonomy, $course_id)) {
-                    wp_set_post_terms($course_id, $area_term, $areas_taxonomy, true);
+                    // Set term
+                    if (!has_term($area_term, $areas_taxonomy, $course_id)) {
+                        wp_set_post_terms($course_id, $area_term, $areas_taxonomy, true);
+                    }
                 }
             }
+        }
+
+        finally {
+            // Make sure that we reset the filter settings before continuing.
+            add_filter('content_save_pre', 'wp_filter_post_kses');
+            add_filter('content_filtered_save_pre', 'wp_filter_post_kses');
         }
 
         // delete courses, not present in the API response

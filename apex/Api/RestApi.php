@@ -140,7 +140,7 @@ class RestApi
      * @return bool|mixed
      */
     private function post($service_path, $data = []) {
-        $response = wp_remote_get($this->getServerUrl($service_path), array(
+        $response = wp_remote_post($this->getServerUrl($service_path), array(
             'body' => $data,
             'headers' => $this->create_request_headers($data)
         ));

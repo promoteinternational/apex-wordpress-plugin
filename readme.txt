@@ -4,9 +4,9 @@ Plugin Name: Promote Apex
 Plugin URL: https://github.com/promoteinternational/apex-wordpress-plugin
 Tags: wp, promote, apex
 Requires at least: 5.0
-Tested up to: 5.6.1
-Stable tag: 1.2.3
-Version: 1.2.3
+Tested up to: 5.7
+Stable tag: 1.2.4
+Version: 1.2.4
 Requires PHP: 5.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -29,6 +29,9 @@ To install the plugin you need to do the following steps:
 3. Configure the apex plugin in the menu "Apex Plugin".
 
 == Changelog ==
+= 1.2.4 =
+* Fixed bug regarding adding participants to events.
+
 = 1.2.3 =
 * Fixed description and versions of plugin
 

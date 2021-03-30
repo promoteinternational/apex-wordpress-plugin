@@ -51,7 +51,7 @@ $availableSeats = $event->max_participants - $event->booked_participant_count;
     if (!empty($event_id) && $event_id == $event->id):?>
         <div class="apex-courses__confirmation">
             <?php
-            $email = sanitize_email($_POST['EMAIL']);
+            $email = sanitize_email($_POST['email']);
 
             $success = $api->addParticipant($event_id,
                 sanitize_text_field($_POST['first_name']), sanitize_text_field($_POST['last_name']),

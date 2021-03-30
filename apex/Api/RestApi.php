@@ -106,10 +106,10 @@ class RestApi
         $signature = hash('sha256', $public_key . $encoded_body . $timestamp . $private_key);
 
         return [
-            'Signature: ' . base64_encode($signature),
-            'Timestamp: ' . $timestamp,
-            'API-Token: ' . base64_encode($public_key),
-            'Content-Type: application/json'
+            'Signature' => base64_encode($signature),
+            'Timestamp' => $timestamp,
+            'API-Token' => base64_encode($public_key),
+            'Content-Type' => 'application/json'
         ];
     }
 
@@ -123,7 +123,12 @@ class RestApi
         if (count($data)) {
             $service_path = $service_path . '?' . http_build_query($data);
         }
-        $response = wp_remote_get($this->getServerUrl($service_path), array('headers' => $this->create_request_headers()));
+        $response = wp_remote_get($this->getServerUrl($service_path),
+            array(
+                'headers' => $this->create_request_headers(),
+                'timeout' => 10
+            )
+        );
 
         if (is_wp_error($response)) {
             error_log('error occurred during API get call. Additional info: ' . $response->get_error_message());
@@ -142,7 +147,8 @@ class RestApi
     private function post($service_path, $data = []) {
         $response = wp_remote_post($this->getServerUrl($service_path), array(
             'body' => $data,
-            'headers' => $this->create_request_headers($data)
+            'headers' => $this->create_request_headers($data),
+            'timeout' => 10
         ));
 
         if (is_wp_error($response)) {
@@ -458,7 +464,7 @@ class RestApi
             $data['send_calendar_file'] = true;
         }
 
-        $dataJson = json_encode($data);
+        $dataJson = wp_json_encode($data);
         $response = $this->post($service_url, $dataJson);
 
         if (!$response) {

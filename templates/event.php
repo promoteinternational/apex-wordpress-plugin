@@ -65,6 +65,7 @@ $availableSeats = $event->max_participants - $event->booked_participant_count;
             // Update booked participant count in wp database.
             $trSuccess = __('Your application was successfully submitted!', 'promote-apex');
             $trError = __('Something went wrong with your application', 'promote-apex');
+
             if ($success) {
                 $event->booked_participant_count = $event->booked_participant_count + 1;
                 echo '<div class="alert alert-success">' . $trSuccess . '</div>';

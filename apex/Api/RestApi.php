@@ -471,11 +471,13 @@ class RestApi
             error_log("There was an error adding the participant to the event");
             return false;
         } else {
-            if(isset($response->participant[0])){
+            if (isset($response->participant) && is_array($response->participant)) {
                 return false;
             }
-            if(isset($response->confirmation_sent)){
+            if (isset($response->confirmation_sent)) {
                 return true;
+            } else {
+                return false;
             }
         }
     }

@@ -5,8 +5,8 @@ Plugin URL: https://github.com/promoteinternational/apex-wordpress-plugin
 Tags: wp, promote, apex
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 1.2.6
-Version: 1.2.6
+Stable tag: 1.2.7
+Version: 1.2.7
 Requires PHP: 5.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -29,6 +29,9 @@ To install the plugin you need to do the following steps:
 3. Configure the apex plugin in the menu "Apex Plugin".
 
 == Changelog ==
+= 1.2.7 =
+* Updated timeout for api calls.
+
 = 1.2.6 =
 * Fixed problem with response json.
 

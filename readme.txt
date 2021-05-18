@@ -5,8 +5,8 @@ Plugin URL: https://github.com/promoteinternational/apex-wordpress-plugin
 Tags: wp, promote, apex
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 1.2.7
-Version: 1.2.7
+Stable tag: 1.2.8
+Version: 1.2.8
 Requires PHP: 5.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

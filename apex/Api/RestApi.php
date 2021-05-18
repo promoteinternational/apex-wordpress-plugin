@@ -126,7 +126,7 @@ class RestApi
         $response = wp_remote_get($this->getServerUrl($service_path),
             array(
                 'headers' => $this->create_request_headers(),
-                'timeout' => 20
+                'timeout' => 50
             )
         );
 
@@ -148,7 +148,7 @@ class RestApi
         $response = wp_remote_post($this->getServerUrl($service_path), array(
             'body' => $data,
             'headers' => $this->create_request_headers($data),
-            'timeout' => 20
+            'timeout' => 50
         ));
 
         if (is_wp_error($response)) {

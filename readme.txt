@@ -29,6 +29,9 @@ To install the plugin you need to do the following steps:
 3. Configure the apex plugin in the menu "Apex Plugin".
 
 == Changelog ==
+= 1.2.8 =
+* Updated timeout for api calls.
+
 = 1.2.7 =
 * Updated timeout for api calls.
 

@@ -7,7 +7,7 @@
 $availableSeats = $event->max_participants - $event->booked_participant_count;
 ?>
 <div class="apex-courses__event">
-    <div class="col-6">
+    <div class="col-7">
         <div class="apex-courses__event-date">
             <?= $event->event_dates ?>
         </div>
@@ -23,7 +23,7 @@ $availableSeats = $event->max_participants - $event->booked_participant_count;
             </div>
         <?php endif; ?>
     </div>
-    <div class="col-6 text-right">
+    <div class="col-5 text-right">
         <?php if (!empty($availableSeats) && $availableSeats >= 1): ?>
             <button type="button" class="btn apex-courses__event-button"
                     data-toggle="modal" data-target="#modal_<?= $event->id ?>">

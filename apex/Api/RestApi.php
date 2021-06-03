@@ -426,7 +426,8 @@ class RestApi
     }
 
     // Add participant on event function
-    public function addParticipant($eventId, $firstName, $LastName, $email, $phone, $company, $address1, $address2, $zipCode, $city, $country, $sector, $title)
+    public function addParticipant($eventId, $firstName, $LastName, $email, $phone, $invoice_reference, $company,
+                                   $address1, $address2, $zipCode, $city, $country, $sector, $title)
     {
         $portalID = $this->getPortalId();
         $service_url = '/api/v1/websites/' . $portalID . '/events/' . $eventId . '/participants/';
@@ -439,6 +440,7 @@ class RestApi
             'is_staff' => false,
             'cell_phone_number' => $phone,
             'phone_number' => $phone,
+
             'company' => [
                 'name' =>  $company,
                 "addresses" => [[
@@ -458,6 +460,10 @@ class RestApi
 
         if ($sector) {
             $data['company']['sector'] = $sector;
+        }
+
+        if ($invoice_reference) {
+            $data['invoice_reference'] = $invoice_reference;
         }
 
         if ($this->sendCalendar === 'yes') {

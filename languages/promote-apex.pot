@@ -8,28 +8,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-21 14:05+0200\n"
+"POT-Creation-Date: 2021-06-03 10:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Poedit-KeywordsList: __;_e;esc_attr_e\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: apex/Api/CronRequest.php:33
+#: apex/Api/CronRequest.php:34
 msgid "Custom Settings"
 msgstr ""
 
-#: apex/Api/RestApi.php:271
-#, php-format
-msgid "between %1$s-%2$s"
-msgstr ""
-
-#: apex/Base/SettingsLinks.php:19
+#: apex/Base/SettingsLinks.php:17
 msgid "Settings"
 msgstr ""
 
@@ -282,49 +277,49 @@ msgstr ""
 msgid "Numeric"
 msgstr ""
 
-#: templates/courses.php:119
+#: templates/courses.php:123
 msgid "Prices and upcoming dates:"
 msgstr ""
 
-#: templates/courses.php:126
+#: templates/courses.php:130
 #, php-format
 msgid "%s days"
 msgstr ""
 
-#: templates/courses.php:128
+#: templates/courses.php:132
 #, php-format
 msgid "%s day"
 msgstr ""
 
-#: templates/courses.php:140
+#: templates/courses.php:144
 msgid "Dates"
 msgstr ""
 
-#: templates/courses.php:153 templates/courses.php:204
+#: templates/courses.php:157 templates/courses.php:208
 msgid "No upcoming events"
 msgstr ""
 
-#: templates/event.php:17
+#: templates/event.php:21
 msgid "Available seats:"
 msgstr ""
 
-#: templates/event.php:26
+#: templates/event.php:30
 msgid "Apply Now"
 msgstr ""
 
-#: templates/event.php:36
+#: templates/event.php:40
 msgid "This event is fully booked"
 msgstr ""
 
-#: templates/event.php:41
+#: templates/event.php:45
 msgid "Few seats remaining"
 msgstr ""
 
-#: templates/event.php:53
+#: templates/event.php:67
 msgid "Your application was successfully submitted!"
 msgstr ""
 
-#: templates/event.php:54
+#: templates/event.php:68
 msgid "Something went wrong with your application"
 msgstr ""
 
@@ -353,46 +348,50 @@ msgid "Title"
 msgstr ""
 
 #: templates/modal.php:62
+msgid "Invoice reference"
+msgstr ""
+
+#: templates/modal.php:67
 msgid "Company *"
 msgstr ""
 
-#: templates/modal.php:72
+#: templates/modal.php:77
 msgid "Sector"
 msgstr ""
 
-#: templates/modal.php:87
-msgid "Address *"
+#: templates/modal.php:91
+msgid "Invoice address *"
 msgstr ""
 
-#: templates/modal.php:92
+#: templates/modal.php:96
 msgid "Zip Code *"
 msgstr ""
 
-#: templates/modal.php:97
+#: templates/modal.php:101
 msgid "City *"
 msgstr ""
 
-#: templates/modal.php:102
+#: templates/modal.php:106
 msgid "Country *"
 msgstr ""
 
-#: templates/modal.php:104
+#: templates/modal.php:108
 msgid "Sweden"
 msgstr ""
 
-#: templates/modal.php:105
+#: templates/modal.php:109
 msgid "Denmark"
 msgstr ""
 
-#: templates/modal.php:106
+#: templates/modal.php:110
 msgid "Finland"
 msgstr ""
 
-#: templates/modal.php:107
+#: templates/modal.php:111
 msgid "Norway"
 msgstr ""
 
-#: templates/modal.php:120
+#: templates/modal.php:124
 msgid "Apply"
 msgstr ""
 

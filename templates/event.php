@@ -55,10 +55,11 @@ $availableSeats = $event->max_participants - $event->booked_participant_count;
 
             $success = $api->addParticipant($event_id,
                 sanitize_text_field($_POST['first_name']), sanitize_text_field($_POST['last_name']),
-                $email, sanitize_text_field($_POST['phone']), sanitize_text_field($_POST['company']),
-                sanitize_text_field($_POST['address_1']), sanitize_text_field($_POST['address_2']),
-                sanitize_text_field($_POST['zip_code']), sanitize_text_field($_POST['city']),
-                sanitize_text_field($_POST['country']),
+                $email, sanitize_text_field($_POST['phone']),
+                isset($_POST['invoice_reference']) ? sanitize_text_field($_POST['invoice_reference']) : null,
+                sanitize_text_field($_POST['company']), sanitize_text_field($_POST['address_1']),
+                sanitize_text_field($_POST['address_2']), sanitize_text_field($_POST['zip_code']),
+                sanitize_text_field($_POST['city']), sanitize_text_field($_POST['country']),
                 isset($_POST['sector']) ? sanitize_text_field($_POST['sector']) : null,
                 isset($_POST['title']) ? sanitize_text_field($_POST['title']) : null);
 

@@ -59,6 +59,11 @@
                         ?>
 
                         <div class="form-group col-12">
+                            <label for="invoice-reference"><?php _e('Invoice reference', 'promote-apex') ?></label>
+                            <input type="text" name="invoice_reference" id="invoice-reference" class="form-control" required>
+                        </div>
+
+                        <div class="form-group col-12">
                             <label for="company"><?php _e('Company *', 'promote-apex') ?></label>
                             <input type="text" name="company" id="company" class="form-control" required>
                         </div>
@@ -82,9 +87,8 @@
                             endif;
                         endif;
                         ?>
-
                         <div class="form-group col-12">
-                            <label for="address_1"><?php _e('Address *', 'promote-apex') ?></label>
+                            <label for="address_1"><?php _e('Invoice address *', 'promote-apex') ?></label>
                             <input type="text" name="address_1" id="address_1" class="form-control" required>
                             <input type="text" name="address_2" id="address_2" class="form-control">
                         </div>

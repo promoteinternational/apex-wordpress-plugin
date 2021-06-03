@@ -8,7 +8,7 @@ Plugin Name: Promote Apex
 Plugin URI: https://github.com/promoteinternational/apex-wordpress-plugin
 Text Domain: promote-apex
 Description: Plugin used to connect a wordpress website with Apex
-Version: 1.2.9
+Version: 1.3.0
 Author: Promote International AB
 Author URI: https://www.promoteint.com
 License: GPLv2 or later
